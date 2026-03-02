@@ -5,28 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hone — Sharpen your code, natively.</title>
     <meta name="description" content="A native, AI-powered code editor for every platform. Written in TypeScript, compiled to native via Perry. No Electron. No compromise.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqH7hmIamIGvTvpbULuEpEOEWgSxzXiyDp07xdEU2IWvfHwtQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/">
+    <meta property="og:title" content="Hone — Sharpen your code, natively.">
+    <meta property="og:description" content="A native, AI-powered code editor for every platform. Written in TypeScript, compiled to native via Perry. No Electron. No compromise.">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — Native Code Editor">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — Sharpen your code, natively.">
+    <meta name="twitter:description" content="A native, AI-powered code editor for every platform. Written in TypeScript, compiled to native via Perry. No Electron. No compromise.">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-card: #16161f;
-            --bg-card-hover: #1c1c28;
-            --border: #252530;
-            --border-accent: #3d3d50;
-            --text-primary: #e8e8ed;
-            --text-secondary: #8888a0;
-            --text-muted: #55556a;
-            --accent: #60dfb0;
-            --accent-glow: rgba(96, 223, 176, 0.15);
-            --accent-dim: #3a9070;
-            --accent-secondary: #5090ff;
-            --red: #ff6b6b;
-            --yellow: #ffd93d;
-            --purple: #a78bfa;
-            --font-display: 'Outfit', sans-serif;
+            --bg-primary: #0D1117;
+            --bg-secondary: #161B22;
+            --bg-card: #1C2128;
+            --bg-card-hover: #21272E;
+            --border: #30363D;
+            --border-accent: #484F58;
+            --text-primary: #E6EDF3;
+            --text-secondary: #8B949E;
+            --text-muted: #484F58;
+            --accent: #00D4AA;
+            --accent-glow: rgba(0, 212, 170, 0.12);
+            --accent-dim: #0077B6;
+            --accent-secondary: #00B4D8;
+            --red: #F85149;
+            --yellow: #D29922;
+            --purple: #58A6FF;
+            --font-display: 'Inter', 'SF Pro Text', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
@@ -96,7 +117,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(10, 10, 15, 0.8);
+            background: rgba(13, 17, 23, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
@@ -109,17 +130,8 @@
         }
 
         .nav-logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dim));
-            border-radius: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 16px;
-            color: var(--bg-primary);
         }
 
         .nav-logo-text {
@@ -212,15 +224,15 @@
 
         .hero h1 {
             font-size: clamp(48px, 8vw, 96px);
-            font-weight: 800;
+            font-weight: 600;
             line-height: 1.05;
-            letter-spacing: -3px;
+            letter-spacing: -2px;
             max-width: 900px;
             animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            background: linear-gradient(135deg, #00D4AA 0%, #00B4D8 50%, #0077B6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -264,7 +276,7 @@
         }
 
         .btn-primary:hover {
-            background: #70efbf;
+            background: #00FFD0;
             transform: translateY(-2px);
             box-shadow: 0 8px 30px var(--accent-glow);
         }
@@ -443,9 +455,9 @@
         }
 
         .ai-chat-msg.ai {
-            background: rgba(96, 223, 176, 0.08);
+            background: rgba(0, 212, 170, 0.08);
             color: var(--text-secondary);
-            border: 1px solid rgba(96, 223, 176, 0.15);
+            border: 1px solid rgba(0, 212, 170, 0.15);
         }
 
         .ai-chat-msg .ai-label {
@@ -490,8 +502,8 @@
 
         .section-title {
             font-size: clamp(32px, 4vw, 48px);
-            font-weight: 800;
-            letter-spacing: -2px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
             line-height: 1.1;
             margin-bottom: 20px;
         }
@@ -552,14 +564,14 @@
             font-size: 20px;
             margin-bottom: 20px;
             background: var(--accent-glow);
-            border: 1px solid rgba(96, 223, 176, 0.2);
+            border: 1px solid rgba(0, 212, 170, 0.2);
         }
 
         .feature-card h3 {
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 10px;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
 
         .feature-card p {
@@ -586,9 +598,9 @@
 
         .perf-value {
             font-size: 48px;
-            font-weight: 800;
+            font-weight: 700;
             letter-spacing: -2px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            background: linear-gradient(135deg, #00D4AA 0%, #00B4D8 50%, #0077B6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -676,16 +688,16 @@
             margin-bottom: 16px;
         }
 
-        .tag-green { background: rgba(96, 223, 176, 0.15); color: var(--accent); }
-        .tag-blue { background: rgba(80, 144, 255, 0.15); color: var(--accent-secondary); }
-        .tag-purple { background: rgba(167, 139, 250, 0.15); color: var(--purple); }
-        .tag-yellow { background: rgba(255, 217, 61, 0.15); color: var(--yellow); }
+        .tag-green { background: rgba(0, 212, 170, 0.12); color: var(--accent); }
+        .tag-blue { background: rgba(0, 180, 216, 0.12); color: var(--accent-secondary); }
+        .tag-purple { background: rgba(88, 166, 255, 0.12); color: var(--purple); }
+        .tag-yellow { background: rgba(210, 153, 34, 0.15); color: var(--yellow); }
 
         .ai-feature-card h3 {
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 10px;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
 
         .ai-feature-card p {
@@ -705,7 +717,7 @@
 
         .byok-block h3 {
             font-size: 22px;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 12px;
         }
 
@@ -756,8 +768,8 @@
 
         .cta-section h2 {
             font-size: clamp(36px, 5vw, 56px);
-            font-weight: 800;
-            letter-spacing: -2px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
             margin-bottom: 16px;
         }
 
@@ -808,6 +820,309 @@
             color: var(--text-primary);
         }
 
+        /* === STATUS GRID === */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .status-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .status-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+        }
+
+        .status-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .pkg-name {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .pkg-scope {
+            color: var(--text-muted);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 9px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .badge-done {
+            background: rgba(63, 185, 80, 0.12);
+            color: #3FB950;
+        }
+
+        .badge-active {
+            background: rgba(0, 180, 216, 0.12);
+            color: var(--accent-secondary);
+        }
+
+        .badge-planned {
+            background: rgba(72, 79, 88, 0.3);
+            color: var(--text-muted);
+        }
+
+        .badge-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .version-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .status-card-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .status-card-bullets li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            padding-left: 14px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .status-card-bullets li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* === ROADMAP === */
+        .roadmap-phases {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phase-block {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 24px;
+            background: var(--bg-card);
+        }
+
+        .phase-number {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            min-width: 60px;
+        }
+
+        .phase-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .phase-block.done .phase-header {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .phase-slices {
+            padding: 0 24px 16px;
+            background: var(--bg-secondary);
+        }
+
+        .slice-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .slice-row:last-child {
+            border-bottom: none;
+        }
+
+        .slice-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            min-width: 52px;
+        }
+
+        .slice-check {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 10px;
+        }
+
+        .slice-check.done {
+            background: rgba(63, 185, 80, 0.15);
+            color: #3FB950;
+        }
+
+        .slice-check.active {
+            background: rgba(0, 212, 170, 0.12);
+            color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        .slice-check.planned {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .slice-name {
+            font-size: 14px;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .slice-name.planned {
+            color: var(--text-secondary);
+        }
+
+        .slice-detail {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        /* === UPDATES / BLOG === */
+        .updates-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .update-post {
+            background: var(--bg-card);
+            padding: 32px;
+            transition: background 0.2s;
+        }
+
+        .update-post:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .update-post + .update-post {
+            border-top: 1px solid var(--border);
+        }
+
+        .update-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .update-date {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        .update-tag {
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+        }
+
+        .update-title {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .update-body {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 720px;
+        }
+
+        .update-body code {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1px 6px;
+            color: var(--accent);
+        }
+
+        .update-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .update-chip {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        /* === RESPONSIVE (additions) === */
+        @media (max-width: 1100px) {
+            .status-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         /* === ANIMATIONS === */
         @keyframes fadeInUp {
             from {
@@ -845,6 +1160,9 @@
             .editor-sidebar { display: none; }
             .editor-mockup { margin-top: 40px; }
             footer { flex-direction: column; gap: 20px; text-align: center; }
+            .status-grid { grid-template-columns: 1fr; }
+            .slice-detail { display: none; }
+            .update-post { padding: 24px 20px; }
         }
 
         @media (max-width: 500px) {
@@ -859,13 +1177,37 @@
 
 <nav>
     <a href="/" class="nav-logo">
-        <div class="nav-logo-icon">H</div>
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
         <span class="nav-logo-text">Hone</span>
     </a>
     <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#ai">AI</a>
-        <a href="#platforms">Platforms</a>
+        <a href="#status">Status</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#updates">Updates</a>
         <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
             <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             GitHub
@@ -1114,6 +1456,371 @@
             <div class="platform-icon">🌐</div>
             <span class="platform-label">Web</span>
         </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">Current State</div>
+    <h2 class="section-title">What's built today.</h2>
+    <p class="section-desc">
+        Hone is a family of composable packages. Here's where each one stands right now.
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Released</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Piece-table buffer, multi-cursor</li>
+                <li>10 languages via Lezer</li>
+                <li>LSP + DAP clients</li>
+                <li>Ghost text, diff engine, minimap</li>
+                <li>Demos: macOS, iOS, Win, Android, Web</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Released</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm, 256-color, truecolor</li>
+                <li>Mouse tracking, alternate screen</li>
+                <li>Shell integration (OSC 133)</li>
+                <li>Hyperlinks, CJK wide chars</li>
+                <li>163 test cases passing</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Released</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript, Python, Rust, Go</li>
+                <li>C/C++, HTML/CSS, JSON, Markdown</li>
+                <li>Git, Docker, TOML/YAML</li>
+                <li>Lazy activation, Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Released</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>11 curated themes</li>
+                <li>VSCode theme format compatible</li>
+                <li>WCAG contrast validation</li>
+                <li>Import tools for VSCode + TextMate</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Released</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Zero-runtime, pure types</li>
+                <li>commands, editor, workspace, ui</li>
+                <li>languages, debug, terminal, ai</li>
+                <li>452+ type-level tests passing</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>In Progress</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Workspace + file watcher</li>
+                <li>✓ Layered settings + keybindings</li>
+                <li>→ Git, search, LSP manager</li>
+                <li>→ AI provider system (8 adapters)</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>In Progress</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Workbench shell + theme engine</li>
+                <li>✓ File explorer + fuzzy finder</li>
+                <li>✓ Settings UI + AI setup wizard</li>
+                <li>→ Editor tabs, git panel, search</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name">hone.codes</div>
+                    <div class="version-tag">docs site</div>
+                </div>
+                <span class="status-badge badge-planned"><span class="badge-dot"></span>Planned</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Astro 5 static site</li>
+                <li>Guides, API reference, blog</li>
+                <li>Auto-generated from @honeide/api</li>
+                <li>Dark/light mode</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">Roadmap</div>
+    <h2 class="section-title">15 slices to a full IDE.</h2>
+    <p class="section-desc">
+        Each slice delivers a complete, testable feature across all seven platforms simultaneously — desktop, mobile, and web.
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Phase 1</span>
+                <span class="phase-title">Foundation</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Complete</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Workbench Shell &amp; Theme Engine</span>
+                    <span class="slice-detail">Resizable panels, tabs, activity bar, theme loading</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Workspace &amp; File Explorer</span>
+                    <span class="slice-detail">Multi-root, file watcher, fuzzy finder</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Settings, Keybindings &amp; Onboarding</span>
+                    <span class="slice-detail">Layered settings, visual editor, AI setup wizard</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Phase 2</span>
+                <span class="phase-title">Core IDE</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>In Progress</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 3</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Editor Integration</span>
+                    <span class="slice-detail">Open files in tabs, split editors, breadcrumbs</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 4</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Git &amp; Source Control</span>
+                    <span class="slice-detail">Status, diff, stage, commit, GitHub/GitLab/Bitbucket</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 5</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Search</span>
+                    <span class="slice-detail">Workspace-wide ripgrep, streaming results, replace</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 6</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">LSP &amp; Language Intelligence</span>
+                    <span class="slice-detail">Completions, hover, go-to-def, diagnostics, formatting</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 7</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Debug</span>
+                    <span class="slice-detail">DAP, breakpoints, variables, call stack, task runner</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Phase 3</span>
+                <span class="phase-title">AI &amp; Terminal</span>
+                <span class="status-badge badge-planned"><span class="badge-dot"></span>Up Next</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 8</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">AI Provider System</span>
+                    <span class="slice-detail">8 adapters: Anthropic, OpenAI, Gemini, Ollama, Bedrock…</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 9</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">AI Inline Completion</span>
+                    <span class="slice-detail">Ghost text, FIM formatting, debounce, LRU cache</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 10</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">AI Chat</span>
+                    <span class="slice-detail">Context-aware chat, streaming, code block Apply, voice input</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 11</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Terminal Integration</span>
+                    <span class="slice-detail">Terminal panel, multiple instances, mobile remote PTY</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 12</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">AI Agent Mode</span>
+                    <span class="slice-detail">15+ tools, approval flow, activity log, error recovery</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 13</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">AI PR Review</span>
+                    <span class="slice-detail">Browse PRs, AI annotations, one-click fixes, submit review</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Phase 4</span>
+                <span class="phase-title">Extensions &amp; Ship</span>
+                <span class="status-badge badge-planned"><span class="badge-dot"></span>Planned</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 14</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Extension System</span>
+                    <span class="slice-detail">Extension host, @honeide/api bridge, marketplace browser</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Polish &amp; Packaging</span>
+                    <span class="slice-detail">DMG, MSI, AppImage, .ipa, .apk — all platforms</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">Updates</div>
+    <h2 class="section-title">What's been happening.</h2>
+    <p class="section-desc">
+        Progress notes from the build — no marketing, just what shipped.
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">Feb 28, 2026</span>
+                <span class="update-tag">Editor</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — demos running on six platforms</div>
+            <div class="update-body">
+                <p>The editor component now has working interactive demos on macOS, iOS, Windows, Android, and Web. The piece-table text buffer with B-tree rope gives O(log n) edits and the virtual scroll renderer only touches visible lines, so even large files stay snappy.</p>
+                <p style="margin-top: 10px;">The main platform challenge this sprint was getting the ARM64 ABI right for Perry's FFI layer on iOS. The Core Text glyph rasterizer now calls correctly from Perry-compiled TypeScript, which unblocked the iOS demo. Linux rendering via Pango is scaffolded; not in a demo yet.</p>
+                <p style="margin-top: 10px;">Syntax highlighting covers 10 languages (<code>ts</code>, <code>js</code>, <code>html</code>, <code>css</code>, <code>json</code>, <code>py</code>, <code>rs</code>, <code>cpp</code>, <code>md</code>) via Lezer grammars. The LSP and DAP clients are wired up — completions, hover, go-to-definition, breakpoints, and variable inspection all work at the component level. Ghost text rendering for AI inline completions is live too.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">Feb 14, 2026</span>
+                <span class="update-tag">Terminal</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — full VT100 compatibility, 163 tests</div>
+            <div class="update-body">
+                <p>The terminal emulator component shipped its first version. The parser is a 14-state machine that handles CSI, OSC, and DCS escape sequences. Truecolor (24-bit RGB via SGR), mouse tracking in X10 and SGR extended modes, the alternate screen buffer (<code>DECSET 1049</code> — the one that makes vim, htop, and less work correctly), and bracketed paste are all supported.</p>
+                <p style="margin-top: 10px;">OSC 8 hyperlinks, CJK double-width characters, and OSC 133 shell integration markers (for prompt detection) round out the feature set. The macOS rendering path uses Core Text; the same architecture as hone-editor, so the two components share native rendering conventions.</p>
+                <p style="margin-top: 10px;">163 test cases cover parser state transitions, attribute rendering, mouse event encoding, and scrollback behavior. The component is used standalone today and will wire into the IDE workbench in Slice 11.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">Jan 20, 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE shell complete through Slice 2 — workbench, themes, file explorer, settings</div>
+            <div class="update-body">
+                <p>The first three slices of the IDE workbench are done. The shell renders a resizable panel grid, tab manager, activity bar, and status bar — with the platform-adaptive layout engine selecting between full-workbench (desktop/iPad landscape), split (tablet portrait), and compact (phone) modes based on screen size.</p>
+                <p style="margin-top: 10px;">The theme engine loads VSCode-compatible JSON themes and resolves TextMate scopes to colors for the editor. All 11 themes from <code>@honeide/themes</code> work. The file explorer shows a live tree backed by the file watcher in <code>@honeide/core</code>, and Ctrl+P fuzzy-finds by trie index.</p>
+                <p style="margin-top: 10px;">Settings use a four-layer store (default → user → workspace → language-specific overrides). The AI provider setup wizard in the welcome screen walks through API key entry, connection testing, and per-feature model routing. Slice 3 — wiring actual editor tabs to <code>@honeide/editor</code> instances — is next.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Workbench</span>
+                <span class="update-chip">Themes</span>
+                <span class="update-chip">Settings</span>
+            </div>
+        </div>
+
     </div>
 </section>
 
