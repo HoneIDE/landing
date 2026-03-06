@@ -1478,10 +1478,10 @@
             </div>
             <ul class="status-card-bullets">
                 <li>Piece-table buffer, multi-cursor</li>
-                <li>10 languages via Lezer</li>
-                <li>LSP + DAP clients</li>
-                <li>Ghost text, diff engine, minimap</li>
-                <li>Demos: macOS, iOS, Win, Android, Web</li>
+                <li>Interactive editing on 6 platforms</li>
+                <li>Auto-closing brackets, smart indent</li>
+                <li>LSP + DAP clients, 10 Lezer grammars</li>
+                <li>Linux GTK4 demo now live</li>
             </ul>
         </div>
 
@@ -1495,9 +1495,9 @@
             </div>
             <ul class="status-card-bullets">
                 <li>VT100/xterm, 256-color, truecolor</li>
-                <li>Mouse tracking, alternate screen</li>
+                <li>Real PTY backend (LiveTerminal)</li>
+                <li>Native FFI: macOS, Linux, Windows</li>
                 <li>Shell integration (OSC 133)</li>
-                <li>Hyperlinks, CJK wide chars</li>
                 <li>163 test cases passing</li>
             </ul>
         </div>
@@ -1545,7 +1545,7 @@
             <ul class="status-card-bullets">
                 <li>Zero-runtime, pure types</li>
                 <li>commands, editor, workspace, ui</li>
-                <li>languages, debug, terminal, ai</li>
+                <li>Sync API: envelopes, payloads, auth</li>
                 <li>452+ type-level tests passing</li>
             </ul>
         </div>
@@ -1559,10 +1559,11 @@
                 <span class="status-badge badge-active"><span class="badge-dot"></span>In Progress</span>
             </div>
             <ul class="status-card-bullets">
-                <li>✓ Workspace + file watcher</li>
-                <li>✓ Layered settings + keybindings</li>
-                <li>→ Git, search, LSP manager</li>
-                <li>→ AI provider system (8 adapters)</li>
+                <li>✓ Workspace, settings, keybindings</li>
+                <li>✓ Git client, diff parser, status</li>
+                <li>✓ Sync transport + E2E encryption</li>
+                <li>✓ AI provider, inline, chat modules</li>
+                <li>→ Search, tasks, LSP/DAP managers</li>
             </ul>
         </div>
 
@@ -1575,26 +1576,27 @@
                 <span class="status-badge badge-active"><span class="badge-dot"></span>In Progress</span>
             </div>
             <ul class="status-card-bullets">
-                <li>✓ Workbench shell + theme engine</li>
-                <li>✓ File explorer + fuzzy finder</li>
-                <li>✓ Settings UI + AI setup wizard</li>
-                <li>→ Editor tabs, git panel, search</li>
+                <li>✓ Editor tabs, terminal, AI chat</li>
+                <li>✓ Git diff view, file explorer</li>
+                <li>✓ Settings persistence, live themes</li>
+                <li>✓ Sync UI, LSP diagnostics</li>
+                <li>→ Settings editor, welcome screen</li>
             </ul>
         </div>
 
         <div class="status-card">
             <div class="status-card-header">
                 <div>
-                    <div class="pkg-name">hone.codes</div>
-                    <div class="version-tag">docs site</div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
                 </div>
-                <span class="status-badge badge-planned"><span class="badge-dot"></span>Planned</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>New</span>
             </div>
             <ul class="status-card-bullets">
-                <li>Astro 5 static site</li>
-                <li>Guides, API reference, blog</li>
-                <li>Auto-generated from @honeide/api</li>
-                <li>Dark/light mode</li>
+                <li>WebSocket relay for cross-device sync</li>
+                <li>Auth, rate limiting, room management</li>
+                <li>Perry-compiled native server</li>
+                <li>Pairs with core sync transport</li>
             </ul>
         </div>
     </div>
@@ -1647,27 +1649,27 @@
             <div class="phase-slices">
                 <div class="slice-row">
                     <span class="slice-num">Slice 3</span>
-                    <span class="slice-check active">●</span>
+                    <span class="slice-check done">✓</span>
                     <span class="slice-name">Editor Integration</span>
-                    <span class="slice-detail">Open files in tabs, split editors, breadcrumbs</span>
+                    <span class="slice-detail">Tabs, file loading, interactive editing on all platforms</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 4</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">Git &amp; Source Control</span>
-                    <span class="slice-detail">Status, diff, stage, commit, GitHub/GitLab/Bitbucket</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Git &amp; Source Control</span>
+                    <span class="slice-detail">Git client, status, diff parser, side-by-side diff view</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 5</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">Search</span>
-                    <span class="slice-detail">Workspace-wide ripgrep, streaming results, replace</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Search</span>
+                    <span class="slice-detail">Ripgrep integration, search model — IDE view wiring next</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 6</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">LSP &amp; Language Intelligence</span>
-                    <span class="slice-detail">Completions, hover, go-to-def, diagnostics, formatting</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">LSP &amp; Language Intelligence</span>
+                    <span class="slice-detail">tsc diagnostics via LSP bridge — full manager next</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 7</span>
@@ -1682,38 +1684,38 @@
             <div class="phase-header">
                 <span class="phase-number">Phase 3</span>
                 <span class="phase-title">AI &amp; Terminal</span>
-                <span class="status-badge badge-planned"><span class="badge-dot"></span>Up Next</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>In Progress</span>
             </div>
             <div class="phase-slices">
                 <div class="slice-row">
                     <span class="slice-num">Slice 8</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">AI Provider System</span>
-                    <span class="slice-detail">8 adapters: Anthropic, OpenAI, Gemini, Ollama, Bedrock…</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI Provider System</span>
+                    <span class="slice-detail">Core provider + inline + chat modules done — 6 adapters remaining</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 9</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">AI Inline Completion</span>
-                    <span class="slice-detail">Ghost text, FIM formatting, debounce, LRU cache</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI Inline Completion</span>
+                    <span class="slice-detail">Core done — IDE ghost text wiring next</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 10</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">AI Chat</span>
-                    <span class="slice-detail">Context-aware chat, streaming, code block Apply, voice input</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI Chat</span>
+                    <span class="slice-detail">Chat panel in IDE with streaming, context chips, markdown</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 11</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">Terminal Integration</span>
-                    <span class="slice-detail">Terminal panel, multiple instances, mobile remote PTY</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Terminal Integration</span>
+                    <span class="slice-detail">Real PTY terminal integrated in IDE workbench</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 12</span>
-                    <span class="slice-check planned">○</span>
-                    <span class="slice-name planned">AI Agent Mode</span>
-                    <span class="slice-detail">15+ tools, approval flow, activity log, error recovery</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI Agent Mode</span>
+                    <span class="slice-detail">Agent state + tools in core — IDE wiring next</span>
                 </div>
                 <div class="slice-row">
                     <span class="slice-num">Slice 13</span>
@@ -1758,6 +1760,31 @@
     </p>
 
     <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">Mar 6, 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">The IDE came together — terminal, AI chat, git diff, sync, and an MVP audit</div>
+            <div class="update-body">
+                <p>The past week was the most productive since the project started. The IDE went from a workbench shell that could load files to something that actually looks and feels like a code editor. Real PTY-backed terminal emulator integrated in the bottom panel. AI chat with streaming responses on the right side. Side-by-side git diff view with colored line backgrounds. VS Code-style file explorer with pixel-perfect alignment. Settings persistence and live theme switching across all 11 themes. Background tsc diagnostics via an LSP bridge. Native menus on macOS and Windows. Linux target support.</p>
+                <p style="margin-top: 10px;">On the editor side, interactive editing now works on all six platforms — macOS, iOS, Windows, Android, Linux (GTK4), and web. Auto-closing brackets and smart indentation landed. A bunch of Perry AOT compatibility work went in: fixing syntax highlighting char ranges, the gray-line bug from Rust FFI event queuing, DPI scaling on Windows, and ARM64 ABI corrections on iOS.</p>
+                <p style="margin-top: 10px;">The biggest architectural addition is cross-device sync. <code>hone-relay</code> is a new package — a WebSocket relay server compiled natively via Perry, with auth, rate limiting, and room management. <code>hone-core</code> grew a full sync transport layer with E2E encryption, device pairing, LAN discovery, and a changes queue with conflict detection. The IDE has sync host/guest modules, a sync panel, review panel, and trust settings UI. The <code>@honeide/api</code> types were extended with sync message envelopes, domain payloads, and auth types.</p>
+                <p style="margin-top: 10px;">Core also picked up git (client, status parser, diff parser, log), search (ripgrep integration, search model), AI modules (provider, inline, chat, agent state/tools, review), task runner, and LSP/DAP protocol types. That's 55 source files and 499 tests passing.</p>
+                <p style="margin-top: 10px;">Finished the week with an MVP audit — trimmed the UI to actually-working features and wired menu stubs for everything else. The binary is 3.6 MB on macOS.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">AI Chat</span>
+                <span class="update-chip">Git Diff</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
 
         <div class="update-post">
             <div class="update-meta">
