@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hone — Kodunuzu keskinlestirin, dogal olarak.</title>
+    <meta name="description" content="Her platform icin dogal, yapay zeka destekli kod editoru. TypeScript ile yazildi, Perry ile dogal koda derlendi. Electron yok. Odun yok.">
+    <link rel="canonical" href="https://hone.codes/tr/">
+    <meta name="theme-color" content="#0D1117">
+    <meta name="author" content="Skelpo GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://hone.codes/">
+    <link rel="alternate" hreflang="de" href="https://hone.codes/de/">
+    <link rel="alternate" hreflang="ja" href="https://hone.codes/ja/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://hone.codes/zh-Hans/">
+    <link rel="alternate" hreflang="es" href="https://hone.codes/es/">
+    <link rel="alternate" hreflang="fr" href="https://hone.codes/fr/">
+    <link rel="alternate" hreflang="pt" href="https://hone.codes/pt/">
+    <link rel="alternate" hreflang="ko" href="https://hone.codes/ko/">
+    <link rel="alternate" hreflang="it" href="https://hone.codes/it/">
+    <link rel="alternate" hreflang="tr" href="https://hone.codes/tr/">
+    <link rel="alternate" hreflang="th" href="https://hone.codes/th/">
+    <link rel="alternate" hreflang="id" href="https://hone.codes/id/">
+    <link rel="alternate" hreflang="vi" href="https://hone.codes/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://hone.codes/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqF7BqKamIGvTvpbULuEpEOEWgSxzXiyDp07xdEU2IWvfHwtQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/tr/">
+    <meta property="og:title" content="Hone — Kodunuzu keskinlestirin, dogal olarak.">
+    <meta property="og:description" content="Her platform icin dogal, yapay zeka destekli kod editoru. TypeScript ile yazildi, Perry ile dogal koda derlendi. Electron yok. Odun yok.">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — Dogal Kod Editoru">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — Kodunuzu keskinlestirin, dogal olarak.">
+    <meta name="twitter:description" content="Her platform icin dogal, yapay zeka destekli kod editoru. TypeScript ile yazildi, Perry ile dogal koda derlendi. Electron yok. Odun yok.">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hone",
+        "description": "Her platform icin dogal, yapay zeka destekli kod editoru. TypeScript ile yazildi, Perry ile dogal koda derlendi.",
+        "url": "https://hone.codes/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Ucretsiz — 1 senkronize proje, 2 cihaz"
+            },
+            {
+                "@type": "Offer",
+                "price": "36",
+                "priceCurrency": "USD",
+                "description": "Pro — Sinirsiz proje, sinirsiz cihaz",
+                "billingIncrement": "P1Y"
+            }
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Skelpo GmbH",
+            "url": "https://skelpo.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="/tr/" class="nav-logo">
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
+        <span class="nav-logo-text">Hone</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">Ozellikler</a>
+        <a href="#ai">YZ</a>
+        <a href="#status">Durum</a>
+        <a href="#roadmap">Yol Haritasi</a>
+        <a href="#pricing">Fiyatlar</a>
+        <a href="#updates">Guncellemeler</a>
+        <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+        </a>
+        <div class="lang-picker">
+            <button class="lang-picker-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                TR
+            </button>
+            <div class="lang-dropdown">
+                <a href="/">English</a>
+                <a href="/de/">Deutsch</a>
+                <a href="/ja/">日本語</a>
+                <a href="/zh-Hans/">中文</a>
+                <a href="/es/">Español</a>
+                <a href="/fr/">Français</a>
+                <a href="/pt/">Português</a>
+                <a href="/ko/">한국어</a>
+                <a href="/it/">Italiano</a>
+                <a href="/tr/" class="active">Türkçe</a>
+                <a href="/th/">ไทย</a>
+                <a href="/id/">Indonesia</a>
+                <a href="/vi/">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="glow-orb green"></div>
+    <div class="glow-orb blue"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        Acik gelistirme — erken asamada
+    </div>
+
+    <h1>Kodunuzu keskinlestirin,<br><span class="highlight">dogal olarak.</span></h1>
+
+    <p class="hero-sub">
+        Her platform icin dogal, yapay zeka destekli kod editoru. TypeScript ile yazildi, Perry ile dogal koda derlendi. Electron yok. Odun yok.
+    </p>
+
+    <div class="hero-cta">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub'da Takip Et
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            Daha fazla bilgi ↓
+        </a>
+    </div>
+
+    <!-- Real screenshot -->
+    <div class="screenshot-wrapper">
+        <img src="/screenshot.png" alt="Hone IDE macOS uzerinde calisiyor — dosya gezgini, sozdizimi vurgulamali editor, terminal ve sekmeler" class="hero-screenshot">
+        <p class="screenshot-caption">Gercek ekran goruntusu. Evet, kucuk kusurlar var — acik gelistirme yapiyoruz, hatirladiniz mi?</p>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section fade-in" id="features">
+    <div class="section-label">Neden Hone</div>
+    <h2 class="section-title">Bir editorun olmasi gereken her sey.<br>Olmamasi gereken hicbir sey.</h2>
+    <p class="section-desc">
+        Sifirdan TypeScript ile yazildi, Perry ile dogal ikili dosyalara derlendi. Her bilesen performans, modulerlik ve gelistirici memnuniyeti icin tasarlandi.
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Gercekten Dogal</h3>
+            <p>Electron yok, Chromium yok, V8 calisma zamani yok. Perry, TypeScript'i dogrudan dogal ikili dosyalara derler. 50MB'nin altinda, 100MB RAM'in altinda, bir saniyenin altinda baslatma.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Yapay Zeka Oncelikli Mimari</h3>
+            <p>YZ sonradan eklenmedi — editorun cekirdegine islenildi. YZ sozdizimi agacinizi, hatalarinizi, git farkliligini, terminalinizi gorur. Sadece metin degil, derin baglam.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔑</div>
+            <h3>Kendi YZ'nizi Getirin</h3>
+            <p>Claude, GPT, Gemini, Ollama veya sirketinizin ozel modeli. Sizin API anahtariniz, sizin seciminiz. Farkli ozellikler icin farkli saglayicilari kullanin. Satici baglimliligi yok.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Ajan Modu</h3>
+            <p>Ne istediginizi tanimlayin. Ajan kodunuzu okur, degisiklikleri planlar, dosyalari duzenler, testleri calistirir ve yineler — herhangi bir sey uygulanmadan once her parca icin onay alir.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Dogal PR Incelemesi</h3>
+            <p>Tam sozdizimi vurgulamasi, farkliliklarda LSP zekasi ve insanlardan once hatalari yakalayan YZ destekli aciklamalarla editor icinde pull request'leri inceleyin.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>Moduler ve Birlestirilebilir</h3>
+            <p>hone-editor, hone-terminal ve hone-core bagimsiz paketlerdir. Editor bilesenini kendi uygulamanizda kullanin. Hone'un temeli uzerine kendi IDE'nizi insaa edin.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE ===== -->
+<section class="section fade-in" id="performance">
+    <div class="section-label">Performans</div>
+    <h2 class="section-title">Electron'un<br>ulasamayacagi rakamlar.</h2>
+    <p class="section-desc">
+        Tarayiciyi ortadan kaldirdiginizda her sey hizlanir. Bunlar hedeflerimiz — ve her birine ulasmaya kararliriz.
+    </p>
+
+    <div class="perf-grid">
+        <div class="perf-card">
+            <div class="perf-value">&lt;1s</div>
+            <div class="perf-label">Soguk baslatma</div>
+            <div class="perf-compare">vs 3-5s (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;100</div>
+            <div class="perf-label">MB RAM bosta</div>
+            <div class="perf-compare">vs 300-500MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;50</div>
+            <div class="perf-label">MB ikili dosya</div>
+            <div class="perf-compare">vs ~300MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;10</div>
+            <div class="perf-label">ms tus vurusu gecikmesi</div>
+            <div class="perf-compare">vs 30-50ms (VSCode)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AI ===== -->
+<section class="section fade-in" id="ai">
+    <div class="section-label">YZ Entegrasyonu</div>
+    <h2 class="section-title">Sizin YZ'niz. Sizin anahtarlariniz.<br>Sizin seciminiz.</h2>
+    <p class="section-desc">
+        Hone asla API erisimini yeniden satmaz. Kendi anahtarlarinizi getirirsiniz ve farkli saglayicilari farkli ozelliklere yonlendirirsiniz. Yeni bir model ciktiginda, aninda calisir.
+    </p>
+
+    <div class="ai-features">
+        <div class="ai-feature-card">
+            <span class="tag tag-green">Satirici</span>
+            <h3>Hayalet Metin Tamamlama</h3>
+            <p>Herhangi bir saglayici tarafindan desteklenen baglam odakli oneriler. Duz metin degil, sozdizimi agacinizi gorur. Sifir Electron yuku ile dogal hizda islenir.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-blue">Sohbet</span>
+            <h3>Baglam Odakli Sohbet</h3>
+            <p>YZ otomatik olarak acik dosyalarinizi, hatalarinizi, terminal ciktinizi ve git durumunuzu gorur. Manuel @dosya etiketlemesi gerekmez. Konusma ortasinda model degistirin.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-purple">Ajan</span>
+            <h3>Otonom Kodlama Ajani</h3>
+            <p>Coklu dosya duzenlemeleri, terminal komutlari, test calistirma, hata kurtarma. Herhangi bir degisiklik uygulanmadan once canli etkinlik gunlugu ve fark onayiyla tam seffaflik.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-yellow">Inceleme</span>
+            <h3>YZ Destekli PR Incelemesi</h3>
+            <p>YZ her farkliligi hatalar, guvenlik sorunlari ve stil problemleri acisindan onceden analiz eder. Inceleme aciklamalari satirici olarak gorunur. Tek tikla duzeltmeler. GitHub/GitLab'a inceleme gonderin.</p>
+        </div>
+    </div>
+
+    <div class="byok-block">
+        <h3>Kendi Anahtarinizi Getirin. Karistirin ve Eslestirin.</h3>
+        <p>Her YZ ozelligini farkli bir saglayiciya yonlendirin. Otomatik tamamlama icin hizli bir yerel model, ajan gorevleri icin guclu bir bulut modeli ve sohbet icin arada bir sey kullanin. Sizin altyapiniz, sizin butceniz, sizin kurallariniz.</p>
+        <div class="provider-logos">
+            <div class="provider-pill"><span class="provider-dot" style="background:#d4a574"></span> Anthropic (Claude)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#74b9ff"></span> OpenAI (GPT)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#55efc4"></span> Google (Gemini)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#a29bfe"></span> Ollama (Yerel)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#fd79a8"></span> AWS Bedrock</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#ffeaa7"></span> OpenAI uyumlu herhangi biri</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLATFORMS ===== -->
+<section class="section fade-in" id="platforms">
+    <div class="section-label">Platformlar</div>
+    <h2 class="section-title" style="text-align:center;">Tek kod tabani.<br>Her platform.</h2>
+    <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">
+        TypeScript ile bir kez yazildi. Perry tarafindan her platformda dogal koda derlendi. Dogal gorunum, dogal hiz, her yerde.
+    </p>
+
+    <div class="platforms-row">
+        <div class="platform-item">
+            <div class="platform-icon">🍎</div>
+            <span class="platform-label">macOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🪟</div>
+            <span class="platform-label">Windows</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🐧</div>
+            <span class="platform-label">Linux</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">📱</div>
+            <span class="platform-label">iOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🤖</div>
+            <span class="platform-label">Android</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🌐</div>
+            <span class="platform-label">Web</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">Mevcut Durum</div>
+    <h2 class="section-title">Bugun ne insa edildi.</h2>
+    <p class="section-desc">
+        Hone, birlestirilebilir paketlerden olusan bir ailedir. Her birinin su anki durumu asagidadir.
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Yayinlandi</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Parca tablo tamponu, coklu imleç, geri al/yinele</li>
+                <li>iOS: tam klavye, Cmd+C/V/X/Z/A, kaydirma</li>
+                <li>Windows: fare surukle secimi, kelime secimi</li>
+                <li>Snippet motoru, kesme noktasi olugu, Error Lens</li>
+                <li>Kalici bulma vurgulamalari, katlama gostergeleri</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Yayinlandi</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm, 256 renk, gercek renk</li>
+                <li>Gercek PTY arka ucu (LiveTerminal)</li>
+                <li>Tema uyumlu renk FFI: tum platformlar</li>
+                <li>Kabuk entegrasyonu (OSC 133)</li>
+                <li>163 test vakasi basarili</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Yayinlandi</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript, Python, Rust, Go</li>
+                <li>C/C++, HTML/CSS, JSON, Markdown</li>
+                <li>Git, Docker, TOML/YAML</li>
+                <li>Tembel etkinlestirme, Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Yayinlandi</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>15 secilmis tema (bu hafta +4)</li>
+                <li>Yuksek kontrast, Tokyo Night, Gruvbox Dark</li>
+                <li>VSCode tema formati uyumlu</li>
+                <li>WCAG kontrast dogrulamasi</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Yayinlandi</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Sifir calisma zamani, saf tipler</li>
+                <li>commands, editor, workspace, ui</li>
+                <li>Senkronizasyon API: zarflar, yukler, kimlik dogrulama</li>
+                <li>452+ tip duzeyi test basarili</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Devam Ediyor</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Calisma alani, ayarlar, tus atamalari</li>
+                <li>✓ Git istemcisi, fark ayristirici, durum</li>
+                <li>✓ Belge biçimlendirici + dil on ayarlari</li>
+                <li>✓ Yazim denetleyici, girintileme algilama</li>
+                <li>✓ YZ saglayici, satirici, sohbet, telemetri</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Devam Ediyor</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Tam entegrasyon: LSP, git, arama, hata ayiklama</li>
+                <li>✓ Error Lens, YZ hayalet metin, kesme noktalari</li>
+                <li>✓ Eklenti sistemi, uctan uca yukleme</li>
+                <li>✓ Bul ve Degistir, Belgeyi Biçimlendir, Cmd+S</li>
+                <li>✓ 50+ dosya simgesi, baglam menuleri, cokme raporlari</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Yeni</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Cihazlar arasi senkronizasyon icin WebSocket aktarici</li>
+                <li>SQLite destekli kalici delta deposu</li>
+                <li>Perry AOT uyumlu, dogal ikili dosya</li>
+                <li>README ile herkese acik yayin</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>marketplace</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Yeni</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Perry ile derlenmis Fastify sunucusu</li>
+                <li>Hone markasiyla marketplace.hone.codes</li>
+                <li>GitHub Actions ile otomatik dagitim</li>
+                <li>Eklenti arama, indirme, yayinlama</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>build</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Yeni</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Eklenti derleme koordinatoru</li>
+                <li>perry-hub uzerinden coklu platform derlemesi</li>
+                <li>GitHub Actions ile otomatik dagitim</li>
+                <li>Perry AOT dogal ikili dosya</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">Yol Haritasi</div>
+    <h2 class="section-title">Tam bir IDE'ye 15 dilim.</h2>
+    <p class="section-desc">
+        Her dilim, yedi platformun tamaminda — masaustu, mobil ve web — es zamanli olarak eksiksiz ve test edilebilir bir ozellik sunar.
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Faz 1</span>
+                <span class="phase-title">Temel</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Tamamlandi</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Calisma Alani Kabugu ve Tema Motoru</span>
+                    <span class="slice-detail">Yeniden boyutlanabilir paneller, sekmeler, etkinlik cubugu, tema yukleme</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Calisma Alani ve Dosya Gezgini</span>
+                    <span class="slice-detail">Coklu kok, dosya izleyici, bulanik arama</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Ayarlar, Tus Atamalari ve Giris Rehberi</span>
+                    <span class="slice-detail">Katmanli ayarlar, gorsel editor, YZ kurulum sihirbazi</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Faz 2</span>
+                <span class="phase-title">Temel IDE</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Tamamlandi</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 3</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Editor Entegrasyonu</span>
+                    <span class="slice-detail">Sekmeler, dosya yukleme, tum platformlarda interaktif duzenleme</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 4</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Git ve Kaynak Kontrolu</span>
+                    <span class="slice-detail">Push/pull/stash, satirici blame, commit gecmisi, fark gorunumu</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 5</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Arama</span>
+                    <span class="slice-detail">Ripgrep entegrasyonu, VS Code tarzi arama paneli</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 6</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">LSP ve Dil Zekasi</span>
+                    <span class="slice-detail">Hover, tanimina git, imza yardimi, Error Lens</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 7</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Hata Ayiklama</span>
+                    <span class="slice-detail">Hata ayiklama paneli, kesme noktalari, katlama, DAP baglantisi</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Faz 3</span>
+                <span class="phase-title">YZ ve Terminal</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Devam Ediyor</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 8</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">YZ Saglayici Sistemi</span>
+                    <span class="slice-detail">Temel saglayici + satirici + sohbet modulleri, IDE'ye bagli</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 9</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">YZ Satirici Tamamlama</span>
+                    <span class="slice-detail">FFI uzerinden IDE'de hayalet metin islemesi bagli</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 10</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">YZ Sohbet</span>
+                    <span class="slice-detail">Akisli, baglam cipsleri, markdown destekli sohbet paneli</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 11</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Terminal Entegrasyonu</span>
+                    <span class="slice-detail">IDE calisma alani icinde gercek PTY terminali</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 12</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">YZ Ajan Modu</span>
+                    <span class="slice-detail">Cekirdekte ajan durumu + araclar — sirada IDE etkinlik gunlugu</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 13</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">YZ PR Incelemesi</span>
+                    <span class="slice-detail">PR inceleme gorunumu var — sirada YZ aciklamalari</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Faz 4</span>
+                <span class="phase-title">Eklentiler ve Yayin</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Devam Ediyor</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 14</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Eklenti Sistemi</span>
+                    <span class="slice-detail">Eklenti SDK, host crate, marketplace + build sunuculari canli</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Dilim 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Cilalama ve Paketleme</span>
+                    <span class="slice-detail">DMG, MSI, AppImage, .ipa, .apk — tum platformlar</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section fade-in" id="pricing">
+    <div class="section-label">Fiyatlar</div>
+    <h2 class="section-title">Is akisinizi senkronize edin.</h2>
+    <p class="section-desc">
+        Editor ucretsiz ve acik kaynaklidir. Sadece barindirilan senkronizasyon icin odeme yapilir.
+    </p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="tier-name">Ucretsiz</div>
+            <div class="price">$0</div>
+            <div class="price-period">sonsuza dek</div>
+            <ul>
+                <li>1 senkronize proje</li>
+                <li>2 cihaz</li>
+                <li>50 MB delta depolama</li>
+                <li>Uctan uca sifreleme</li>
+                <li>Hesap gerekmez</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="tier-name">Pro</div>
+            <div class="price">$36</div>
+            <div class="price-period">yillik &middot; ~$3/ay</div>
+            <ul>
+                <li>Sinirsiz proje</li>
+                <li>Sinirsiz cihaz</li>
+                <li>5 GB delta depolama</li>
+                <li>Uctan uca sifreleme</li>
+                <li>Oncelikli destek</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="pricing-note">
+        <strong>Uctan uca sifreleme.</strong> Aktarici kodunuzu asla gormez.<br>
+        <strong>Acik kaynak.</strong> Aktariciyi ucretsiz olarak, sinirsiz bir sekilde kendiniz barindirin.
+    </p>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">Guncellemeler</div>
+    <h2 class="section-title">Neler oldu.</h2>
+    <p class="section-desc">
+        Gelistirme surecinden notlar — pazarlama degil, sadece gonderilen ozellikler.
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 Mar 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">Tam IDE entegrasyon sprinti — LSP, git, hata ayiklama, arama, eklentiler ve 46 editor commiti</div>
+            <div class="update-body">
+                <p>IDE bu hafta buyuk bir entegrasyon sprintinden gecti. 26 committe yedi faz ozellik baglantisi yapildi: LSP hover/tanimina-git/imza yardimi (Faz 3), VS Code tarzi panelle ripgrep araması, git push/pull/stash/satirici blame/commit gecmisi (Faz 4), sonraki hataya git ile Error Lens teshisleri (Faz 5), kesme noktalari ve katlamayla hata ayiklama paneli (Faz 6) ve 50+ tur icin genisletilmis dosya simgeleri, yazim denetimi, snippet'ler ve tema baglantisi (Faz 7). Eklenti sistemi artik uctan uca bagli — eklentiler yukleniyor, etkinlesiyor ve IDE icinde calisiyor.</p>
+                <p style="margin-top: 10px;">Entegrasyon fazlarinin yani sira: <code>setFindHighlights</code> FFI uzerinden karakter hassasiyetli vurgularla Bul ve Degistir, 3 katmanli isleme hatti ve kaydettiginde bicimlendir ile Belgeyi Biçimlendir, gezginde sag tikla baglam menuleri, <code>Cmd+S</code> kaydetme, Son Acilanlari Ac alt menusu, etkin dosya otomatik ortaya cikarma, kirlilik gostergeleriyle VS Code tarzi sekmeler ve Chirp'e baslatmada cokme raporlama. 30GB bellek sizintisi izlenip duzeltildi. IDE artik mevcut oldugunda typescript-language-server yerine <code>tsgo --lsp</code>'yi tercih ediyor.</p>
+                <p style="margin-top: 10px;">Editor, 46 commit platformlar arasi calismayla gecti. iOS tam klavye destegi aldi — <code>Cmd+C/V/X/Z/A</code>, ok tuslari, Enter, Tab, Shift+secim, tus tekrari — arti akilli tirnak baskilama ve overlay/kaydirma duzeltmeleri. Windows'a fare surukle secimi ve cift tikla kelime secimi eklendi. Linux, sozdizimi vurgulamali Perry modu islemesi aldi. Android bir tokenizer, platform taslaklari, ARM64 icin 16KB sayfa hizalamasi ve bir cokme duzeltmesi aldi. Sekme duraklari, degiskenler ve 4 dil icin dahili snippet'lerle bir snippet motoru gonderildi. Rust isleyicisi kesme noktasi olugu simgeleri, katlama gostergeleri ve Error Lens satirici teshisleri kazandi. Kalici bulma vurgulari ve bir dekorasyon API'si editor calismasini tamamliyor.</p>
+                <p style="margin-top: 10px;"><code>hone-core</code> dil on ayarlariyla bir belge biçimlendirici (51 test), camelCase bolme ve oneri destekli bir yazim denetleyicisi ve bir girintileme algilayicisi ekledi. <code>hone-themes</code> 4 buyudu — yuksek kontrast karanlik/aydinlik, Tokyo Night ve Gruvbox Dark — toplami 15'e cikardi. Iki yeni paket yayina girdi: <code>hone-marketplace</code> (otomatik dagitimli marketplace.hone.codes icin Perry ile derlenmis Fastify sunucusu) ve <code>hone-build</code> (perry-hub uzerinden coklu platform derlemesi icin eklenti derleme koordinatoru). Eklenti SDK, Rust host crate, CLI ve marketplace istemcisi <code>hone-extension</code>'da gonderildi, 9 hazir eklentiyle birlikte.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/marketplace</span>
+                <span class="update-chip">@honeide/build</span>
+                <span class="update-chip">Eklentiler</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">Error Lens</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">16 Mar 2026</span>
+                <span class="update-tag">Platformlar Arasi</span>
+            </div>
+            <div class="update-title">iOS editoru calisiyor, cihazlar arasi senkronizasyon uctan uca, Claude Code arayuzu, web hedefi</div>
+            <div class="update-body">
+                <p>iOS'taki editor bos ekrandan tam islevsel duruma gecti. Yaklasin 20 commit aldi — <code>setNeedsDisplay</code> yerine <code>CADisplayLink</code> isleme dongusu koymak, dokunma dagitimini ve imlec senkronizasyonunu duzeltmek, dogru ofsetle 1 parmak kaydirmayi calistirmak ve temalarin dogru uygulanmasi icin renk FFI'yi baglamak. Android OOM duzeltmeleri (tam yeniden cizim yerine kirlilik izleme), ARM64 cagri kurali duzeltmeleri ve gercek renk isleme hatti baglantisi aldi. Coklu satir secim islemesi ve anlik goruntu tabanli geri al/yinele tum platformlarda hayata gecti. Tema gecisi bulunan bagimsiz bir editor test uygulamasi, tam IDE'yi baslatmadan yinelemeyi kolaylastiriyor.</p>
+                <p style="margin-top: 10px;">Cihazlar arasi senkronizasyon artik iOS'ta uctan uca calisiyor. Dogal WebSocket eslestirme, dosya agaci gozatma ve dosya icerigi yukleme tamami aktarici uzerinden calisiyor. Android senkronizasyonu mesaj throttling duzeltmeleri aldi. IDE'nin senkronizasyon katmani token/lastSeq destegi ve delta yakalama ekledi, boylece yeniden baglanan cihazlar kaldiklari yerden devam ediyor. Aktarici tarafinda, delta deposu SQLite destekli kalicilik ve Perry AOT uyumlulugu ile yeniden yazildi. Aktarici paketi README ve herkese acik yayin temizligi aldi.</p>
+                <p style="margin-top: 10px;">YZ sohbet paneli tam bir Claude Code arayuzu kazandi — kod bloklarini isleven coklu blok ayristirma, hiz siniri gostergeleri, dusunme blogu islemesi, satirici farklar ve kullanim istatistikleri. Saglayicilar ve modeller arasinda gecis yapmanizi saglayan Picker acilir menusuyle coklu saglayici model secici. Panel bir guvenlik ve kaynak yonetimi denetiminden gecti.</p>
+                <p style="margin-top: 10px;">IDE artik web'de calisiyor — yeni bir web hedefi kurulumu atliyor, terminal ve git'i gizliyor (PTY veya dosya sistemi yok) ve karanlik temali bir editor yukluyor. Aydinlik mod tum panellerde gonderildi — editor, terminal, kurulum ekrani, gomulu NSView'lar. macOS bir uygulama simgesi, dosya turu iliskilendirmeleri ve Birlikte Ac destegi aldi. VS Code tarzi sekmeler eski sekme cubugunu degistirdi. Terminal, web taslaklari dahil tum platformlarda tema uyumlu renk FFI aldi. <code>hone-core</code> istege bagli anonim telemetri ekledi.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">iOS</span>
+                <span class="update-chip">Senkronizasyon</span>
+                <span class="update-chip">Claude Code</span>
+                <span class="update-chip">Web</span>
+                <span class="update-chip">Aydinlik Mod</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">6 Mar 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE bir araya geldi — terminal, YZ sohbet, git farki, senkronizasyon ve bir MVP denetimi</div>
+            <div class="update-body">
+                <p>Gecen hafta projenin baslamasindan bu yana en verimli haftaydi. IDE, dosya yukleyebilen bir calisma alani kabugundan gercekten bir kod editoru gibi gorunen ve hissedilen bir seye donustu. Alt panelde gercek PTY destekli terminal emulatoru. Sag tarafta akisli yanitlarla YZ sohbet. Renkli satir arkaliklariyla yan yana git farki gorunumu. Piksel hassasiyetinde hizalamali VS Code tarzi dosya gezgini. Ayar kaliciligi ve 11 temanin tumunde canli tema gecisi. LSP koprusu uzerinden arka plan tsc teshisleri. macOS ve Windows'ta dogal menuler. Linux hedef destegi.</p>
+                <p style="margin-top: 10px;">Editor tarafinda, interaktif duzenleme artik alti platformun tumunde calisiyor — macOS, iOS, Windows, Android, Linux (GTK4) ve web. Otomatik kapanan parantezler ve akilli girintileme hayata gecti. Bir dizi Perry AOT uyumluluk calismasi yapildi: sozdizimi vurgulamada karakter araliklarinin duzeltilmesi, Rust FFI olay kuyrugundaki gri satir hatasi, Windows'ta DPI olceklemesi ve iOS'ta ARM64 ABI duzeltmeleri.</p>
+                <p style="margin-top: 10px;">En buyuk mimari ekleme cihazlar arasi senkronizasyon. <code>hone-relay</code> yeni bir paket — kimlik dogrulama, hiz sinirlamasi ve oda yonetimiyle Perry uzerinden dogal olarak derlenen bir WebSocket aktarici sunucusu. <code>hone-core</code> E2E sifreleme, cihaz eslestirme, LAN kesfetme ve catisma algilamayla degisiklik kuyrugu iceren tam bir senkronizasyon aktarim katmani kazandi. IDE'de senkronizasyon host/guest modulleri, senkronizasyon paneli, inceleme paneli ve guven ayarlari arayuzu var. <code>@honeide/api</code> tipleri senkronizasyon mesaj zarflari, alan yuklemeleri ve kimlik dogrulama tipleriyle genisletildi.</p>
+                <p style="margin-top: 10px;">Cekirdek ayrica git (istemci, durum ayristirici, fark ayristirici, gecmis), arama (ripgrep entegrasyonu, arama modeli), YZ modulleri (saglayici, satirici, sohbet, ajan durumu/araclari, inceleme), gorev calistiricisi ve LSP/DAP protokol tiplerini aldi. Bu 55 kaynak dosyasi ve 499 test basarili demek.</p>
+                <p style="margin-top: 10px;">Hafta bir MVP denetimiyle tamamlandi — arayuz gercekten calisan ozelliklerle budandi ve geri kalan her sey icin menu taslaklari baglandi. macOS'ta ikili dosya 3.6 MB.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">YZ Sohbet</span>
+                <span class="update-chip">Git Farki</span>
+                <span class="update-chip">Senkronizasyon</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">28 Sub 2026</span>
+                <span class="update-tag">Editor</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — alti platformda calisan demolar</div>
+            <div class="update-body">
+                <p>Editor bileseni artik macOS, iOS, Windows, Android ve Web'de calisan interaktif demolara sahip. B-tree rope ile parca tablo metin tamponu O(log n) duzenleme saglar ve sanal kaydirma isleyicisi yalnizca gorunur satirlara dokunur, bu nedenle buyuk dosyalar bile hizli kalir.</p>
+                <p style="margin-top: 10px;">Bu sprintteki ana platform zorluluğu, Perry'nin iOS'taki FFI katmani icin ARM64 ABI'yi dogru ayarlamakti. Core Text glif rasterizatoru artik Perry ile derlenmis TypeScript'ten dogru cagri yapiyor, bu da iOS demosunun onunu acti. Pango uzerinden Linux islemesi iskele olarak hazir; henuz bir demoda yok.</p>
+                <p style="margin-top: 10px;">Sozdizimi vurgulamasi Lezer gramerleri uzerinden 10 dili kapsiyor (<code>ts</code>, <code>js</code>, <code>html</code>, <code>css</code>, <code>json</code>, <code>py</code>, <code>rs</code>, <code>cpp</code>, <code>md</code>). LSP ve DAP istemcileri bagli — tamamlamalar, hover, tanimina git, kesme noktalari ve degisken inceleme tamami bilesen seviyesinde calisiyor. YZ satirici tamamlamalari icin hayalet metin islemesi de canli.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">14 Sub 2026</span>
+                <span class="update-tag">Terminal</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — tam VT100 uyumlulugu, 163 test</div>
+            <div class="update-body">
+                <p>Terminal emulatoru bileseni ilk surumunu gonderdi. Ayristirici, CSI, OSC ve DCS kacis dizilerini isleven 14 durumlu bir durum makinesidir. Gercek renk (SGR uzerinden 24-bit RGB), X10 ve SGR genisletilmis modlarinda fare izleme, alternatif ekran tamponu (<code>DECSET 1049</code> — vim, htop ve less'in dogru calismasi icin gerekli olan) ve koseli parantezli yapistirma destekleniyor.</p>
+                <p style="margin-top: 10px;">OSC 8 kopruleri, CJK cift genislik karakterleri ve OSC 133 kabuk entegrasyon isaretleri (komut istemi algilama icin) ozellik setini tamamliyor. macOS isleme yolu Core Text kullaniyor; hone-editor ile ayni mimari, bu nedenle iki bilesen dogal isleme kurallarini paylasir.</p>
+                <p style="margin-top: 10px;">163 test vakasi ayristirici durum gecislerini, ozellik islemesini, fare olay kodlamasini ve geri kaydirma davranisini kapsiyor. Bilesen bugun bagimsiz olarak kullaniliyor ve Dilim 11'de IDE calisma alanina baglanacak.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 Oca 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE kabugu Dilim 2'ye kadar tamamlandi — calisma alani, temalar, dosya gezgini, ayarlar</div>
+            <div class="update-body">
+                <p>IDE calisma alaninin ilk uc dilimi tamamlandi. Kabuk, yeniden boyutlanabilir panel izgara, sekme yoneticisi, etkinlik cubugu ve durum cubugu isliyor — ekran boyutuna gore tam calisma alani (masaustu/iPad yatay), bolumlenmis (tablet dikey) ve kompakt (telefon) modlari arasinda secim yapan platformla uyumlu duzenleme motoruyla.</p>
+                <p style="margin-top: 10px;">Tema motoru VSCode uyumlu JSON temalari yukler ve editor icin TextMate kapsamlarini renklere cozumler. <code>@honeide/themes</code>'deki 11 temanin tamami calisiyor. Dosya gezgini <code>@honeide/core</code>'daki dosya izleyici tarafindan desteklenen canli bir agac gosteriyor ve Ctrl+P trie indeksiyle bulanik arama yapiyor.</p>
+                <p style="margin-top: 10px;">Ayarlar dort katmanli bir depo kullaniyor (varsayilan → kullanici → calisma alani → dile ozel ustelezmeler). Karsilama ekranindaki YZ saglayici kurulum sihirbazi, API anahtari girisi, baglanti testi ve ozellik basina model yonlendirmesi boyunca rehberlik ediyor. Dilim 3 — gercek editor sekmelerini <code>@honeide/editor</code> orneklerine baglama — sirada.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Calisma Alani</span>
+                <span class="update-chip">Temalar</span>
+                <span class="update-chip">Ayarlar</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <div class="glow-orb green"></div>
+    <h2>Acik olarak insa ediliyor.</h2>
+    <p>Hone erken gelistirme asamasinda. Takip edin, katki saglayin veya sadece izleyin.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub'da Yildizlayin
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-left">
+        © 2026 Hone · <a href="https://skelpo.com" target="_blank">Skelpo GmbH</a> tarafindan yapildi
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/HoneIDE" target="_blank">GitHub</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

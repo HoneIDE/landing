@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hone — ลับคมโค้ดของคุณ แบบเนทีฟ</title>
+    <meta name="description" content="โค้ดเอดิเตอร์เนทีฟที่ขับเคลื่อนด้วย AI สำหรับทุกแพลตฟอร์ม เขียนด้วย TypeScript คอมไพล์เป็นเนทีฟผ่าน Perry ไม่ใช้ Electron ไม่มีข้อจำกัด">
+    <link rel="canonical" href="https://hone.codes/th/">
+    <meta name="theme-color" content="#0D1117">
+    <meta name="author" content="Skelpo GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://hone.codes/">
+    <link rel="alternate" hreflang="de" href="https://hone.codes/de/">
+    <link rel="alternate" hreflang="ja" href="https://hone.codes/ja/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://hone.codes/zh-Hans/">
+    <link rel="alternate" hreflang="es" href="https://hone.codes/es/">
+    <link rel="alternate" hreflang="fr" href="https://hone.codes/fr/">
+    <link rel="alternate" hreflang="pt" href="https://hone.codes/pt/">
+    <link rel="alternate" hreflang="ko" href="https://hone.codes/ko/">
+    <link rel="alternate" hreflang="it" href="https://hone.codes/it/">
+    <link rel="alternate" hreflang="tr" href="https://hone.codes/tr/">
+    <link rel="alternate" hreflang="th" href="https://hone.codes/th/">
+    <link rel="alternate" hreflang="id" href="https://hone.codes/id/">
+    <link rel="alternate" hreflang="vi" href="https://hone.codes/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://hone.codes/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqH7hmIamIGvTvpbULuEpEOEWgSxzXiyDp07xdEU2IWvfHwtQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/th/">
+    <meta property="og:title" content="Hone — ลับคมโค้ดของคุณ แบบเนทีฟ">
+    <meta property="og:description" content="โค้ดเอดิเตอร์เนทีฟที่ขับเคลื่อนด้วย AI สำหรับทุกแพลตฟอร์ม เขียนด้วย TypeScript คอมไพล์เป็นเนทีฟผ่าน Perry ไม่ใช้ Electron ไม่มีข้อจำกัด">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — โค้ดเอดิเตอร์เนทีฟ">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — ลับคมโค้ดของคุณ แบบเนทีฟ">
+    <meta name="twitter:description" content="โค้ดเอดิเตอร์เนทีฟที่ขับเคลื่อนด้วย AI สำหรับทุกแพลตฟอร์ม เขียนด้วย TypeScript คอมไพล์เป็นเนทีฟผ่าน Perry ไม่ใช้ Electron ไม่มีข้อจำกัด">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hone",
+        "description": "โค้ดเอดิเตอร์เนทีฟที่ขับเคลื่อนด้วย AI สำหรับทุกแพลตฟอร์ม เขียนด้วย TypeScript คอมไพล์เป็นเนทีฟผ่าน Perry",
+        "url": "https://hone.codes/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "ฟรี — 1 โปรเจกต์ซิงค์, 2 อุปกรณ์"
+            },
+            {
+                "@type": "Offer",
+                "price": "36",
+                "priceCurrency": "USD",
+                "description": "Pro — โปรเจกต์ไม่จำกัด, อุปกรณ์ไม่จำกัด",
+                "billingIncrement": "P1Y"
+            }
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Skelpo GmbH",
+            "url": "https://skelpo.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="/th/" class="nav-logo">
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
+        <span class="nav-logo-text">Hone</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">คุณสมบัติ</a>
+        <a href="#ai">AI</a>
+        <a href="#status">สถานะ</a>
+        <a href="#roadmap">แผนงาน</a>
+        <a href="#pricing">ราคา</a>
+        <a href="#updates">อัปเดต</a>
+        <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+        </a>
+        <div class="lang-picker">
+            <button class="lang-picker-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                TH
+            </button>
+            <div class="lang-dropdown">
+                <a href="/">English</a>
+                <a href="/de/">Deutsch</a>
+                <a href="/ja/">日本語</a>
+                <a href="/zh-Hans/">中文</a>
+                <a href="/es/">Español</a>
+                <a href="/fr/">Français</a>
+                <a href="/pt/">Português</a>
+                <a href="/ko/">한국어</a>
+                <a href="/it/">Italiano</a>
+                <a href="/tr/">Türkçe</a>
+                <a href="/th/" class="active">ไทย</a>
+                <a href="/id/">Indonesia</a>
+                <a href="/vi/">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="glow-orb green"></div>
+    <div class="glow-orb blue"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        พัฒนาแบบเปิด — อยู่ในช่วงเริ่มต้น
+    </div>
+
+    <h1>ลับคมโค้ดของคุณ<br><span class="highlight">แบบเนทีฟ</span></h1>
+
+    <p class="hero-sub">
+        โค้ดเอดิเตอร์เนทีฟที่ขับเคลื่อนด้วย AI สำหรับทุกแพลตฟอร์ม เขียนด้วย TypeScript คอมไพล์เป็นเนทีฟผ่าน Perry ไม่ใช้ Electron ไม่มีข้อจำกัด
+    </p>
+
+    <div class="hero-cta">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            ติดตามบน GitHub
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            เรียนรู้เพิ่มเติม ↓
+        </a>
+    </div>
+
+    <!-- Real screenshot -->
+    <div class="screenshot-wrapper">
+        <img src="/screenshot.png" alt="Hone IDE ทำงานบน macOS — ตัวสำรวจไฟล์, เอดิเตอร์พร้อม syntax highlighting, เทอร์มินัล, และแท็บ" class="hero-screenshot">
+        <p class="screenshot-caption">ภาพหน้าจอจริง ใช่ มีข้อไม่สมบูรณ์เล็กน้อย — เราพัฒนาแบบเปิด จำได้ไหม?</p>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section fade-in" id="features">
+    <div class="section-label">ทำไมต้อง Hone</div>
+    <h2 class="section-title">ทุกสิ่งที่เอดิเตอร์ควรเป็น<br>ไม่มีสิ่งที่ไม่ควรมี</h2>
+    <p class="section-desc">
+        สร้างใหม่ตั้งแต่ต้นด้วย TypeScript คอมไพล์เป็นไบนารีเนทีฟผ่าน Perry ทุกส่วนประกอบออกแบบมาเพื่อประสิทธิภาพ ความเป็นโมดูล และความสุขของนักพัฒนา
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>เนทีฟอย่างแท้จริง</h3>
+            <p>ไม่มี Electron, ไม่มี Chromium, ไม่มี V8 runtime Perry คอมไพล์ TypeScript เป็นไบนารีเนทีฟโดยตรง ขนาดต่ำกว่า 50MB, RAM ต่ำกว่า 100MB, เปิดใช้ในไม่ถึงวินาที</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>สถาปัตยกรรม AI-First</h3>
+            <p>AI ไม่ได้ถูกต่อเติมภายหลัง — มันถักทอเข้าไปในแกนหลักของเอดิเตอร์ AI เห็น syntax tree, ข้อผิดพลาด, git diff, และเทอร์มินัลของคุณ บริบทที่ลึก ไม่ใช่แค่ข้อความ</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔑</div>
+            <h3>ใช้ AI ของคุณเอง</h3>
+            <p>Claude, GPT, Gemini, Ollama, หรือโมเดลส่วนตัวของบริษัทคุณ API key ของคุณ ตัวเลือกของคุณ ผสมผู้ให้บริการต่างกันสำหรับแต่ละฟีเจอร์ ไม่ผูกมัดกับผู้ให้บริการรายเดียว</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>โหมดเอเจนต์</h3>
+            <p>อธิบายสิ่งที่คุณต้องการ เอเจนต์อ่านโค้ด วางแผนการเปลี่ยนแปลง แก้ไขไฟล์ รันเทสต์ และปรับปรุงซ้ำ — พร้อมการอนุมัติทีละ hunk ก่อนที่จะคอมมิต</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>รีวิว PR แบบเนทีฟ</h3>
+            <p>รีวิว pull request ในเอดิเตอร์พร้อม syntax highlighting เต็มรูปแบบ, ความฉลาดของ LSP ใน diff, และคำอธิบายประกอบจาก AI ที่จับบั๊กก่อนมนุษย์</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>แบบโมดูลและประกอบได้</h3>
+            <p>hone-editor, hone-terminal, และ hone-core เป็นแพ็กเกจอิสระ ใช้คอมโพเนนต์เอดิเตอร์ในแอปของคุณเอง สร้าง IDE ของคุณบนพื้นฐานของ Hone</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE ===== -->
+<section class="section fade-in" id="performance">
+    <div class="section-label">ประสิทธิภาพ</div>
+    <h2 class="section-title">ตัวเลขที่ Electron<br>เอื้อมไม่ถึง</h2>
+    <p class="section-desc">
+        เมื่อคุณตัดเบราว์เซอร์ออก ทุกอย่างเร็วขึ้น นี่คือเป้าหมายของเรา — และเราตั้งใจจะบรรลุทุกข้อ
+    </p>
+
+    <div class="perf-grid">
+        <div class="perf-card">
+            <div class="perf-value">&lt;1s</div>
+            <div class="perf-label">เปิดแบบเย็น</div>
+            <div class="perf-compare">เทียบ 3-5s (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;100</div>
+            <div class="perf-label">MB RAM ขณะไม่ใช้งาน</div>
+            <div class="perf-compare">เทียบ 300-500MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;50</div>
+            <div class="perf-label">MB ไบนารี</div>
+            <div class="perf-compare">เทียบ ~300MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;10</div>
+            <div class="perf-label">ms ความหน่วงต่อการกดปุ่ม</div>
+            <div class="perf-compare">เทียบ 30-50ms (VSCode)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AI ===== -->
+<section class="section fade-in" id="ai">
+    <div class="section-label">การผสานรวม AI</div>
+    <h2 class="section-title">AI ของคุณ คีย์ของคุณ<br>ตัวเลือกของคุณ</h2>
+    <p class="section-desc">
+        Hone ไม่เคยขาย API access ต่อ คุณนำคีย์ของตัวเองมาและกำหนดผู้ให้บริการต่างกันสำหรับแต่ละฟีเจอร์ เมื่อโมเดลใหม่มาแรงออกมา ใช้ได้ทันที
+    </p>
+
+    <div class="ai-features">
+        <div class="ai-feature-card">
+            <span class="tag tag-green">อินไลน์</span>
+            <h3>การเติมข้อความแบบ Ghost Text</h3>
+            <p>คำแนะนำที่ตระหนักบริบท ขับเคลื่อนโดยผู้ให้บริการใดก็ได้ เห็น syntax tree ของคุณ ไม่ใช่แค่ข้อความดิบ เรนเดอร์ด้วยความเร็วเนทีฟ ไม่มีโอเวอร์เฮดจาก Electron</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-blue">แชท</span>
+            <h3>แชทที่ตระหนักบริบท</h3>
+            <p>AI เห็นไฟล์ที่เปิดอยู่ ข้อผิดพลาด เอาต์พุตเทอร์มินัล และสถานะ git ของคุณโดยอัตโนมัติ ไม่ต้อง @file แบบแมนนวล สลับโมเดลกลางการสนทนาได้</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-purple">เอเจนต์</span>
+            <h3>เอเจนต์เขียนโค้ดอัตโนมัติ</h3>
+            <p>แก้ไขหลายไฟล์ คำสั่งเทอร์มินัล รันเทสต์ กู้คืนจากข้อผิดพลาด โปร่งใสเต็มที่ด้วยบันทึกกิจกรรมแบบสดและการอนุมัติ diff ก่อนที่จะเปลี่ยนแปลงใดๆ</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-yellow">รีวิว</span>
+            <h3>รีวิว PR ด้วย AI</h3>
+            <p>AI วิเคราะห์ทุก diff ล่วงหน้าเพื่อหาบั๊ก ปัญหาความปลอดภัย และปัญหาสไตล์ คำอธิบายประกอบรีวิวปรากฏแบบอินไลน์ แก้ไขด้วยคลิกเดียว ส่งรีวิวกลับไปยัง GitHub/GitLab</p>
+        </div>
+    </div>
+
+    <div class="byok-block">
+        <h3>นำคีย์ของคุณเอง ผสมและจับคู่ได้</h3>
+        <p>กำหนดเส้นทาง AI แต่ละฟีเจอร์ไปยังผู้ให้บริการต่างกัน ใช้โมเดลโลคอลเร็วสำหรับ autocomplete, โมเดลคลาวด์ทรงพลังสำหรับงานเอเจนต์, และอะไรสักอย่างตรงกลางสำหรับแชท โครงสร้างพื้นฐานของคุณ งบประมาณของคุณ กฎของคุณ</p>
+        <div class="provider-logos">
+            <div class="provider-pill"><span class="provider-dot" style="background:#d4a574"></span> Anthropic (Claude)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#74b9ff"></span> OpenAI (GPT)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#55efc4"></span> Google (Gemini)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#a29bfe"></span> Ollama (Local)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#fd79a8"></span> AWS Bedrock</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#ffeaa7"></span> ที่เข้ากันได้กับ OpenAI ทุกตัว</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLATFORMS ===== -->
+<section class="section fade-in" id="platforms">
+    <div class="section-label">แพลตฟอร์ม</div>
+    <h2 class="section-title" style="text-align:center;">โค้ดเบสเดียว<br>ทุกแพลตฟอร์ม</h2>
+    <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">
+        เขียนครั้งเดียวด้วย TypeScript คอมไพล์เป็นเนทีฟบนแต่ละแพลตฟอร์มโดย Perry รูปลักษณ์เนทีฟ ความเร็วเนทีฟ ทุกที่
+    </p>
+
+    <div class="platforms-row">
+        <div class="platform-item">
+            <div class="platform-icon">🍎</div>
+            <span class="platform-label">macOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🪟</div>
+            <span class="platform-label">Windows</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🐧</div>
+            <span class="platform-label">Linux</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">📱</div>
+            <span class="platform-label">iOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🤖</div>
+            <span class="platform-label">Android</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🌐</div>
+            <span class="platform-label">Web</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">สถานะปัจจุบัน</div>
+    <h2 class="section-title">สิ่งที่สร้างเสร็จแล้ววันนี้</h2>
+    <p class="section-desc">
+        Hone คือชุดแพ็กเกจที่ประกอบกันได้ นี่คือสถานะของแต่ละตัวในตอนนี้
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>เผยแพร่แล้ว</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Piece-table buffer, มัลติเคอร์เซอร์, undo/redo</li>
+                <li>iOS: คีย์บอร์ดเต็มรูปแบบ, Cmd+C/V/X/Z/A, เลื่อนหน้าจอ</li>
+                <li>Windows: การเลือกด้วยการลากเมาส์, เลือกคำ</li>
+                <li>Snippet engine, breakpoint gutter, Error Lens</li>
+                <li>ไฮไลต์การค้นหาถาวร, ตัวบ่งชี้การพับโค้ด</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>เผยแพร่แล้ว</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm, 256 สี, truecolor</li>
+                <li>PTY backend จริง (LiveTerminal)</li>
+                <li>Color FFI ที่รองรับธีม: ทุกแพลตฟอร์ม</li>
+                <li>การผสานรวม shell (OSC 133)</li>
+                <li>กรณีทดสอบ 163 รายการผ่านทั้งหมด</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>เผยแพร่แล้ว</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript, Python, Rust, Go</li>
+                <li>C/C++, HTML/CSS, JSON, Markdown</li>
+                <li>Git, Docker, TOML/YAML</li>
+                <li>เปิดใช้งานแบบ lazy, Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>เผยแพร่แล้ว</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>15 ธีมคัดสรร (+4 สัปดาห์นี้)</li>
+                <li>High-contrast, Tokyo Night, Gruvbox Dark</li>
+                <li>เข้ากันได้กับรูปแบบธีม VSCode</li>
+                <li>การตรวจสอบคอนทราสต์ WCAG</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>เผยแพร่แล้ว</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Zero-runtime, ไทป์ล้วน</li>
+                <li>commands, editor, workspace, ui</li>
+                <li>Sync API: envelopes, payloads, auth</li>
+                <li>เทสต์ระดับไทป์ 452+ รายการผ่าน</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>กำลังพัฒนา</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Workspace, การตั้งค่า, คีย์ลัด</li>
+                <li>✓ Git client, diff parser, สถานะ</li>
+                <li>✓ ตัวจัดรูปแบบเอกสาร + พรีเซ็ตภาษา</li>
+                <li>✓ ตรวจสอบการสะกด, ตรวจจับการเยื้อง</li>
+                <li>✓ AI provider, inline, chat, telemetry</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>กำลังพัฒนา</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ ผสานรวมเต็มรูปแบบ: LSP, git, ค้นหา, debug</li>
+                <li>✓ Error Lens, AI ghost text, breakpoints</li>
+                <li>✓ ระบบปลั๊กอิน, การโหลดแบบ end-to-end</li>
+                <li>✓ ค้นหาและแทนที่, จัดรูปแบบเอกสาร, Cmd+S</li>
+                <li>✓ ไอคอนไฟล์ 50+ ชนิด, เมนูบริบท, รายงานข้อผิดพลาด</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>ใหม่</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>WebSocket relay สำหรับซิงค์ข้ามอุปกรณ์</li>
+                <li>ที่เก็บ delta ถาวรบน SQLite</li>
+                <li>เข้ากันได้กับ Perry AOT, ไบนารีเนทีฟ</li>
+                <li>เผยแพร่สาธารณะพร้อม README</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>marketplace</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>ใหม่</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>เซิร์ฟเวอร์ Fastify คอมไพล์ด้วย Perry</li>
+                <li>marketplace.hone.codes พร้อมแบรนด์ Hone</li>
+                <li>ปรับใช้อัตโนมัติผ่าน GitHub Actions</li>
+                <li>ค้นหา ดาวน์โหลด และเผยแพร่ปลั๊กอิน</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>build</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>ใหม่</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>ตัวประสานงานบิลด์ปลั๊กอิน</li>
+                <li>คอมไพล์ข้ามแพลตฟอร์มผ่าน perry-hub</li>
+                <li>ปรับใช้อัตโนมัติผ่าน GitHub Actions</li>
+                <li>ไบนารีเนทีฟ Perry AOT</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">แผนงาน</div>
+    <h2 class="section-title">15 สไลซ์สู่ IDE เต็มรูปแบบ</h2>
+    <p class="section-desc">
+        แต่ละสไลซ์ส่งมอบฟีเจอร์ที่สมบูรณ์และทดสอบได้ บนทั้งเจ็ดแพลตฟอร์มพร้อมกัน — เดสก์ท็อป มือถือ และเว็บ
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">เฟส 1</span>
+                <span class="phase-title">พื้นฐาน</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>เสร็จสมบูรณ์</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">เปลือก Workbench และเอนจินธีม</span>
+                    <span class="slice-detail">พาเนลปรับขนาดได้, แท็บ, activity bar, โหลดธีม</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Workspace และตัวสำรวจไฟล์</span>
+                    <span class="slice-detail">Multi-root, file watcher, fuzzy finder</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">การตั้งค่า, คีย์ลัด และการเริ่มต้นใช้งาน</span>
+                    <span class="slice-detail">การตั้งค่าแบบหลายชั้น, ตัวแก้ไขภาพ, วิซาร์ดตั้งค่า AI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">เฟส 2</span>
+                <span class="phase-title">IDE หลัก</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>เสร็จสมบูรณ์</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 3</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">การผสานรวมเอดิเตอร์</span>
+                    <span class="slice-detail">แท็บ, โหลดไฟล์, แก้ไขแบบโต้ตอบบนทุกแพลตฟอร์ม</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 4</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Git และ Source Control</span>
+                    <span class="slice-detail">Push/pull/stash, inline blame, commit log, diff view</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 5</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">การค้นหา</span>
+                    <span class="slice-detail">การผสานรวม Ripgrep, พาเนลค้นหาสไตล์ VS Code</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 6</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">LSP และความฉลาดทางภาษา</span>
+                    <span class="slice-detail">Hover, go-to-definition, signature help, Error Lens</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 7</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Debug</span>
+                    <span class="slice-detail">พาเนล debug, breakpoints, การพับโค้ด, การเชื่อมต่อ DAP</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">เฟส 3</span>
+                <span class="phase-title">AI และเทอร์มินัล</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>กำลังพัฒนา</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 8</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">ระบบ AI Provider</span>
+                    <span class="slice-detail">โมดูล core provider + inline + chat, เชื่อมต่อ IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 9</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI Inline Completion</span>
+                    <span class="slice-detail">เรนเดอร์ ghost text เชื่อมต่อใน IDE ผ่าน FFI</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 10</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI Chat</span>
+                    <span class="slice-detail">พาเนลแชทพร้อมสตรีมมิ่ง, context chips, markdown</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 11</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">การผสานรวมเทอร์มินัล</span>
+                    <span class="slice-detail">เทอร์มินัล PTY จริงผสานรวมใน IDE workbench</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 12</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">โหมด AI Agent</span>
+                    <span class="slice-detail">สถานะเอเจนต์ + เครื่องมือใน core — บันทึกกิจกรรม IDE ถัดไป</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 13</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI PR Review</span>
+                    <span class="slice-detail">มุมมองรีวิว PR มีแล้ว — คำอธิบายประกอบ AI ถัดไป</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">เฟส 4</span>
+                <span class="phase-title">ส่วนขยายและเผยแพร่</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>กำลังพัฒนา</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 14</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">ระบบส่วนขยาย</span>
+                    <span class="slice-detail">Plugin SDK, host crate, เซิร์ฟเวอร์ marketplace + build พร้อมใช้</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">ขัดเกลาและแพ็กเกจ</span>
+                    <span class="slice-detail">DMG, MSI, AppImage, .ipa, .apk — ทุกแพลตฟอร์ม</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section fade-in" id="pricing">
+    <div class="section-label">ราคา</div>
+    <h2 class="section-title">ซิงค์เวิร์กโฟลว์ของคุณ</h2>
+    <p class="section-desc">
+        เอดิเตอร์ฟรีและโอเพนซอร์ส คุณจ่ายเฉพาะบริการซิงค์ที่โฮสต์ให้เท่านั้น
+    </p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="tier-name">ฟรี</div>
+            <div class="price">$0</div>
+            <div class="price-period">ตลอดไป</div>
+            <ul>
+                <li>1 โปรเจกต์ซิงค์</li>
+                <li>2 อุปกรณ์</li>
+                <li>พื้นที่เก็บ delta 50 MB</li>
+                <li>เข้ารหัสแบบ end-to-end</li>
+                <li>ไม่ต้องสร้างบัญชี</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="tier-name">Pro</div>
+            <div class="price">$36</div>
+            <div class="price-period">ต่อปี &middot; ~$3/เดือน</div>
+            <ul>
+                <li>โปรเจกต์ไม่จำกัด</li>
+                <li>อุปกรณ์ไม่จำกัด</li>
+                <li>พื้นที่เก็บ delta 5 GB</li>
+                <li>เข้ารหัสแบบ end-to-end</li>
+                <li>สนับสนุนลำดับความสำคัญ</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="pricing-note">
+        <strong>เข้ารหัสแบบ end-to-end</strong> relay ไม่เคยเห็นโค้ดของคุณ<br>
+        <strong>โอเพนซอร์ส</strong> โฮสต์ relay เองได้ฟรี ไม่มีข้อจำกัด
+    </p>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">อัปเดต</div>
+    <h2 class="section-title">สิ่งที่เกิดขึ้นล่าสุด</h2>
+    <p class="section-desc">
+        บันทึกความคืบหน้าจากการพัฒนา — ไม่มีการตลาด แค่สิ่งที่ส่งมอบจริง
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 มี.ค. 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">สปรินต์ผสานรวม IDE เต็มรูปแบบ — LSP, git, debug, ค้นหา, ปลั๊กอิน, และ 46 คอมมิตเอดิเตอร์</div>
+            <div class="update-body">
+                <p>IDE ผ่านสปรินต์ผสานรวมครั้งใหญ่ในสัปดาห์นี้ เจ็ดเฟสของการเชื่อมต่อฟีเจอร์ถูกส่งมอบใน 26 คอมมิต: LSP hover/go-to-definition/signature help (เฟส 3), การค้นหาด้วย ripgrep พร้อมพาเนลสไตล์ VS Code, git push/pull/stash/inline blame/commit log (เฟส 4), Error Lens diagnostics พร้อม go-to-next-error (เฟส 5), พาเนล debug พร้อม breakpoints และการพับโค้ด (เฟส 6), และไอคอนไฟล์เพิ่มเติมสำหรับ 50+ ชนิด, ตรวจสอบการสะกด, snippets, และการเชื่อมต่อธีม (เฟส 7) ระบบปลั๊กอินเชื่อมต่อแบบ end-to-end แล้ว — ส่วนขยายโหลด เปิดใช้งาน และรันภายใน IDE</p>
+                <p style="margin-top: 10px;">นอกเหนือจากเฟสการผสานรวม: ค้นหาและแทนที่ด้วยไฮไลต์ระดับอักขระผ่าน <code>setFindHighlights</code> FFI, จัดรูปแบบเอกสารด้วยไปป์ไลน์ 3 ชั้นและจัดรูปแบบเมื่อบันทึก, เมนูบริบทคลิกขวาในตัวสำรวจ, <code>Cmd+S</code> บันทึก, เมนูย่อยเปิดล่าสุด, เปิดเผยไฟล์ที่ใช้งานอัตโนมัติ, แท็บสไตล์ VS Code พร้อมตัวบ่งชี้การแก้ไข, และรายงานข้อผิดพลาดไปยัง Chirp เมื่อเริ่มต้น พบและแก้ไขหน่วยความจำรั่ว 30GB IDE ตอนนี้เลือกใช้ <code>tsgo --lsp</code> แทน typescript-language-server เมื่อมี</p>
+                <p style="margin-top: 10px;">เอดิเตอร์มี 46 คอมมิตของงานข้ามแพลตฟอร์ม iOS ได้รับการรองรับคีย์บอร์ดเต็มรูปแบบ — <code>Cmd+C/V/X/Z/A</code>, ปุ่มลูกศร, Enter, Tab, Shift+เลือก, การกดปุ่มซ้ำ — รวมถึงการระงับเครื่องหมายคำพูดอัจฉริยะและการแก้ไข overlay/เลื่อน Windows เพิ่มการเลือกด้วยการลากเมาส์และดับเบิลคลิกเลือกคำ Linux ได้รับการเรนเดอร์โหมด Perry พร้อม syntax highlighting Android ได้รับ tokenizer, platform stubs, การจัดแนว 16KB page สำหรับ ARM64, และแก้ไขข้อผิดพลาด Snippet engine พร้อม tab stops, ตัวแปร, และ builtins 4 ภาษาถูกส่งมอบ Rust renderer ได้รับไอคอน breakpoint gutter, ตัวบ่งชี้การพับ, และ Error Lens inline diagnostics ไฮไลต์การค้นหาถาวรและ decorations API ครบถ้วนสำหรับงานเอดิเตอร์</p>
+                <p style="margin-top: 10px;"><code>hone-core</code> เพิ่มตัวจัดรูปแบบเอกสารพร้อมพรีเซ็ตภาษา (51 เทสต์), ตรวจสอบการสะกดพร้อมการแยก camelCase และคำแนะนำ, และตัวตรวจจับการเยื้อง <code>hone-themes</code> เพิ่ม 4 ธีม — high-contrast dark/light, Tokyo Night, และ Gruvbox Dark — ทำให้รวมเป็น 15 ธีม แพ็กเกจใหม่สองตัวเปิดตัว: <code>hone-marketplace</code> (เซิร์ฟเวอร์ Fastify คอมไพล์ด้วย Perry สำหรับ marketplace.hone.codes พร้อมปรับใช้อัตโนมัติ) และ <code>hone-build</code> (ตัวประสานงานบิลด์ปลั๊กอินสำหรับคอมไพล์ข้ามแพลตฟอร์มผ่าน perry-hub) Plugin SDK, Rust host crate, CLI, และ marketplace client ถูกส่งมอบใน <code>hone-extension</code> พร้อมปลั๊กอินพร้อมใช้ 9 ตัว</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/marketplace</span>
+                <span class="update-chip">@honeide/build</span>
+                <span class="update-chip">Plugins</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">Error Lens</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">16 มี.ค. 2026</span>
+                <span class="update-tag">ข้ามแพลตฟอร์ม</span>
+            </div>
+            <div class="update-title">เอดิเตอร์ iOS ใช้งานได้, ซิงค์ข้ามอุปกรณ์ end-to-end, Claude Code GUI, เป้าหมายเว็บ</div>
+            <div class="update-body">
+                <p>เอดิเตอร์บน iOS เปลี่ยนจากหน้าจอว่างเปล่าเป็นใช้งานได้เต็มรูปแบบ ใช้ประมาณ 20 คอมมิต — แทนที่ <code>setNeedsDisplay</code> ด้วย <code>CADisplayLink</code> render loop, แก้ไขการส่ง touch และการซิงค์เคอร์เซอร์, ทำให้เลื่อนด้วย 1 นิ้วทำงานได้ด้วย offset ที่ถูกต้อง, และเชื่อมต่อ color FFI เพื่อให้ธีมทำงานได้อย่างถูกต้อง Android ได้รับการแก้ไข OOM (ติดตามสิ่งที่เปลี่ยนแปลงแทนการวาดใหม่ทั้งหมด), การแก้ไข ARM64 calling convention, และการเชื่อมต่อ color pipeline จริง การเรนเดอร์การเลือกหลายบรรทัดและ undo/redo แบบ snapshot ถูกส่งมอบบนทุกแพลตฟอร์ม แอปทดสอบเอดิเตอร์แบบ standalone พร้อมการสลับธีมทำให้ง่ายต่อการปรับปรุงโดยไม่ต้องบูต IDE เต็ม</p>
+                <p style="margin-top: 10px;">การซิงค์ข้ามอุปกรณ์ตอนนี้ทำงานแบบ end-to-end บน iOS การจับคู่ WebSocket เนทีฟ, การเรียกดู file tree, และการโหลดเนื้อหาไฟล์ทั้งหมดทำงานผ่าน relay Android sync ได้รับการแก้ไขการ throttle ข้อความ ชั้นซิงค์ของ IDE เพิ่มการรองรับ token/lastSeq และ delta catch-up เพื่อให้อุปกรณ์ที่เชื่อมต่อใหม่เริ่มต่อจากจุดที่ค้างไว้ ทางฝั่ง relay, delta store ถูกเขียนใหม่ด้วย SQLite-backed persistence และความเข้ากันได้กับ Perry AOT แพ็กเกจ relay ได้รับ README และการจัดระเบียบสำหรับเผยแพร่สาธารณะ</p>
+                <p style="margin-top: 10px;">พาเนล AI chat ได้รับ Claude Code GUI เต็มรูปแบบ — การแยกวิเคราะห์หลายบล็อกที่จัดการ code fences, ตัวบ่งชี้ rate limit, การเรนเดอร์ thinking block, inline diffs, และสถิติการใช้งาน ตัวเลือกโมเดลหลายผู้ให้บริการพร้อม Picker dropdown ช่วยให้สลับระหว่างผู้ให้บริการและโมเดลได้ พาเนลผ่านการตรวจสอบความปลอดภัยและการจัดการทรัพยากร</p>
+                <p style="margin-top: 10px;">IDE ตอนนี้ทำงานบนเว็บได้ — เป้าหมายเว็บใหม่ข้ามการตั้งค่า, ซ่อนเทอร์มินัลและ git (ไม่มี PTY หรือระบบไฟล์), และโหลดเอดิเตอร์ธีมมืด โหมดสว่างถูกส่งมอบในทุกพาเนล — เอดิเตอร์, เทอร์มินัล, หน้าจอตั้งค่า, embedded NSViews macOS ได้รับไอคอนแอป, การเชื่อมโยงชนิดไฟล์, และรองรับเปิดด้วย แท็บสไตล์ VS Code แทนที่แถบแท็บเก่า เทอร์มินัลได้รับ color FFI ที่รองรับธีมบนทุกแพลตฟอร์มรวมถึง web stubs <code>hone-core</code> เพิ่ม telemetry แบบนิรนามที่เลือกใช้ได้</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">iOS</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Claude Code</span>
+                <span class="update-chip">Web</span>
+                <span class="update-chip">Light Mode</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">6 มี.ค. 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE มารวมกัน — เทอร์มินัล, AI chat, git diff, ซิงค์, และการตรวจสอบ MVP</div>
+            <div class="update-body">
+                <p>สัปดาห์ที่ผ่านมาเป็นสัปดาห์ที่มีประสิทธิผลมากที่สุดนับตั้งแต่เริ่มโปรเจกต์ IDE เปลี่ยนจากเปลือก workbench ที่โหลดไฟล์ได้เป็นสิ่งที่ดูและรู้สึกเหมือนโค้ดเอดิเตอร์จริงๆ เทอร์มินัล PTY จริงผสานรวมในพาเนลล่าง AI chat พร้อมการตอบกลับแบบสตรีมมิ่งด้านขวา มุมมอง git diff เคียงข้างกันพร้อมพื้นหลังบรรทัดสี ตัวสำรวจไฟล์สไตล์ VS Code ที่จัดวางพิกเซลเป๊ะ การบันทึกการตั้งค่าและการสลับธีมแบบสดในทั้ง 11 ธีม Background tsc diagnostics ผ่าน LSP bridge เมนูเนทีฟบน macOS และ Windows รองรับเป้าหมาย Linux</p>
+                <p style="margin-top: 10px;">ในส่วนของเอดิเตอร์ การแก้ไขแบบโต้ตอบตอนนี้ทำงานได้บนทั้งหกแพลตฟอร์ม — macOS, iOS, Windows, Android, Linux (GTK4), และเว็บ การปิดวงเล็บอัตโนมัติและการเยื้องอัจฉริยะถูกส่งมอบ งานความเข้ากันได้กับ Perry AOT จำนวนมากเข้ามา: แก้ไขช่วงอักขระ syntax highlighting, บั๊กบรรทัดสีเทาจากการจัดคิวเหตุการณ์ Rust FFI, DPI scaling บน Windows, และการแก้ไข ARM64 ABI บน iOS</p>
+                <p style="margin-top: 10px;">สิ่งเพิ่มเติมทางสถาปัตยกรรมที่สำคัญที่สุดคือการซิงค์ข้ามอุปกรณ์ <code>hone-relay</code> เป็นแพ็กเกจใหม่ — เซิร์ฟเวอร์ WebSocket relay ที่คอมไพล์เป็นเนทีฟผ่าน Perry, พร้อม auth, rate limiting, และการจัดการห้อง <code>hone-core</code> ได้ชั้นขนส่งซิงค์เต็มรูปแบบพร้อมการเข้ารหัส E2E, การจับคู่อุปกรณ์, การค้นหา LAN, และคิวการเปลี่ยนแปลงพร้อมการตรวจจับความขัดแย้ง IDE มีโมดูลซิงค์ host/guest, พาเนลซิงค์, พาเนลรีวิว, และ UI การตั้งค่าความเชื่อถือ ไทป์ <code>@honeide/api</code> ได้รับการขยายด้วย sync message envelopes, domain payloads, และ auth types</p>
+                <p style="margin-top: 10px;">Core ยังได้รับ git (client, status parser, diff parser, log), search (การผสานรวม ripgrep, search model), โมดูล AI (provider, inline, chat, agent state/tools, review), task runner, และ LSP/DAP protocol types นั่นคือ 55 ไฟล์ซอร์สโค้ดและ 499 เทสต์ผ่าน</p>
+                <p style="margin-top: 10px;">จบสัปดาห์ด้วยการตรวจสอบ MVP — ตัดแต่ง UI ให้เหลือแค่ฟีเจอร์ที่ทำงานได้จริงและเชื่อมต่อ menu stubs สำหรับส่วนที่เหลือ ไบนารีมีขนาด 3.6 MB บน macOS</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">AI Chat</span>
+                <span class="update-chip">Git Diff</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">28 ก.พ. 2026</span>
+                <span class="update-tag">เอดิเตอร์</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — เดโมทำงานบนหกแพลตฟอร์ม</div>
+            <div class="update-body">
+                <p>คอมโพเนนต์เอดิเตอร์ตอนนี้มีเดโมแบบโต้ตอบที่ทำงานได้บน macOS, iOS, Windows, Android, และ Web piece-table text buffer พร้อม B-tree rope ให้การแก้ไข O(log n) และ virtual scroll renderer แตะเฉพาะบรรทัดที่มองเห็น ดังนั้นแม้ไฟล์ขนาดใหญ่ก็ยังรวดเร็ว</p>
+                <p style="margin-top: 10px;">ความท้าทายหลักของแพลตฟอร์มในสปรินต์นี้คือการทำให้ ARM64 ABI ถูกต้องสำหรับชั้น FFI ของ Perry บน iOS Core Text glyph rasterizer ตอนนี้เรียกได้อย่างถูกต้องจาก TypeScript ที่คอมไพล์ด้วย Perry ซึ่งปลดล็อคเดโม iOS การเรนเดอร์ Linux ผ่าน Pango ถูกวางโครงสร้าง ยังไม่มีในเดโม</p>
+                <p style="margin-top: 10px;">Syntax highlighting ครอบคลุม 10 ภาษา (<code>ts</code>, <code>js</code>, <code>html</code>, <code>css</code>, <code>json</code>, <code>py</code>, <code>rs</code>, <code>cpp</code>, <code>md</code>) ผ่าน Lezer grammars LSP และ DAP clients เชื่อมต่อแล้ว — completions, hover, go-to-definition, breakpoints, และ variable inspection ทั้งหมดทำงานในระดับคอมโพเนนต์ การเรนเดอร์ ghost text สำหรับ AI inline completions พร้อมใช้งานแล้วเช่นกัน</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">14 ก.พ. 2026</span>
+                <span class="update-tag">เทอร์มินัล</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — รองรับ VT100 เต็มรูปแบบ, 163 เทสต์</div>
+            <div class="update-body">
+                <p>คอมโพเนนต์เทอร์มินัลอีมูเลเตอร์ส่งมอบเวอร์ชันแรก parser เป็น state machine 14 สถานะที่จัดการ CSI, OSC, และ DCS escape sequences Truecolor (24-bit RGB ผ่าน SGR), การติดตามเมาส์ในโหมด X10 และ SGR extended, alternate screen buffer (<code>DECSET 1049</code> — ตัวที่ทำให้ vim, htop, และ less ทำงานได้อย่างถูกต้อง), และ bracketed paste ทั้งหมดรองรับ</p>
+                <p style="margin-top: 10px;">OSC 8 hyperlinks, อักขระ CJK ความกว้างสองเท่า, และ OSC 133 shell integration markers (สำหรับการตรวจจับ prompt) ครบถ้วนชุดฟีเจอร์ เส้นทางการเรนเดอร์ macOS ใช้ Core Text สถาปัตยกรรมเดียวกับ hone-editor ดังนั้นทั้งสองคอมโพเนนต์ใช้ข้อตกลงการเรนเดอร์เนทีฟร่วมกัน</p>
+                <p style="margin-top: 10px;">กรณีทดสอบ 163 รายการครอบคลุมการเปลี่ยนสถานะ parser, การเรนเดอร์แอตทริบิวต์, การเข้ารหัสเหตุการณ์เมาส์, และพฤติกรรม scrollback คอมโพเนนต์ถูกใช้แบบ standalone ในปัจจุบันและจะเชื่อมต่อเข้ากับ IDE workbench ใน Slice 11</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 ม.ค. 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">เปลือก IDE เสร็จสมบูรณ์ถึง Slice 2 — workbench, ธีม, ตัวสำรวจไฟล์, การตั้งค่า</div>
+            <div class="update-body">
+                <p>สามสไลซ์แรกของ IDE workbench เสร็จแล้ว เปลือกเรนเดอร์ตาราง panel ที่ปรับขนาดได้, ตัวจัดการแท็บ, activity bar, และ status bar — พร้อมเอนจินเลย์เอาต์ที่ปรับตามแพลตฟอร์มโดยเลือกระหว่างโหมด full-workbench (เดสก์ท็อป/iPad แนวนอน), split (แท็บเล็ตแนวตั้ง), และ compact (โทรศัพท์) ตามขนาดหน้าจอ</p>
+                <p style="margin-top: 10px;">เอนจินธีมโหลดธีม JSON ที่เข้ากันได้กับ VSCode และแปลง TextMate scopes เป็นสีสำหรับเอดิเตอร์ ทั้ง 11 ธีมจาก <code>@honeide/themes</code> ทำงานได้ ตัวสำรวจไฟล์แสดง live tree ที่ขับเคลื่อนโดย file watcher ใน <code>@honeide/core</code>, และ Ctrl+P ค้นหาแบบ fuzzy ด้วย trie index</p>
+                <p style="margin-top: 10px;">การตั้งค่าใช้ store สี่ชั้น (ค่าเริ่มต้น → ผู้ใช้ → workspace → ค่าเฉพาะภาษา) วิซาร์ดตั้งค่า AI provider ในหน้าต้อนรับพาผ่านการกรอก API key, ทดสอบการเชื่อมต่อ, และการกำหนดเส้นทางโมเดลต่อฟีเจอร์ Slice 3 — การเชื่อมต่อแท็บเอดิเตอร์จริงกับ <code>@honeide/editor</code> instances — เป็นขั้นตอนถัดไป</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Workbench</span>
+                <span class="update-chip">Themes</span>
+                <span class="update-chip">Settings</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <div class="glow-orb green"></div>
+    <h2>สร้างแบบเปิด</h2>
+    <p>Hone อยู่ในช่วงเริ่มต้นการพัฒนา ติดตาม มีส่วนร่วม หรือแค่ดูอยู่ห่างๆ</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            กดดาวบน GitHub
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-left">
+        © 2026 Hone · สร้างโดย <a href="https://skelpo.com" target="_blank">Skelpo GmbH</a>
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/HoneIDE" target="_blank">GitHub</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

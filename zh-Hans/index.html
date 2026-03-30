@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hone — 原生打磨你的代码。</title>
+    <meta name="description" content="面向所有平台的原生 AI 代码编辑器。使用 TypeScript 编写，通过 Perry 编译为原生二进制。无 Electron，无妥协。">
+    <link rel="canonical" href="https://hone.codes/zh-Hans/">
+    <meta name="theme-color" content="#0D1117">
+    <meta name="author" content="Skelpo GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://hone.codes/">
+    <link rel="alternate" hreflang="de" href="https://hone.codes/de/">
+    <link rel="alternate" hreflang="ja" href="https://hone.codes/ja/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://hone.codes/zh-Hans/">
+    <link rel="alternate" hreflang="es" href="https://hone.codes/es/">
+    <link rel="alternate" hreflang="fr" href="https://hone.codes/fr/">
+    <link rel="alternate" hreflang="pt" href="https://hone.codes/pt/">
+    <link rel="alternate" hreflang="ko" href="https://hone.codes/ko/">
+    <link rel="alternate" hreflang="it" href="https://hone.codes/it/">
+    <link rel="alternate" hreflang="tr" href="https://hone.codes/tr/">
+    <link rel="alternate" hreflang="th" href="https://hone.codes/th/">
+    <link rel="alternate" hreflang="id" href="https://hone.codes/id/">
+    <link rel="alternate" hreflang="vi" href="https://hone.codes/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://hone.codes/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqH7hmIamIGvTvpbULuEpEOEWgSxzXiyDp07xdEU2IWvfHwtQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/zh-Hans/">
+    <meta property="og:title" content="Hone — 原生打磨你的代码。">
+    <meta property="og:description" content="面向所有平台的原生 AI 代码编辑器。使用 TypeScript 编写，通过 Perry 编译为原生二进制。无 Electron，无妥协。">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — 原生代码编辑器">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — 原生打磨你的代码。">
+    <meta name="twitter:description" content="面向所有平台的原生 AI 代码编辑器。使用 TypeScript 编写，通过 Perry 编译为原生二进制。无 Electron，无妥协。">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hone",
+        "description": "面向所有平台的原生 AI 代码编辑器。使用 TypeScript 编写，通过 Perry 编译为原生二进制。",
+        "url": "https://hone.codes/zh-Hans/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "免费 — 1 个同步项目，2 台设备"
+            },
+            {
+                "@type": "Offer",
+                "price": "36",
+                "priceCurrency": "USD",
+                "description": "专业版 — 无限项目，无限设备",
+                "billingIncrement": "P1Y"
+            }
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Skelpo GmbH",
+            "url": "https://skelpo.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="/zh-Hans/" class="nav-logo">
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
+        <span class="nav-logo-text">Hone</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">功能</a>
+        <a href="#ai">AI</a>
+        <a href="#status">状态</a>
+        <a href="#roadmap">路线图</a>
+        <a href="#pricing">价格</a>
+        <a href="#updates">更新</a>
+        <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+        </a>
+        <div class="lang-picker">
+            <button class="lang-picker-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                中文
+            </button>
+            <div class="lang-dropdown">
+                <a href="/">English</a>
+                <a href="/de/">Deutsch</a>
+                <a href="/ja/">日本語</a>
+                <a href="/zh-Hans/" class="active">中文</a>
+                <a href="/es/">Español</a>
+                <a href="/fr/">Français</a>
+                <a href="/pt/">Português</a>
+                <a href="/ko/">한국어</a>
+                <a href="/it/">Italiano</a>
+                <a href="/tr/">Türkçe</a>
+                <a href="/th/">ไทย</a>
+                <a href="/id/">Indonesia</a>
+                <a href="/vi/">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="glow-orb green"></div>
+    <div class="glow-orb blue"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        公开构建中 — 早期开发阶段
+    </div>
+
+    <h1>原生打磨<br><span class="highlight">你的代码。</span></h1>
+
+    <p class="hero-sub">
+        面向所有平台的原生 AI 代码编辑器。使用 TypeScript 编写，通过 Perry 编译为原生二进制。无 Electron，无妥协。
+    </p>
+
+    <div class="hero-cta">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            在 GitHub 上关注
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            了解更多 ↓
+        </a>
+    </div>
+
+    <!-- Real screenshot -->
+    <div class="screenshot-wrapper">
+        <img src="/screenshot.png" alt="Hone IDE 在 macOS 上运行 — 文件浏览器、带语法高亮的编辑器、终端和标签页" class="hero-screenshot">
+        <p class="screenshot-caption">真实截图。是的，还有一些小瑕疵 — 别忘了，我们正在公开构建。</p>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section fade-in" id="features">
+    <div class="section-label">为什么选择 Hone</div>
+    <h2 class="section-title">编辑器该有的一切。<br>不该有的一个都没有。</h2>
+    <p class="section-desc">
+        使用 TypeScript 从零构建，通过 Perry 编译为原生二进制。每个组件都为性能、模块化和开发者体验而设计。
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>真正的原生</h3>
+            <p>无 Electron、无 Chromium、无 V8 运行时。Perry 将 TypeScript 直接编译为原生二进制。体积不到 50MB，内存占用不到 100MB，启动不到一秒。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>AI 优先架构</h3>
+            <p>AI 不是后来加上去的 — 而是深度融入编辑器核心。AI 能感知你的语法树、错误、Git diff 和终端。深度上下文，而不仅仅是文本。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔑</div>
+            <h3>自带 AI</h3>
+            <p>Claude、GPT、Gemini、Ollama 或你公司的私有模型。你的 API 密钥，你的选择。为不同功能混合使用不同供应商，无供应商锁定。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Agent 模式</h3>
+            <p>描述你的需求。Agent 会阅读你的代码、规划修改、编辑文件、运行测试并迭代 — 在任何提交之前逐块审批。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>原生 PR 审查</h3>
+            <p>在编辑器内审查 Pull Request，拥有完整的语法高亮、diff 中的 LSP 智能提示，以及 AI 驱动的注释，在人类之前发现 Bug。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>模块化与可组合</h3>
+            <p>hone-editor、hone-terminal 和 hone-core 是独立的包。在你自己的应用中使用编辑器组件，或在 Hone 的基础上构建你自己的 IDE。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE ===== -->
+<section class="section fade-in" id="performance">
+    <div class="section-label">性能</div>
+    <h2 class="section-title">Electron<br>无法企及的数字。</h2>
+    <p class="section-desc">
+        当你消除浏览器层，一切都会变快。这些是我们的目标 — 我们志在全部达成。
+    </p>
+
+    <div class="perf-grid">
+        <div class="perf-card">
+            <div class="perf-value">&lt;1s</div>
+            <div class="perf-label">冷启动</div>
+            <div class="perf-compare">对比 3-5s (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;100</div>
+            <div class="perf-label">MB 空闲内存</div>
+            <div class="perf-compare">对比 300-500MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;50</div>
+            <div class="perf-label">MB 二进制体积</div>
+            <div class="perf-compare">对比 ~300MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;10</div>
+            <div class="perf-label">ms 按键延迟</div>
+            <div class="perf-compare">对比 30-50ms (VSCode)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AI ===== -->
+<section class="section fade-in" id="ai">
+    <div class="section-label">AI 集成</div>
+    <h2 class="section-title">你的 AI，你的密钥，<br>你的选择。</h2>
+    <p class="section-desc">
+        Hone 绝不转售 API 访问权限。你自带密钥，为不同功能路由不同供应商。当下一个热门模型发布时，立即可用。
+    </p>
+
+    <div class="ai-features">
+        <div class="ai-feature-card">
+            <span class="tag tag-green">内联</span>
+            <h3>幽灵文本补全</h3>
+            <p>由任何供应商驱动的上下文感知建议。感知你的语法树，而非仅仅是原始文本。以原生速度渲染，零 Electron 开销。</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-blue">对话</span>
+            <h3>上下文感知对话</h3>
+            <p>AI 自动感知你打开的文件、错误、终端输出和 Git 状态。无需手动 @file 标记。随时切换模型。</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-purple">Agent</span>
+            <h3>自主编码 Agent</h3>
+            <p>多文件编辑、终端命令、测试执行、错误恢复。通过实时活动日志和变更落地前的 diff 审批实现完全透明。</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-yellow">审查</span>
+            <h3>AI 驱动的 PR 审查</h3>
+            <p>AI 预先分析每个 diff 中的 Bug、安全问题和风格问题。审查注释内联显示。一键修复。将审查提交回 GitHub/GitLab。</p>
+        </div>
+    </div>
+
+    <div class="byok-block">
+        <h3>自带密钥，自由组合。</h3>
+        <p>为每个 AI 功能路由到不同的供应商。使用快速的本地模型做自动补全，使用强大的云端模型做 Agent 任务，中间的用于对话。你的基础设施，你的预算，你的规则。</p>
+        <div class="provider-logos">
+            <div class="provider-pill"><span class="provider-dot" style="background:#d4a574"></span> Anthropic (Claude)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#74b9ff"></span> OpenAI (GPT)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#55efc4"></span> Google (Gemini)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#a29bfe"></span> Ollama (本地)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#fd79a8"></span> AWS Bedrock</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#ffeaa7"></span> 任何 OpenAI 兼容接口</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLATFORMS ===== -->
+<section class="section fade-in" id="platforms">
+    <div class="section-label">平台</div>
+    <h2 class="section-title" style="text-align:center;">一套代码。<br>所有平台。</h2>
+    <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">
+        使用 TypeScript 编写一次，通过 Perry 在每个平台上编译为原生应用。原生外观，原生速度，无处不在。
+    </p>
+
+    <div class="platforms-row">
+        <div class="platform-item">
+            <div class="platform-icon">🍎</div>
+            <span class="platform-label">macOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🪟</div>
+            <span class="platform-label">Windows</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🐧</div>
+            <span class="platform-label">Linux</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">📱</div>
+            <span class="platform-label">iOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🤖</div>
+            <span class="platform-label">Android</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🌐</div>
+            <span class="platform-label">Web</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">当前状态</div>
+    <h2 class="section-title">已完成的构建。</h2>
+    <p class="section-desc">
+        Hone 是一系列可组合的包。以下是每个包的当前进展。
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>已发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Piece-table 缓冲区、多光标、撤销/重做</li>
+                <li>iOS：完整键盘支持、Cmd+C/V/X/Z/A、滚动</li>
+                <li>Windows：鼠标拖选、双击选词</li>
+                <li>代码片段引擎、断点栏、Error Lens</li>
+                <li>持久查找高亮、折叠指示器</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>已发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm、256 色、真彩色</li>
+                <li>真正的 PTY 后端 (LiveTerminal)</li>
+                <li>主题感知的颜色 FFI：全平台</li>
+                <li>Shell 集成 (OSC 133)</li>
+                <li>163 个测试用例通过</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>已发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript、Python、Rust、Go</li>
+                <li>C/C++、HTML/CSS、JSON、Markdown</li>
+                <li>Git、Docker、TOML/YAML</li>
+                <li>延迟激活，Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>已发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>15 个精选主题（本周新增 4 个）</li>
+                <li>高对比度、Tokyo Night、Gruvbox Dark</li>
+                <li>兼容 VSCode 主题格式</li>
+                <li>WCAG 对比度验证</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>已发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>零运行时，纯类型</li>
+                <li>commands、editor、workspace、ui</li>
+                <li>同步 API：信封、载荷、认证</li>
+                <li>452+ 类型级测试通过</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>进行中</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ 工作区、设置、快捷键</li>
+                <li>✓ Git 客户端、diff 解析器、状态</li>
+                <li>✓ 文档格式化 + 语言预设</li>
+                <li>✓ 拼写检查、缩进检测</li>
+                <li>✓ AI 供应商、内联、对话、遥测</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>进行中</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ 完整集成：LSP、Git、搜索、调试</li>
+                <li>✓ Error Lens、AI 幽灵文本、断点</li>
+                <li>✓ 插件系统，端到端加载</li>
+                <li>✓ 查找替换、格式化文档、Cmd+S</li>
+                <li>✓ 50+ 文件图标、上下文菜单、崩溃报告</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>新发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>用于跨设备同步的 WebSocket 中继</li>
+                <li>基于 SQLite 的持久化增量存储</li>
+                <li>兼容 Perry AOT，原生二进制</li>
+                <li>附带 README 的公开发布</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>marketplace</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>新发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Perry 编译的 Fastify 服务器</li>
+                <li>marketplace.hone.codes，Hone 品牌</li>
+                <li>通过 GitHub Actions 自动部署</li>
+                <li>插件搜索、下载、发布</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>build</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>新发布</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>插件构建协调器</li>
+                <li>通过 perry-hub 进行跨平台编译</li>
+                <li>通过 GitHub Actions 自动部署</li>
+                <li>Perry AOT 原生二进制</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">路线图</div>
+    <h2 class="section-title">15 个切片，构建完整 IDE。</h2>
+    <p class="section-desc">
+        每个切片都在所有七个平台上同时交付一个完整的、可测试的功能 — 桌面、移动端和 Web。
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">第一阶段</span>
+                <span class="phase-title">基础</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>已完成</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">切片 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">工作台外壳与主题引擎</span>
+                    <span class="slice-detail">可调整面板、标签页、活动栏、主题加载</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">工作区与文件浏览器</span>
+                    <span class="slice-detail">多根目录、文件监听、模糊查找</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">设置、快捷键与引导流程</span>
+                    <span class="slice-detail">分层设置、可视化编辑器、AI 设置向导</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">第二阶段</span>
+                <span class="phase-title">核心 IDE</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>已完成</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">切片 3</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">编辑器集成</span>
+                    <span class="slice-detail">标签页、文件加载、全平台交互编辑</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 4</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Git 与版本控制</span>
+                    <span class="slice-detail">推送/拉取/暂存、内联追溯、提交日志、差异视图</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 5</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">搜索</span>
+                    <span class="slice-detail">Ripgrep 集成，VS Code 风格搜索面板</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 6</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">LSP 与语言智能</span>
+                    <span class="slice-detail">悬停提示、跳转定义、签名帮助、Error Lens</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 7</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">调试</span>
+                    <span class="slice-detail">调试面板、断点、折叠、DAP 连接</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">第三阶段</span>
+                <span class="phase-title">AI 与终端</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>进行中</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">切片 8</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI 供应商系统</span>
+                    <span class="slice-detail">核心供应商 + 内联 + 对话模块，IDE 已接入</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 9</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI 内联补全</span>
+                    <span class="slice-detail">幽灵文本渲染通过 FFI 接入 IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 10</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI 对话</span>
+                    <span class="slice-detail">带流式传输、上下文标签、Markdown 的对话面板</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 11</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">终端集成</span>
+                    <span class="slice-detail">真正的 PTY 终端集成到 IDE 工作台</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 12</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI Agent 模式</span>
+                    <span class="slice-detail">Agent 状态 + 工具已在核心中 — IDE 活动日志待完成</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 13</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI PR 审查</span>
+                    <span class="slice-detail">PR 审查视图已存在 — AI 注释待完成</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">第四阶段</span>
+                <span class="phase-title">扩展与发布</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>进行中</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">切片 14</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">扩展系统</span>
+                    <span class="slice-detail">插件 SDK、宿主 crate、市场 + 构建服务器已上线</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">切片 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">打磨与打包</span>
+                    <span class="slice-detail">DMG、MSI、AppImage、.ipa、.apk — 所有平台</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section fade-in" id="pricing">
+    <div class="section-label">价格</div>
+    <h2 class="section-title">同步你的工作流。</h2>
+    <p class="section-desc">
+        编辑器免费且开源。你只需为托管同步服务付费。
+    </p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="tier-name">免费版</div>
+            <div class="price">$0</div>
+            <div class="price-period">永久免费</div>
+            <ul>
+                <li>1 个同步项目</li>
+                <li>2 台设备</li>
+                <li>50 MB 增量存储</li>
+                <li>端到端加密</li>
+                <li>无需注册账号</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="tier-name">专业版</div>
+            <div class="price">$36</div>
+            <div class="price-period">每年 &middot; 约 $3/月</div>
+            <ul>
+                <li>无限项目</li>
+                <li>无限设备</li>
+                <li>5 GB 增量存储</li>
+                <li>端到端加密</li>
+                <li>优先支持</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="pricing-note">
+        <strong>端到端加密。</strong>中继服务器永远不会看到你的代码。<br>
+        <strong>开源。</strong>自行托管中继服务器，免费无限制。
+    </p>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">更新</div>
+    <h2 class="section-title">最近进展。</h2>
+    <p class="section-desc">
+        构建过程中的进度笔记 — 没有营销话术，只有真正发布的内容。
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026 年 3 月 20 日</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE 全面集成冲刺 — LSP、Git、调试、搜索、插件，以及 46 个编辑器提交</div>
+            <div class="update-body">
+                <p>IDE 本周经历了一次大规模的集成冲刺。七个阶段的功能接入在 26 个提交中完成：LSP 悬停/跳转定义/签名帮助（第 3 阶段）、带 VS Code 风格面板的 Ripgrep 搜索、Git 推送/拉取/暂存/内联追溯/提交日志（第 4 阶段）、带跳转到下一个错误的 Error Lens 诊断（第 5 阶段）、带断点和折叠的调试面板（第 6 阶段），以及 50+ 文件类型图标、拼写检查、代码片段和主题接入的扩展（第 7 阶段）。插件系统现已端到端接入 — 扩展可以在 IDE 中加载、激活和运行。</p>
+                <p style="margin-top: 10px;">在集成阶段之上还有：通过 <code>setFindHighlights</code> FFI 实现字符级精确高亮的查找替换、带 3 层管线和保存时格式化的文档格式化、资源管理器中的右键上下文菜单、<code>Cmd+S</code> 保存、最近打开子菜单、活动文件自动展开、带脏标记的 VS Code 风格标签页，以及启动时向 Chirp 发送崩溃报告。一个 30GB 的内存泄漏被定位并修复。IDE 现在在可用时优先使用 <code>tsgo --lsp</code> 而非 typescript-language-server。</p>
+                <p style="margin-top: 10px;">编辑器有 46 个跨平台提交。iOS 获得了完整的键盘支持 — <code>Cmd+C/V/X/Z/A</code>、方向键、Enter、Tab、Shift+选择、按键重复 — 以及智能引号抑制和覆盖层/滚动修复。Windows 添加了鼠标拖选和双击选词。Linux 获得了带语法高亮的 Perry 模式渲染。Android 获得了分词器、平台存根、ARM64 的 16KB 页面对齐，以及一个崩溃修复。一个带制表位、变量和 4 语言内置支持的代码片段引擎已发布。Rust 渲染器增加了断点栏图标、折叠指示器和 Error Lens 内联诊断。持久查找高亮和装饰 API 完善了编辑器工作。</p>
+                <p style="margin-top: 10px;"><code>hone-core</code> 添加了带语言预设的文档格式化器（51 个测试）、带驼峰拆分和建议的拼写检查器，以及缩进检测器。<code>hone-themes</code> 新增了 4 个主题 — 高对比度暗色/亮色、Tokyo Night 和 Gruvbox Dark — 总数达到 15 个。两个新包上线：<code>hone-marketplace</code>（Perry 编译的 Fastify 服务器，用于 marketplace.hone.codes，带自动部署）和 <code>hone-build</code>（通过 perry-hub 进行跨平台编译的插件构建协调器）。插件 SDK、Rust 宿主 crate、CLI 和市场客户端在 <code>hone-extension</code> 中发布，同时还有 9 个即用型插件。</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/marketplace</span>
+                <span class="update-chip">@honeide/build</span>
+                <span class="update-chip">Plugins</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">Error Lens</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026 年 3 月 16 日</span>
+                <span class="update-tag">跨平台</span>
+            </div>
+            <div class="update-title">iOS 编辑器可用、跨设备同步端到端、Claude Code GUI、Web 目标</div>
+            <div class="update-body">
+                <p>iOS 上的编辑器从白屏变为完全可用。大约 20 个提交完成了这一转变 — 用 <code>CADisplayLink</code> 渲染循环替代 <code>setNeedsDisplay</code>、修复触摸传递和光标同步、使用正确偏移量实现单指滚动，以及接入颜色 FFI 使主题正确应用。Android 获得了 OOM 修复（脏跟踪代替完整重绘）、ARM64 调用约定修正和真实颜色管线接入。多行选择渲染和基于快照的撤销/重做在所有平台上线。一个带主题切换的独立编辑器测试应用使迭代无需启动完整 IDE 即可进行。</p>
+                <p style="margin-top: 10px;">iOS 上的跨设备同步现已端到端运行。原生 WebSocket 配对、文件树浏览和文件内容加载均通过中继工作。Android 同步获得了消息节流修复。IDE 的同步层添加了 token/lastSeq 支持和增量追赶，使重新连接的设备能够从断点续传。在中继端，增量存储被重写为基于 SQLite 的持久化存储，兼容 Perry AOT。中继包获得了 README 和公开发布清理。</p>
+                <p style="margin-top: 10px;">AI 对话面板获得了完整的 Claude Code GUI — 处理代码块的多块解析、速率限制指示器、思考块渲染、内联 diff 和用量统计。带 Picker 下拉菜单的多供应商模型选择器让你可以在供应商和模型之间切换。面板经历了安全和资源管理审计。</p>
+                <p style="margin-top: 10px;">IDE 现在可在 Web 上运行 — 新的 Web 目标跳过设置、隐藏终端和 Git（无 PTY 或文件系统），加载一个暗色主题编辑器。亮色模式在所有面板上线 — 编辑器、终端、设置界面、嵌入式 NSView。macOS 获得了应用图标、文件类型关联和"打开方式"支持。VS Code 风格标签页替代了旧标签栏。终端在所有平台（包括 Web 存根）上获得了主题感知的颜色 FFI。<code>hone-core</code> 添加了可选的匿名遥测。</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">iOS</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Claude Code</span>
+                <span class="update-chip">Web</span>
+                <span class="update-chip">Light Mode</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026 年 3 月 6 日</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE 初具雏形 — 终端、AI 对话、Git diff、同步和 MVP 审计</div>
+            <div class="update-body">
+                <p>过去一周是项目启动以来产出最高的一周。IDE 从一个能加载文件的工作台外壳变成了一个真正看起来和用起来像代码编辑器的东西。真正的 PTY 终端模拟器集成在底部面板中。AI 对话带流式响应在右侧面板。并排 Git diff 视图，带彩色行背景。VS Code 风格文件浏览器，像素级对齐。设置持久化和跨所有 11 个主题的实时主题切换。通过 LSP 桥接的后台 tsc 诊断。macOS 和 Windows 上的原生菜单。Linux 目标支持。</p>
+                <p style="margin-top: 10px;">编辑器方面，交互编辑现在在所有六个平台上工作 — macOS、iOS、Windows、Android、Linux (GTK4) 和 Web。自动闭合括号和智能缩进已上线。大量 Perry AOT 兼容性工作完成：修复语法高亮字符范围、Rust FFI 事件队列导致的灰线 Bug、Windows 上的 DPI 缩放，以及 iOS 上的 ARM64 ABI 修正。</p>
+                <p style="margin-top: 10px;">最大的架构新增是跨设备同步。<code>hone-relay</code> 是一个新包 — 通过 Perry 编译为原生的 WebSocket 中继服务器，带认证、速率限制和房间管理。<code>hone-core</code> 增加了完整的同步传输层，包含端到端加密、设备配对、局域网发现和带冲突检测的变更队列。IDE 有同步主机/客机模块、同步面板、审查面板和信任设置 UI。<code>@honeide/api</code> 类型扩展了同步消息信封、领域载荷和认证类型。</p>
+                <p style="margin-top: 10px;">核心还增加了 Git（客户端、状态解析器、diff 解析器、日志）、搜索（Ripgrep 集成、搜索模型）、AI 模块（供应商、内联、对话、Agent 状态/工具、审查）、任务运行器和 LSP/DAP 协议类型。这是 55 个源文件和 499 个测试通过。</p>
+                <p style="margin-top: 10px;">本周最后进行了 MVP 审计 — 将 UI 精简为实际可用的功能，并为其余功能接入菜单存根。macOS 上的二进制文件为 3.6 MB。</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">AI Chat</span>
+                <span class="update-chip">Git Diff</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026 年 2 月 28 日</span>
+                <span class="update-tag">编辑器</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — 演示在六个平台上运行</div>
+            <div class="update-body">
+                <p>编辑器组件现在在 macOS、iOS、Windows、Android 和 Web 上有可用的交互演示。带 B-tree rope 的 Piece-table 文本缓冲区提供 O(log n) 编辑性能，虚拟滚动渲染器只处理可见行，因此即使大文件也保持流畅。</p>
+                <p style="margin-top: 10px;">本次冲刺的主要平台挑战是在 iOS 上为 Perry 的 FFI 层正确设置 ARM64 ABI。Core Text 字形光栅化器现在从 Perry 编译的 TypeScript 正确调用，这解锁了 iOS 演示。通过 Pango 的 Linux 渲染已搭建框架；尚未进入演示。</p>
+                <p style="margin-top: 10px;">语法高亮覆盖 10 种语言（<code>ts</code>、<code>js</code>、<code>html</code>、<code>css</code>、<code>json</code>、<code>py</code>、<code>rs</code>、<code>cpp</code>、<code>md</code>），通过 Lezer 语法。LSP 和 DAP 客户端已接入 — 补全、悬停、跳转定义、断点和变量检查均在组件级工作。AI 内联补全的幽灵文本渲染也已上线。</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026 年 2 月 14 日</span>
+                <span class="update-tag">终端</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — 完整 VT100 兼容，163 个测试</div>
+            <div class="update-body">
+                <p>终端模拟器组件发布了首个版本。解析器是一个 14 状态机，处理 CSI、OSC 和 DCS 转义序列。支持真彩色（通过 SGR 的 24 位 RGB）、X10 和 SGR 扩展模式的鼠标跟踪、备用屏幕缓冲区（<code>DECSET 1049</code> — 让 vim、htop 和 less 正确工作的那个），以及括号粘贴。</p>
+                <p style="margin-top: 10px;">OSC 8 超链接、CJK 双宽字符和 OSC 133 Shell 集成标记（用于提示检测）完善了功能集。macOS 渲染路径使用 Core Text；与 hone-editor 相同的架构，因此两个组件共享原生渲染约定。</p>
+                <p style="margin-top: 10px;">163 个测试用例覆盖了解析器状态转换、属性渲染、鼠标事件编码和滚动回溯行为。该组件目前独立使用，将在切片 11 中接入 IDE 工作台。</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026 年 1 月 20 日</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE 外壳完成至切片 2 — 工作台、主题、文件浏览器、设置</div>
+            <div class="update-body">
+                <p>IDE 工作台的前三个切片已完成。外壳渲染了一个可调整大小的面板网格、标签管理器、活动栏和状态栏 — 使用平台自适应布局引擎，根据屏幕大小在完整工作台（桌面/iPad 横屏）、分屏（平板竖屏）和紧凑（手机）模式之间选择。</p>
+                <p style="margin-top: 10px;">主题引擎加载 VSCode 兼容的 JSON 主题，并将 TextMate 作用域解析为编辑器的颜色。<code>@honeide/themes</code> 的所有 11 个主题均可使用。文件浏览器显示由 <code>@honeide/core</code> 中文件监听器支持的实时树，Ctrl+P 通过字典树索引进行模糊查找。</p>
+                <p style="margin-top: 10px;">设置使用四层存储（默认 → 用户 → 工作区 → 语言特定覆盖）。欢迎界面中的 AI 供应商设置向导引导完成 API 密钥输入、连接测试和按功能的模型路由。切片 3 — 将实际编辑器标签页接入 <code>@honeide/editor</code> 实例 — 是下一步。</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Workbench</span>
+                <span class="update-chip">Themes</span>
+                <span class="update-chip">Settings</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <div class="glow-orb green"></div>
+    <h2>公开构建。</h2>
+    <p>Hone 处于早期开发阶段。关注进展、参与贡献，或只是旁观。</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            在 GitHub 上点赞
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-left">
+        © 2026 Hone · 由 <a href="https://skelpo.com" target="_blank">Skelpo GmbH</a> 构建
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/HoneIDE" target="_blank">GitHub</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

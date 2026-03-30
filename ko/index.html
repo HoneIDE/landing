@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hone — 네이티브로, 코드를 벼리다.</title>
+    <meta name="description" content="모든 플랫폼을 위한 네이티브 AI 코드 에디터. TypeScript로 작성, Perry를 통해 네이티브로 컴파일. Electron 없이. 타협 없이.">
+    <link rel="canonical" href="https://hone.codes/ko/">
+    <meta name="theme-color" content="#0D1117">
+    <meta name="author" content="Skelpo GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://hone.codes/">
+    <link rel="alternate" hreflang="de" href="https://hone.codes/de/">
+    <link rel="alternate" hreflang="ja" href="https://hone.codes/ja/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://hone.codes/zh-Hans/">
+    <link rel="alternate" hreflang="es" href="https://hone.codes/es/">
+    <link rel="alternate" hreflang="fr" href="https://hone.codes/fr/">
+    <link rel="alternate" hreflang="pt" href="https://hone.codes/pt/">
+    <link rel="alternate" hreflang="ko" href="https://hone.codes/ko/">
+    <link rel="alternate" hreflang="it" href="https://hone.codes/it/">
+    <link rel="alternate" hreflang="tr" href="https://hone.codes/tr/">
+    <link rel="alternate" hreflang="th" href="https://hone.codes/th/">
+    <link rel="alternate" hreflang="id" href="https://hone.codes/id/">
+    <link rel="alternate" hreflang="vi" href="https://hone.codes/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://hone.codes/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqH7hmIamIGvTvpbULuEpEOEWgSxzXiyDp07xdEU2IWvfHwtQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/ko/">
+    <meta property="og:title" content="Hone — 네이티브로, 코드를 벼리다.">
+    <meta property="og:description" content="모든 플랫폼을 위한 네이티브 AI 코드 에디터. TypeScript로 작성, Perry를 통해 네이티브로 컴파일. Electron 없이. 타협 없이.">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — 네이티브 코드 에디터">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — 네이티브로, 코드를 벼리다.">
+    <meta name="twitter:description" content="모든 플랫폼을 위한 네이티브 AI 코드 에디터. TypeScript로 작성, Perry를 통해 네이티브로 컴파일. Electron 없이. 타협 없이.">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hone",
+        "description": "모든 플랫폼을 위한 네이티브 AI 코드 에디터. TypeScript로 작성, Perry를 통해 네이티브로 컴파일.",
+        "url": "https://hone.codes/ko/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "무료 — 동기화 프로젝트 1개, 기기 2대"
+            },
+            {
+                "@type": "Offer",
+                "price": "36",
+                "priceCurrency": "USD",
+                "description": "Pro — 무제한 프로젝트, 무제한 기기",
+                "billingIncrement": "P1Y"
+            }
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Skelpo GmbH",
+            "url": "https://skelpo.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="/ko/" class="nav-logo">
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
+        <span class="nav-logo-text">Hone</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">기능</a>
+        <a href="#ai">AI</a>
+        <a href="#status">현황</a>
+        <a href="#roadmap">로드맵</a>
+        <a href="#pricing">요금</a>
+        <a href="#updates">업데이트</a>
+        <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+        </a>
+        <div class="lang-picker">
+            <button class="lang-picker-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                KO
+            </button>
+            <div class="lang-dropdown">
+                <a href="/">English</a>
+                <a href="/de/">Deutsch</a>
+                <a href="/ja/">日本語</a>
+                <a href="/zh-Hans/">中文</a>
+                <a href="/es/">Español</a>
+                <a href="/fr/">Français</a>
+                <a href="/pt/">Português</a>
+                <a href="/ko/" class="active">한국어</a>
+                <a href="/it/">Italiano</a>
+                <a href="/tr/">Türkçe</a>
+                <a href="/th/">ไทย</a>
+                <a href="/id/">Indonesia</a>
+                <a href="/vi/">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="glow-orb green"></div>
+    <div class="glow-orb blue"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        오픈 개발 중 — 초기 개발 단계
+    </div>
+
+    <h1>코드를 벼리다,<br><span class="highlight">네이티브로.</span></h1>
+
+    <p class="hero-sub">
+        모든 플랫폼을 위한 네이티브 AI 코드 에디터. TypeScript로 작성, Perry를 통해 네이티브로 컴파일. Electron 없이. 타협 없이.
+    </p>
+
+    <div class="hero-cta">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub에서 팔로우
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            더 알아보기 ↓
+        </a>
+    </div>
+
+    <!-- Real screenshot -->
+    <div class="screenshot-wrapper">
+        <img src="/screenshot.png" alt="macOS에서 실행 중인 Hone IDE — 파일 탐색기, 구문 강조 에디터, 터미널, 탭" class="hero-screenshot">
+        <p class="screenshot-caption">실제 스크린샷입니다. 네, 작은 불완전함이 있습니다 — 오픈 개발 중이니까요.</p>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section fade-in" id="features">
+    <div class="section-label">왜 Hone인가</div>
+    <h2 class="section-title">에디터가 갖춰야 할 모든 것.<br>불필요한 것은 없이.</h2>
+    <p class="section-desc">
+        TypeScript로 처음부터 설계하고, Perry를 통해 네이티브 바이너리로 컴파일합니다. 모든 컴포넌트가 성능, 모듈성, 개발자 경험을 위해 설계되었습니다.
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>진정한 네이티브</h3>
+            <p>Electron 없이, Chromium 없이, V8 런타임 없이. Perry가 TypeScript를 네이티브 바이너리로 직접 컴파일합니다. 50MB 미만, RAM 100MB 미만, 1초 이내 시작.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>AI 퍼스트 아키텍처</h3>
+            <p>AI가 덧붙여진 것이 아닙니다 — 에디터 코어에 녹아 있습니다. AI가 구문 트리, 오류, git diff, 터미널을 인식합니다. 단순 텍스트가 아닌 깊은 컨텍스트.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔑</div>
+            <h3>나만의 AI 사용</h3>
+            <p>Claude, GPT, Gemini, Ollama, 또는 회사 전용 모델. 여러분의 API 키, 여러분의 선택. 다양한 기능에 다양한 제공자를 조합하세요. 벤더 종속 없음.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>에이전트 모드</h3>
+            <p>원하는 것을 설명하세요. 에이전트가 코드를 읽고, 변경을 계획하고, 파일을 편집하고, 테스트를 실행하고, 반복합니다 — 커밋 전에 헝크 단위로 승인.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>네이티브 PR 리뷰</h3>
+            <p>에디터 내에서 풀 리퀘스트를 리뷰합니다. 전체 구문 강조, diff에서의 LSP 인텔리전스, 사람보다 먼저 버그를 잡아내는 AI 주석을 제공합니다.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>모듈식 & 조합 가능</h3>
+            <p>hone-editor, hone-terminal, hone-core는 독립 패키지입니다. 에디터 컴포넌트를 여러분의 앱에서 사용하세요. Hone의 기반 위에 나만의 IDE를 만드세요.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE ===== -->
+<section class="section fade-in" id="performance">
+    <div class="section-label">성능</div>
+    <h2 class="section-title">Electron이 도달할 수 없는<br>수치.</h2>
+    <p class="section-desc">
+        브라우저를 제거하면 모든 것이 빨라집니다. 이것이 우리의 목표이며 — 모두 달성할 것입니다.
+    </p>
+
+    <div class="perf-grid">
+        <div class="perf-card">
+            <div class="perf-value">&lt;1초</div>
+            <div class="perf-label">콜드 스타트</div>
+            <div class="perf-compare">vs 3-5초 (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;100</div>
+            <div class="perf-label">MB RAM 유휴 시</div>
+            <div class="perf-compare">vs 300-500MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;50</div>
+            <div class="perf-label">MB 바이너리</div>
+            <div class="perf-compare">vs ~300MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;10</div>
+            <div class="perf-label">ms 키 입력 지연</div>
+            <div class="perf-compare">vs 30-50ms (VSCode)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AI ===== -->
+<section class="section fade-in" id="ai">
+    <div class="section-label">AI 통합</div>
+    <h2 class="section-title">나의 AI. 나의 키.<br>나의 선택.</h2>
+    <p class="section-desc">
+        Hone은 API 접근을 재판매하지 않습니다. 여러분의 키를 직접 사용하고 다양한 제공자를 다양한 기능에 연결하세요. 새로운 핫 모델이 출시되면, 즉시 작동합니다.
+    </p>
+
+    <div class="ai-features">
+        <div class="ai-feature-card">
+            <span class="tag tag-green">인라인</span>
+            <h3>고스트 텍스트 자동완성</h3>
+            <p>어떤 제공자든 활용하는 컨텍스트 인식 제안. 단순 텍스트가 아닌 구문 트리를 인식합니다. Electron 오버헤드 없이 네이티브 속도로 렌더링.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-blue">채팅</span>
+            <h3>컨텍스트 인식 채팅</h3>
+            <p>AI가 열려 있는 파일, 오류, 터미널 출력, git 상태를 자동으로 인식합니다. 수동 @file 태깅이 필요 없습니다. 대화 중 모델 전환 가능.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-purple">에이전트</span>
+            <h3>자율 코딩 에이전트</h3>
+            <p>다중 파일 편집, 터미널 명령, 테스트 실행, 오류 복구. 라이브 활동 로그와 변경 적용 전 diff 승인으로 완전한 투명성.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-yellow">리뷰</span>
+            <h3>AI 기반 PR 리뷰</h3>
+            <p>AI가 모든 diff에서 버그, 보안 이슈, 스타일 문제를 사전 분석합니다. 리뷰 주석이 인라인으로 표시됩니다. 원클릭 수정. GitHub/GitLab에 리뷰 제출.</p>
+        </div>
+    </div>
+
+    <div class="byok-block">
+        <h3>나만의 키 사용. 자유로운 조합.</h3>
+        <p>각 AI 기능을 다른 제공자에 연결하세요. 자동완성에는 빠른 로컬 모델, 에이전트 작업에는 강력한 클라우드 모델, 채팅에는 그 사이의 모델을 사용하세요. 여러분의 인프라, 여러분의 예산, 여러분의 규칙.</p>
+        <div class="provider-logos">
+            <div class="provider-pill"><span class="provider-dot" style="background:#d4a574"></span> Anthropic (Claude)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#74b9ff"></span> OpenAI (GPT)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#55efc4"></span> Google (Gemini)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#a29bfe"></span> Ollama (로컬)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#fd79a8"></span> AWS Bedrock</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#ffeaa7"></span> OpenAI 호환 모두</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLATFORMS ===== -->
+<section class="section fade-in" id="platforms">
+    <div class="section-label">플랫폼</div>
+    <h2 class="section-title" style="text-align:center;">하나의 코드베이스.<br>모든 플랫폼.</h2>
+    <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">
+        TypeScript로 한 번 작성. Perry가 각 플랫폼에서 네이티브로 컴파일. 네이티브 룩, 네이티브 속도, 어디서나.
+    </p>
+
+    <div class="platforms-row">
+        <div class="platform-item">
+            <div class="platform-icon">🍎</div>
+            <span class="platform-label">macOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🪟</div>
+            <span class="platform-label">Windows</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🐧</div>
+            <span class="platform-label">Linux</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">📱</div>
+            <span class="platform-label">iOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🤖</div>
+            <span class="platform-label">Android</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🌐</div>
+            <span class="platform-label">Web</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">현재 상태</div>
+    <h2 class="section-title">지금까지 구축된 것.</h2>
+    <p class="section-desc">
+        Hone은 조합 가능한 패키지 모음입니다. 각 패키지의 현재 상태입니다.
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>출시됨</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>피스 테이블 버퍼, 다중 커서, 실행 취소/다시 실행</li>
+                <li>iOS: 전체 키보드, Cmd+C/V/X/Z/A, 스크롤</li>
+                <li>Windows: 마우스 드래그 선택, 단어 선택</li>
+                <li>스니펫 엔진, 브레이크포인트 거터, Error Lens</li>
+                <li>지속적 검색 하이라이트, 접기 인디케이터</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>출시됨</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm, 256색, 트루컬러</li>
+                <li>실제 PTY 백엔드 (LiveTerminal)</li>
+                <li>테마 인식 컬러 FFI: 모든 플랫폼</li>
+                <li>셸 통합 (OSC 133)</li>
+                <li>163개 테스트 케이스 통과</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>출시됨</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript, Python, Rust, Go</li>
+                <li>C/C++, HTML/CSS, JSON, Markdown</li>
+                <li>Git, Docker, TOML/YAML</li>
+                <li>지연 활성화, Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>출시됨</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>15개 엄선 테마 (이번 주 +4개)</li>
+                <li>고대비, Tokyo Night, Gruvbox Dark</li>
+                <li>VSCode 테마 형식 호환</li>
+                <li>WCAG 대비 검증</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>출시됨</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>제로 런타임, 순수 타입</li>
+                <li>commands, editor, workspace, ui</li>
+                <li>동기화 API: envelopes, payloads, auth</li>
+                <li>452+ 타입 레벨 테스트 통과</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>진행 중</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ 워크스페이스, 설정, 키바인딩</li>
+                <li>✓ Git 클라이언트, diff 파서, 상태</li>
+                <li>✓ 문서 포매터 + 언어 프리셋</li>
+                <li>✓ 맞춤법 검사기, 들여쓰기 감지</li>
+                <li>✓ AI 프로바이더, 인라인, 채팅, 텔레메트리</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>진행 중</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ 전체 통합: LSP, git, 검색, 디버그</li>
+                <li>✓ Error Lens, AI 고스트 텍스트, 브레이크포인트</li>
+                <li>✓ 플러그인 시스템, 엔드투엔드 로딩</li>
+                <li>✓ 찾기 & 바꾸기, 문서 포맷, Cmd+S</li>
+                <li>✓ 50+ 파일 아이콘, 컨텍스트 메뉴, 크래시 리포트</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>신규</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>크로스 디바이스 동기화를 위한 WebSocket 릴레이</li>
+                <li>SQLite 기반 영구 델타 저장소</li>
+                <li>Perry AOT 호환, 네이티브 바이너리</li>
+                <li>README와 함께 공개 릴리스</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>marketplace</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>신규</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Perry 컴파일 Fastify 서버</li>
+                <li>Hone 브랜딩의 marketplace.hone.codes</li>
+                <li>GitHub Actions를 통한 자동 배포</li>
+                <li>플러그인 검색, 다운로드, 게시</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>build</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>신규</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>플러그인 빌드 코디네이터</li>
+                <li>perry-hub를 통한 크로스 플랫폼 컴파일</li>
+                <li>GitHub Actions를 통한 자동 배포</li>
+                <li>Perry AOT 네이티브 바이너리</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">로드맵</div>
+    <h2 class="section-title">완전한 IDE까지 15개 슬라이스.</h2>
+    <p class="section-desc">
+        각 슬라이스는 데스크톱, 모바일, 웹 — 7개 플랫폼 모두에서 동시에 완전하고 테스트 가능한 기능을 제공합니다.
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">페이즈 1</span>
+                <span class="phase-title">기반</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>완료</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">워크벤치 셸 & 테마 엔진</span>
+                    <span class="slice-detail">크기 조절 가능 패널, 탭, 액티비티 바, 테마 로딩</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">워크스페이스 & 파일 탐색기</span>
+                    <span class="slice-detail">다중 루트, 파일 감시기, 퍼지 파인더</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">설정, 키바인딩 & 온보딩</span>
+                    <span class="slice-detail">레이어드 설정, 비주얼 에디터, AI 설정 마법사</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">페이즈 2</span>
+                <span class="phase-title">코어 IDE</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>완료</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 3</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">에디터 통합</span>
+                    <span class="slice-detail">탭, 파일 로딩, 모든 플랫폼에서 인터랙티브 편집</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 4</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Git & 소스 제어</span>
+                    <span class="slice-detail">Push/pull/stash, 인라인 blame, 커밋 로그, diff 뷰</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 5</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">검색</span>
+                    <span class="slice-detail">Ripgrep 통합, VS Code 스타일 검색 패널</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 6</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">LSP & 언어 인텔리전스</span>
+                    <span class="slice-detail">호버, 정의로 이동, 시그니처 도움말, Error Lens</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 7</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">디버그</span>
+                    <span class="slice-detail">디버그 패널, 브레이크포인트, 접기, DAP 연결</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">페이즈 3</span>
+                <span class="phase-title">AI & 터미널</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>진행 중</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 8</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI 프로바이더 시스템</span>
+                    <span class="slice-detail">코어 프로바이더 + 인라인 + 채팅 모듈, IDE 연결</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 9</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI 인라인 자동완성</span>
+                    <span class="slice-detail">FFI를 통해 IDE에 고스트 텍스트 렌더링 연결</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 10</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI 채팅</span>
+                    <span class="slice-detail">스트리밍, 컨텍스트 칩, 마크다운이 있는 채팅 패널</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 11</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">터미널 통합</span>
+                    <span class="slice-detail">IDE 워크벤치에 실제 PTY 터미널 통합</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 12</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI 에이전트 모드</span>
+                    <span class="slice-detail">코어에 에이전트 상태 + 도구 — 다음은 IDE 활동 로그</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 13</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI PR 리뷰</span>
+                    <span class="slice-detail">PR 리뷰 뷰 존재 — 다음은 AI 주석</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">페이즈 4</span>
+                <span class="phase-title">확장 기능 & 출시</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>진행 중</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 14</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">확장 기능 시스템</span>
+                    <span class="slice-detail">플러그인 SDK, 호스트 크레이트, 마켓플레이스 + 빌드 서버 운영 중</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">슬라이스 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">마무리 & 패키징</span>
+                    <span class="slice-detail">DMG, MSI, AppImage, .ipa, .apk — 모든 플랫폼</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section fade-in" id="pricing">
+    <div class="section-label">요금</div>
+    <h2 class="section-title">워크플로를 동기화하세요.</h2>
+    <p class="section-desc">
+        에디터는 무료 오픈 소스입니다. 호스팅 동기화에만 비용이 발생합니다.
+    </p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="tier-name">무료</div>
+            <div class="price">$0</div>
+            <div class="price-period">영구 무료</div>
+            <ul>
+                <li>동기화 프로젝트 1개</li>
+                <li>기기 2대</li>
+                <li>50 MB 델타 저장소</li>
+                <li>종단간 암호화</li>
+                <li>계정 불필요</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="tier-name">Pro</div>
+            <div class="price">$36</div>
+            <div class="price-period">연간 &middot; 월 ~$3</div>
+            <ul>
+                <li>무제한 프로젝트</li>
+                <li>무제한 기기</li>
+                <li>5 GB 델타 저장소</li>
+                <li>종단간 암호화</li>
+                <li>우선 지원</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="pricing-note">
+        <strong>종단간 암호화.</strong> 릴레이는 여러분의 코드를 절대 볼 수 없습니다.<br>
+        <strong>오픈 소스.</strong> 릴레이를 직접 호스팅하면 무료, 제한 없음.
+    </p>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">업데이트</div>
+    <h2 class="section-title">최근 소식.</h2>
+    <p class="section-desc">
+        빌드 과정의 진행 노트 — 마케팅 없이, 실제로 출시된 것만.
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026년 3월 20일</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">전체 IDE 통합 스프린트 — LSP, git, 디버그, 검색, 플러그인, 에디터 46개 커밋</div>
+            <div class="update-body">
+                <p>이번 주 IDE는 대규모 통합 스프린트를 거쳤습니다. 26개 커밋에 걸쳐 7단계의 기능 연결이 완료되었습니다: LSP 호버/정의로 이동/시그니처 도움말(3단계), VS Code 스타일 패널의 ripgrep 검색, git push/pull/stash/인라인 blame/커밋 로그(4단계), 다음 오류로 이동이 포함된 Error Lens 진단(5단계), 브레이크포인트와 접기가 있는 디버그 패널(6단계), 50+ 파일 타입 아이콘 확장, 맞춤법 검사, 스니펫, 테마 연결(7단계). 플러그인 시스템이 이제 엔드투엔드로 연결되었습니다 — 확장 기능이 IDE 내에서 로드, 활성화, 실행됩니다.</p>
+                <p style="margin-top: 10px;">통합 단계 외에도: <code>setFindHighlights</code> FFI를 통한 문자 정밀 하이라이트 찾기 & 바꾸기, 3단계 파이프라인과 저장 시 포맷의 문서 포맷, 탐색기 우클릭 컨텍스트 메뉴, <code>Cmd+S</code> 저장, 최근 열기 하위 메뉴, 활성 파일 자동 표시, 더티 인디케이터가 있는 VS Code 스타일 탭, Chirp 시작 시 크래시 리포트. 30GB 메모리 누수가 추적되어 수정되었습니다. IDE는 이제 가능한 경우 typescript-language-server 대신 <code>tsgo --lsp</code>를 선호합니다.</p>
+                <p style="margin-top: 10px;">에디터는 46개의 크로스 플랫폼 커밋이 있었습니다. iOS는 전체 키보드 지원 — <code>Cmd+C/V/X/Z/A</code>, 화살표 키, Enter, Tab, Shift+선택, 키 반복 — 그리고 스마트 따옴표 억제와 오버레이/스크롤 수정을 받았습니다. Windows는 마우스 드래그 선택과 더블클릭 단어 선택이 추가되었습니다. Linux는 구문 강조와 함께 Perry 모드 렌더링을 받았습니다. Android는 토크나이저, 플랫폼 스텁, ARM64용 16KB 페이지 정렬, 크래시 수정을 받았습니다. 탭 스톱, 변수, 4개 언어 빌트인이 있는 스니펫 엔진이 출시되었습니다. Rust 렌더러는 브레이크포인트 거터 아이콘, 접기 인디케이터, Error Lens 인라인 진단을 받았습니다. 지속적 검색 하이라이트와 데코레이션 API가 에디터 작업을 마무리합니다.</p>
+                <p style="margin-top: 10px;"><code>hone-core</code>는 언어 프리셋이 있는 문서 포매터(51개 테스트), camelCase 분리와 제안이 있는 맞춤법 검사기, 들여쓰기 감지기를 추가했습니다. <code>hone-themes</code>는 4개 증가 — 고대비 어둠/밝음, Tokyo Night, Gruvbox Dark — 총 15개가 되었습니다. 두 개의 새 패키지가 출시되었습니다: <code>hone-marketplace</code>(자동 배포가 있는 marketplace.hone.codes용 Perry 컴파일 Fastify 서버)와 <code>hone-build</code>(perry-hub를 통한 크로스 플랫폼 컴파일을 위한 플러그인 빌드 코디네이터). 플러그인 SDK, Rust 호스트 크레이트, CLI, 마켓플레이스 클라이언트가 <code>hone-extension</code>에서 출시되었으며, 9개의 바로 사용 가능한 플러그인도 함께 출시되었습니다.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/marketplace</span>
+                <span class="update-chip">@honeide/build</span>
+                <span class="update-chip">Plugins</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">Error Lens</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026년 3월 16일</span>
+                <span class="update-tag">크로스 플랫폼</span>
+            </div>
+            <div class="update-title">iOS 에디터 작동, 크로스 디바이스 동기화 엔드투엔드, Claude Code GUI, 웹 타겟</div>
+            <div class="update-body">
+                <p>iOS 에디터가 빈 화면에서 완전히 작동하는 상태로 발전했습니다. 약 20개의 커밋이 필요했습니다 — <code>setNeedsDisplay</code>를 <code>CADisplayLink</code> 렌더 루프로 교체, 터치 전달과 커서 동기화 수정, 올바른 오프셋으로 1손가락 스크롤 작동, 테마가 올바르게 적용되도록 컬러 FFI 연결. Android는 OOM 수정(전체 리드로우 대신 더티 추적), ARM64 호출 규약 수정, 실제 컬러 파이프라인 연결을 받았습니다. 다중 줄 선택 렌더링과 스냅샷 기반 실행 취소/다시 실행이 모든 플랫폼에 적용되었습니다. 테마 토글이 있는 독립형 에디터 테스트 앱으로 전체 IDE 부팅 없이 반복 작업이 쉬워졌습니다.</p>
+                <p style="margin-top: 10px;">크로스 디바이스 동기화가 이제 iOS에서 엔드투엔드로 작동합니다. 네이티브 WebSocket 페어링, 파일 트리 탐색, 파일 콘텐츠 로딩이 모두 릴레이를 통해 작동합니다. Android 동기화는 메시지 스로틀링 수정을 받았습니다. IDE의 동기화 레이어에 token/lastSeq 지원과 델타 캐치업이 추가되어 재연결 기기가 중단된 곳부터 이어갈 수 있습니다. 릴레이 측에서는 델타 저장소가 SQLite 기반 영구성과 Perry AOT 호환성으로 재작성되었습니다. 릴레이 패키지는 README와 공개 릴리스 정리를 받았습니다.</p>
+                <p style="margin-top: 10px;">AI 채팅 패널에 전체 Claude Code GUI가 추가되었습니다 — 코드 펜스를 처리하는 다중 블록 파싱, 속도 제한 인디케이터, 씽킹 블록 렌더링, 인라인 diff, 사용량 통계. 드롭다운 Picker가 있는 다중 프로바이더 모델 셀렉터로 프로바이더와 모델 간 전환이 가능합니다. 패널은 보안 및 리소스 관리 감사를 거쳤습니다.</p>
+                <p style="margin-top: 10px;">IDE가 이제 웹에서 실행됩니다 — 새로운 웹 타겟이 설정을 건너뛰고, 터미널과 git을 숨기고(PTY나 파일 시스템 없음), 다크 테마 에디터를 로드합니다. 라이트 모드가 모든 패널에 적용되었습니다 — 에디터, 터미널, 설정 화면, 임베디드 NSView. macOS는 앱 아이콘, 파일 타입 연결, 다음으로 열기 지원을 받았습니다. VS Code 스타일 탭이 이전 탭 바를 대체했습니다. 터미널은 웹 스텁을 포함한 모든 플랫폼에서 테마 인식 컬러 FFI를 받았습니다. <code>hone-core</code>에 옵트인 익명 텔레메트리가 추가되었습니다.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">iOS</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Claude Code</span>
+                <span class="update-chip">Web</span>
+                <span class="update-chip">Light Mode</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026년 3월 6일</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE가 모습을 갖추다 — 터미널, AI 채팅, git diff, 동기화, MVP 감사</div>
+            <div class="update-body">
+                <p>지난 한 주는 프로젝트 시작 이래 가장 생산적인 주였습니다. IDE가 파일을 로드할 수 있는 워크벤치 셸에서 실제로 코드 에디터처럼 보이고 느껴지는 것으로 변했습니다. 하단 패널에 실제 PTY 기반 터미널 에뮬레이터가 통합되었습니다. 오른쪽에 스트리밍 응답이 있는 AI 채팅. 색상 줄 배경이 있는 나란히 git diff 뷰. 픽셀 퍼펙트 정렬의 VS Code 스타일 파일 탐색기. 설정 영구성과 11개 테마 전체에서 라이브 테마 전환. LSP 브리지를 통한 백그라운드 tsc 진단. macOS와 Windows의 네이티브 메뉴. Linux 타겟 지원.</p>
+                <p style="margin-top: 10px;">에디터 측에서는 인터랙티브 편집이 이제 6개 플랫폼 모두에서 작동합니다 — macOS, iOS, Windows, Android, Linux (GTK4), 웹. 자동 닫기 괄호와 스마트 들여쓰기가 적용되었습니다. Perry AOT 호환성 작업이 많이 들어갔습니다: 구문 강조 문자 범위 수정, Rust FFI 이벤트 큐잉의 회색 줄 버그, Windows의 DPI 스케일링, iOS의 ARM64 ABI 수정.</p>
+                <p style="margin-top: 10px;">가장 큰 아키텍처 추가는 크로스 디바이스 동기화입니다. <code>hone-relay</code>는 새 패키지입니다 — Perry를 통해 네이티브로 컴파일된 WebSocket 릴레이 서버로, 인증, 속도 제한, 룸 관리를 갖추고 있습니다. <code>hone-core</code>는 E2E 암호화, 기기 페어링, LAN 탐색, 충돌 감지가 있는 변경 큐를 갖춘 전체 동기화 전송 레이어를 확보했습니다. IDE에는 동기화 호스트/게스트 모듈, 동기화 패널, 리뷰 패널, 신뢰 설정 UI가 있습니다. <code>@honeide/api</code> 타입은 동기화 메시지 엔벨로프, 도메인 페이로드, 인증 타입으로 확장되었습니다.</p>
+                <p style="margin-top: 10px;">Core에는 git(클라이언트, 상태 파서, diff 파서, 로그), 검색(ripgrep 통합, 검색 모델), AI 모듈(프로바이더, 인라인, 채팅, 에이전트 상태/도구, 리뷰), 태스크 러너, LSP/DAP 프로토콜 타입도 추가되었습니다. 55개 소스 파일과 499개 테스트가 통과합니다.</p>
+                <p style="margin-top: 10px;">주간을 MVP 감사로 마무리했습니다 — UI를 실제 작동하는 기능으로 정리하고 나머지에 메뉴 스텁을 연결했습니다. macOS 바이너리 크기는 3.6 MB입니다.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">AI Chat</span>
+                <span class="update-chip">Git Diff</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026년 2월 28일</span>
+                <span class="update-tag">에디터</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — 6개 플랫폼에서 데모 실행</div>
+            <div class="update-body">
+                <p>에디터 컴포넌트가 이제 macOS, iOS, Windows, Android, 웹에서 작동하는 인터랙티브 데모를 갖추고 있습니다. B-tree rope가 있는 피스 테이블 텍스트 버퍼가 O(log n) 편집을 제공하고 가상 스크롤 렌더러는 보이는 줄만 처리하므로 큰 파일도 빠릅니다.</p>
+                <p style="margin-top: 10px;">이번 스프린트의 주요 플랫폼 과제는 iOS에서 Perry의 FFI 레이어를 위한 ARM64 ABI를 올바르게 설정하는 것이었습니다. Core Text 글리프 래스터라이저가 이제 Perry 컴파일 TypeScript에서 올바르게 호출되어 iOS 데모의 차단이 해제되었습니다. Pango를 통한 Linux 렌더링은 스캐폴딩되었지만 아직 데모에는 없습니다.</p>
+                <p style="margin-top: 10px;">구문 강조는 Lezer 문법을 통해 10개 언어(<code>ts</code>, <code>js</code>, <code>html</code>, <code>css</code>, <code>json</code>, <code>py</code>, <code>rs</code>, <code>cpp</code>, <code>md</code>)를 지원합니다. LSP와 DAP 클라이언트가 연결되었습니다 — 자동완성, 호버, 정의로 이동, 브레이크포인트, 변수 검사가 모두 컴포넌트 레벨에서 작동합니다. AI 인라인 자동완성을 위한 고스트 텍스트 렌더링도 구현되었습니다.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026년 2월 14일</span>
+                <span class="update-tag">터미널</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — 완전한 VT100 호환성, 163개 테스트</div>
+            <div class="update-body">
+                <p>터미널 에뮬레이터 컴포넌트가 첫 번째 버전을 출시했습니다. 파서는 CSI, OSC, DCS 이스케이프 시퀀스를 처리하는 14 상태 머신입니다. 트루컬러(SGR을 통한 24비트 RGB), X10 및 SGR 확장 모드의 마우스 추적, 대체 화면 버퍼(<code>DECSET 1049</code> — vim, htop, less가 올바르게 작동하게 하는 것), 브래킷 페이스트가 모두 지원됩니다.</p>
+                <p style="margin-top: 10px;">OSC 8 하이퍼링크, CJK 전각 문자, OSC 133 셸 통합 마커(프롬프트 감지용)가 기능 세트를 완성합니다. macOS 렌더링 경로는 Core Text를 사용합니다; hone-editor와 동일한 아키텍처로 두 컴포넌트가 네이티브 렌더링 규약을 공유합니다.</p>
+                <p style="margin-top: 10px;">163개 테스트 케이스가 파서 상태 전환, 속성 렌더링, 마우스 이벤트 인코딩, 스크롤백 동작을 커버합니다. 컴포넌트는 현재 독립적으로 사용되며 슬라이스 11에서 IDE 워크벤치에 연결될 예정입니다.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">2026년 1월 20일</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">슬라이스 2까지 IDE 셸 완성 — 워크벤치, 테마, 파일 탐색기, 설정</div>
+            <div class="update-body">
+                <p>IDE 워크벤치의 처음 세 슬라이스가 완료되었습니다. 셸은 크기 조절 가능한 패널 그리드, 탭 관리자, 액티비티 바, 상태 바를 렌더링합니다 — 화면 크기에 따라 전체 워크벤치(데스크톱/iPad 가로), 분할(태블릿 세로), 컴팩트(폰) 모드를 선택하는 플랫폼 적응형 레이아웃 엔진을 갖추고 있습니다.</p>
+                <p style="margin-top: 10px;">테마 엔진은 VSCode 호환 JSON 테마를 로드하고 TextMate 스코프를 에디터의 색상으로 해석합니다. <code>@honeide/themes</code>의 11개 테마가 모두 작동합니다. 파일 탐색기는 <code>@honeide/core</code>의 파일 감시기가 지원하는 라이브 트리를 표시하고, Ctrl+P로 트라이 인덱스 퍼지 파인드를 합니다.</p>
+                <p style="margin-top: 10px;">설정은 4 레이어 저장소(기본값 → 사용자 → 워크스페이스 → 언어별 오버라이드)를 사용합니다. 환영 화면의 AI 프로바이더 설정 마법사가 API 키 입력, 연결 테스트, 기능별 모델 라우팅을 안내합니다. 슬라이스 3 — 실제 에디터 탭을 <code>@honeide/editor</code> 인스턴스에 연결하기 — 이 다음입니다.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Workbench</span>
+                <span class="update-chip">Themes</span>
+                <span class="update-chip">Settings</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <div class="glow-orb green"></div>
+    <h2>오픈으로 개발합니다.</h2>
+    <p>Hone은 초기 개발 중입니다. 함께 지켜보고, 기여하고, 관찰하세요.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub에서 스타
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-left">
+        © 2026 Hone · <a href="https://skelpo.com" target="_blank">Skelpo GmbH</a> 제작
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/HoneIDE" target="_blank">GitHub</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

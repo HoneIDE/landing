@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hone — Asah kode Anda, secara native.</title>
+    <meta name="description" content="Editor kode native berbasis AI untuk semua platform. Ditulis dalam TypeScript, dikompilasi ke native melalui Perry. Tanpa Electron. Tanpa kompromi.">
+    <link rel="canonical" href="https://hone.codes/id/">
+    <meta name="theme-color" content="#0D1117">
+    <meta name="author" content="Skelpo GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://hone.codes/">
+    <link rel="alternate" hreflang="de" href="https://hone.codes/de/">
+    <link rel="alternate" hreflang="ja" href="https://hone.codes/ja/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://hone.codes/zh-Hans/">
+    <link rel="alternate" hreflang="es" href="https://hone.codes/es/">
+    <link rel="alternate" hreflang="fr" href="https://hone.codes/fr/">
+    <link rel="alternate" hreflang="pt" href="https://hone.codes/pt/">
+    <link rel="alternate" hreflang="ko" href="https://hone.codes/ko/">
+    <link rel="alternate" hreflang="it" href="https://hone.codes/it/">
+    <link rel="alternate" hreflang="tr" href="https://hone.codes/tr/">
+    <link rel="alternate" hreflang="th" href="https://hone.codes/th/">
+    <link rel="alternate" hreflang="id" href="https://hone.codes/id/">
+    <link rel="alternate" hreflang="vi" href="https://hone.codes/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://hone.codes/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqH7hmIamIGvTvpbULuEpEOEWgSxzXiyDp07xdEU2IWvfHwtQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/id/">
+    <meta property="og:title" content="Hone — Asah kode Anda, secara native.">
+    <meta property="og:description" content="Editor kode native berbasis AI untuk semua platform. Ditulis dalam TypeScript, dikompilasi ke native melalui Perry. Tanpa Electron. Tanpa kompromi.">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — Editor Kode Native">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — Asah kode Anda, secara native.">
+    <meta name="twitter:description" content="Editor kode native berbasis AI untuk semua platform. Ditulis dalam TypeScript, dikompilasi ke native melalui Perry. Tanpa Electron. Tanpa kompromi.">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hone",
+        "description": "Editor kode native berbasis AI untuk semua platform. Ditulis dalam TypeScript, dikompilasi ke native melalui Perry.",
+        "url": "https://hone.codes/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Gratis — 1 proyek tersinkronisasi, 2 perangkat"
+            },
+            {
+                "@type": "Offer",
+                "price": "36",
+                "priceCurrency": "USD",
+                "description": "Pro — Proyek tak terbatas, perangkat tak terbatas",
+                "billingIncrement": "P1Y"
+            }
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Skelpo GmbH",
+            "url": "https://skelpo.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="/id/" class="nav-logo">
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
+        <span class="nav-logo-text">Hone</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">Fitur</a>
+        <a href="#ai">AI</a>
+        <a href="#status">Status</a>
+        <a href="#roadmap">Peta Jalan</a>
+        <a href="#pricing">Harga</a>
+        <a href="#updates">Pembaruan</a>
+        <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+        </a>
+        <div class="lang-picker">
+            <button class="lang-picker-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                ID
+            </button>
+            <div class="lang-dropdown">
+                <a href="/">English</a>
+                <a href="/de/">Deutsch</a>
+                <a href="/ja/">日本語</a>
+                <a href="/zh-Hans/">中文</a>
+                <a href="/es/">Español</a>
+                <a href="/fr/">Français</a>
+                <a href="/pt/">Português</a>
+                <a href="/ko/">한국어</a>
+                <a href="/it/">Italiano</a>
+                <a href="/tr/">Türkçe</a>
+                <a href="/th/">ไทย</a>
+                <a href="/id/" class="active">Indonesia</a>
+                <a href="/vi/">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="glow-orb green"></div>
+    <div class="glow-orb blue"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        Dibangun secara terbuka — tahap pengembangan awal
+    </div>
+
+    <h1>Asah kode Anda,<br><span class="highlight">secara native.</span></h1>
+
+    <p class="hero-sub">
+        Editor kode native berbasis AI untuk semua platform. Ditulis dalam TypeScript, dikompilasi ke native melalui Perry. Tanpa Electron. Tanpa kompromi.
+    </p>
+
+    <div class="hero-cta">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Ikuti di GitHub
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            Pelajari lebih lanjut ↓
+        </a>
+    </div>
+
+    <!-- Real screenshot -->
+    <div class="screenshot-wrapper">
+        <img src="/screenshot.png" alt="Hone IDE berjalan di macOS — file explorer, editor dengan syntax highlighting, terminal, dan tab" class="hero-screenshot">
+        <p class="screenshot-caption">Screenshot asli. Ya, ada sedikit ketidaksempurnaan — kami membangun secara terbuka, ingat?</p>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section fade-in" id="features">
+    <div class="section-label">Mengapa Hone</div>
+    <h2 class="section-title">Semua yang seharusnya ada di editor.<br>Tanpa yang tidak perlu.</h2>
+    <p class="section-desc">
+        Dibangun dari nol dalam TypeScript, dikompilasi ke binary native melalui Perry. Setiap komponen dirancang untuk performa, modularitas, dan kesenangan developer.
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Benar-Benar Native</h3>
+            <p>Tanpa Electron, tanpa Chromium, tanpa runtime V8. Perry mengompilasi TypeScript langsung ke binary native. Di bawah 50MB, di bawah 100MB RAM, startup kurang dari satu detik.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Arsitektur AI-First</h3>
+            <p>AI bukan tambahan — ia terintegrasi ke inti editor. AI melihat syntax tree, error, git diff, dan terminal Anda. Konteks mendalam, bukan sekadar teks.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔑</div>
+            <h3>Bawa AI Anda Sendiri</h3>
+            <p>Claude, GPT, Gemini, Ollama, atau model privat perusahaan Anda. API key Anda, pilihan Anda. Campur provider berbeda untuk fitur berbeda. Tanpa vendor lock-in.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Mode Agent</h3>
+            <p>Jelaskan apa yang Anda inginkan. Agent membaca kode Anda, merencanakan perubahan, mengedit file, menjalankan tes, dan melakukan iterasi — dengan persetujuan per-hunk sebelum perubahan diterapkan.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Review PR Native</h3>
+            <p>Review pull request langsung di editor dengan syntax highlighting penuh, kecerdasan LSP dalam diff, dan anotasi berbasis AI yang menangkap bug sebelum manusia menemukannya.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>Modular & Dapat Dikomposisi</h3>
+            <p>hone-editor, hone-terminal, dan hone-core adalah paket independen. Gunakan komponen editor di aplikasi Anda sendiri. Bangun IDE Anda sendiri di atas fondasi Hone.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE ===== -->
+<section class="section fade-in" id="performance">
+    <div class="section-label">Performa</div>
+    <h2 class="section-title">Angka-angka yang tidak bisa<br>dicapai Electron.</h2>
+    <p class="section-desc">
+        Ketika Anda menghilangkan browser, semuanya menjadi lebih cepat. Ini adalah target kami — dan kami berniat mencapai semuanya.
+    </p>
+
+    <div class="perf-grid">
+        <div class="perf-card">
+            <div class="perf-value">&lt;1d</div>
+            <div class="perf-label">Cold start</div>
+            <div class="perf-compare">vs 3-5d (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;100</div>
+            <div class="perf-label">MB RAM idle</div>
+            <div class="perf-compare">vs 300-500MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;50</div>
+            <div class="perf-label">MB binary</div>
+            <div class="perf-compare">vs ~300MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;10</div>
+            <div class="perf-label">ms latensi keystroke</div>
+            <div class="perf-compare">vs 30-50ms (VSCode)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AI ===== -->
+<section class="section fade-in" id="ai">
+    <div class="section-label">Integrasi AI</div>
+    <h2 class="section-title">AI Anda. Key Anda.<br>Pilihan Anda.</h2>
+    <p class="section-desc">
+        Hone tidak pernah menjual kembali akses API. Anda membawa key sendiri dan mengarahkan provider berbeda ke fitur berbeda. Ketika model baru yang populer muncul, langsung bisa digunakan.
+    </p>
+
+    <div class="ai-features">
+        <div class="ai-feature-card">
+            <span class="tag tag-green">Inline</span>
+            <h3>Pelengkapan Ghost Text</h3>
+            <p>Saran yang sadar konteks didukung oleh provider mana pun. Melihat syntax tree Anda, bukan sekadar teks mentah. Dirender dengan kecepatan native tanpa overhead Electron.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-blue">Chat</span>
+            <h3>Chat Sadar Konteks</h3>
+            <p>AI secara otomatis melihat file yang terbuka, error, output terminal, dan status git Anda. Tanpa tagging @file manual. Ganti model di tengah percakapan.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-purple">Agent</span>
+            <h3>Agent Coding Otonom</h3>
+            <p>Edit multi-file, perintah terminal, eksekusi tes, pemulihan error. Transparansi penuh dengan log aktivitas langsung dan persetujuan diff sebelum perubahan diterapkan.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-yellow">Review</span>
+            <h3>Review PR Berbasis AI</h3>
+            <p>AI menganalisis setiap diff untuk bug, masalah keamanan, dan masalah gaya. Anotasi review muncul inline. Perbaikan sekali klik. Kirim review kembali ke GitHub/GitLab.</p>
+        </div>
+    </div>
+
+    <div class="byok-block">
+        <h3>Bawa Key Anda Sendiri. Campur & Padukan.</h3>
+        <p>Arahkan setiap fitur AI ke provider yang berbeda. Gunakan model lokal yang cepat untuk autocomplete, model cloud yang powerful untuk tugas agent, dan sesuatu di antaranya untuk chat. Infrastruktur Anda, anggaran Anda, aturan Anda.</p>
+        <div class="provider-logos">
+            <div class="provider-pill"><span class="provider-dot" style="background:#d4a574"></span> Anthropic (Claude)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#74b9ff"></span> OpenAI (GPT)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#55efc4"></span> Google (Gemini)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#a29bfe"></span> Ollama (Lokal)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#fd79a8"></span> AWS Bedrock</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#ffeaa7"></span> Kompatibel OpenAI apa pun</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLATFORMS ===== -->
+<section class="section fade-in" id="platforms">
+    <div class="section-label">Platform</div>
+    <h2 class="section-title" style="text-align:center;">Satu codebase.<br>Semua platform.</h2>
+    <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">
+        Ditulis sekali dalam TypeScript. Dikompilasi ke native di setiap platform oleh Perry. Tampilan native, kecepatan native, di mana saja.
+    </p>
+
+    <div class="platforms-row">
+        <div class="platform-item">
+            <div class="platform-icon">🍎</div>
+            <span class="platform-label">macOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🪟</div>
+            <span class="platform-label">Windows</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🐧</div>
+            <span class="platform-label">Linux</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">📱</div>
+            <span class="platform-label">iOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🤖</div>
+            <span class="platform-label">Android</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🌐</div>
+            <span class="platform-label">Web</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">Kondisi Saat Ini</div>
+    <h2 class="section-title">Yang sudah dibangun hari ini.</h2>
+    <p class="section-desc">
+        Hone adalah keluarga paket yang dapat dikomposisi. Berikut posisi masing-masing saat ini.
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Dirilis</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Buffer piece-table, multi-cursor, undo/redo</li>
+                <li>iOS: keyboard penuh, Cmd+C/V/X/Z/A, scroll</li>
+                <li>Windows: seleksi drag mouse, pilih kata</li>
+                <li>Mesin snippet, gutter breakpoint, Error Lens</li>
+                <li>Sorotan pencarian persisten, indikator fold</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Dirilis</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm, 256-warna, truecolor</li>
+                <li>Backend PTY nyata (LiveTerminal)</li>
+                <li>FFI warna sadar tema: semua platform</li>
+                <li>Integrasi shell (OSC 133)</li>
+                <li>163 kasus tes lolos</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Dirilis</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript, Python, Rust, Go</li>
+                <li>C/C++, HTML/CSS, JSON, Markdown</li>
+                <li>Git, Docker, TOML/YAML</li>
+                <li>Aktivasi lazy, Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Dirilis</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>15 tema pilihan (+4 minggu ini)</li>
+                <li>High-contrast, Tokyo Night, Gruvbox Dark</li>
+                <li>Kompatibel format tema VSCode</li>
+                <li>Validasi kontras WCAG</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Dirilis</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Zero-runtime, hanya tipe</li>
+                <li>commands, editor, workspace, ui</li>
+                <li>API Sync: envelope, payload, auth</li>
+                <li>452+ tes level tipe lolos</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Dalam Pengerjaan</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Workspace, pengaturan, keybinding</li>
+                <li>✓ Klien Git, parser diff, status</li>
+                <li>✓ Formatter dokumen + preset bahasa</li>
+                <li>✓ Pemeriksa ejaan, deteksi indentasi</li>
+                <li>✓ Provider AI, inline, chat, telemetri</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Dalam Pengerjaan</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Integrasi penuh: LSP, git, pencarian, debug</li>
+                <li>✓ Error Lens, AI ghost text, breakpoint</li>
+                <li>✓ Sistem plugin, pemuatan end-to-end</li>
+                <li>✓ Cari & Ganti, Format Dokumen, Cmd+S</li>
+                <li>✓ 50+ ikon file, menu konteks, laporan crash</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Baru</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Relay WebSocket untuk sinkronisasi lintas perangkat</li>
+                <li>Penyimpanan delta persisten berbasis SQLite</li>
+                <li>Kompatibel Perry AOT, binary native</li>
+                <li>Rilis publik dengan README</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>marketplace</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Baru</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Server Fastify dikompilasi Perry</li>
+                <li>marketplace.hone.codes dengan branding Hone</li>
+                <li>Auto-deploy via GitHub Actions</li>
+                <li>Pencarian, unduh, publikasi plugin</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>build</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Baru</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Koordinator build plugin</li>
+                <li>Kompilasi lintas platform via perry-hub</li>
+                <li>Auto-deploy via GitHub Actions</li>
+                <li>Binary native Perry AOT</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">Peta Jalan</div>
+    <h2 class="section-title">15 slice menuju IDE lengkap.</h2>
+    <p class="section-desc">
+        Setiap slice menghasilkan fitur lengkap yang dapat diuji di semua tujuh platform secara bersamaan — desktop, mobile, dan web.
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Fase 1</span>
+                <span class="phase-title">Fondasi</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Selesai</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Shell Workbench &amp; Mesin Tema</span>
+                    <span class="slice-detail">Panel yang dapat diubah ukurannya, tab, activity bar, pemuatan tema</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Workspace &amp; File Explorer</span>
+                    <span class="slice-detail">Multi-root, file watcher, pencarian fuzzy</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Pengaturan, Keybinding &amp; Onboarding</span>
+                    <span class="slice-detail">Pengaturan berlapis, editor visual, wizard setup AI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Fase 2</span>
+                <span class="phase-title">IDE Inti</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Selesai</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 3</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Integrasi Editor</span>
+                    <span class="slice-detail">Tab, pemuatan file, pengeditan interaktif di semua platform</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 4</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Git &amp; Kontrol Sumber</span>
+                    <span class="slice-detail">Push/pull/stash, inline blame, log commit, tampilan diff</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 5</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Pencarian</span>
+                    <span class="slice-detail">Integrasi ripgrep, panel pencarian gaya VS Code</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 6</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">LSP &amp; Kecerdasan Bahasa</span>
+                    <span class="slice-detail">Hover, go-to-definition, bantuan signature, Error Lens</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 7</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Debug</span>
+                    <span class="slice-detail">Panel debug, breakpoint, folding, wiring DAP</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Fase 3</span>
+                <span class="phase-title">AI &amp; Terminal</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Dalam Pengerjaan</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 8</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Sistem Provider AI</span>
+                    <span class="slice-detail">Modul core provider + inline + chat, terhubung ke IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 9</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Pelengkapan Inline AI</span>
+                    <span class="slice-detail">Rendering ghost text terhubung di IDE via FFI</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 10</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Chat AI</span>
+                    <span class="slice-detail">Panel chat dengan streaming, chip konteks, markdown</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 11</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Integrasi Terminal</span>
+                    <span class="slice-detail">Terminal PTY nyata terintegrasi di workbench IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 12</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Mode Agent AI</span>
+                    <span class="slice-detail">State agent + tools di core — log aktivitas IDE selanjutnya</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 13</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Review PR AI</span>
+                    <span class="slice-detail">Tampilan review PR ada — anotasi AI selanjutnya</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Fase 4</span>
+                <span class="phase-title">Ekstensi &amp; Peluncuran</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Dalam Pengerjaan</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Slice 14</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Sistem Ekstensi</span>
+                    <span class="slice-detail">Plugin SDK, host crate, server marketplace + build aktif</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Slice 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Pemolesan &amp; Pengemasan</span>
+                    <span class="slice-detail">DMG, MSI, AppImage, .ipa, .apk — semua platform</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section fade-in" id="pricing">
+    <div class="section-label">Harga</div>
+    <h2 class="section-title">Sinkronkan alur kerja Anda.</h2>
+    <p class="section-desc">
+        Editor ini gratis dan open source. Anda hanya membayar untuk sinkronisasi yang dihosting.
+    </p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="tier-name">Gratis</div>
+            <div class="price">$0</div>
+            <div class="price-period">selamanya</div>
+            <ul>
+                <li>1 proyek tersinkronisasi</li>
+                <li>2 perangkat</li>
+                <li>Penyimpanan delta 50 MB</li>
+                <li>Enkripsi end-to-end</li>
+                <li>Tidak perlu akun</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="tier-name">Pro</div>
+            <div class="price">$36</div>
+            <div class="price-period">per tahun &middot; ~$3/bulan</div>
+            <ul>
+                <li>Proyek tak terbatas</li>
+                <li>Perangkat tak terbatas</li>
+                <li>Penyimpanan delta 5 GB</li>
+                <li>Enkripsi end-to-end</li>
+                <li>Dukungan prioritas</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="pricing-note">
+        <strong>Enkripsi end-to-end.</strong> Relay tidak pernah melihat kode Anda.<br>
+        <strong>Open source.</strong> Self-host relay secara gratis, tanpa batasan.
+    </p>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">Pembaruan</div>
+    <h2 class="section-title">Apa yang telah terjadi.</h2>
+    <p class="section-desc">
+        Catatan progres dari pengembangan — tanpa marketing, hanya apa yang telah dikirim.
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 Mar 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">Sprint integrasi IDE penuh — LSP, git, debug, pencarian, plugin, dan 46 commit editor</div>
+            <div class="update-body">
+                <p>IDE melewati sprint integrasi masif minggu ini. Tujuh fase pemasangan fitur tercatat dalam 26 commit: LSP hover/go-to-definition/bantuan signature (Fase 3), pencarian ripgrep dengan panel gaya VS Code, git push/pull/stash/inline blame/log commit (Fase 4), diagnostik Error Lens dengan go-to-next-error (Fase 5), panel debug dengan breakpoint dan folding (Fase 6), serta ikon file yang diperluas untuk 50+ tipe, pemeriksaan ejaan, snippet, dan pemasangan tema (Fase 7). Sistem plugin kini terhubung end-to-end — ekstensi dimuat, diaktifkan, dan berjalan di dalam IDE.</p>
+                <p style="margin-top: 10px;">Di atas fase integrasi: Cari & Ganti dengan sorotan presisi karakter via FFI <code>setFindHighlights</code>, Format Dokumen dengan pipeline 3-tier dan format-on-save, menu konteks klik kanan di explorer, simpan <code>Cmd+S</code>, submenu Open Recent, auto-reveal file aktif, tab gaya VS Code dengan indikator dirty, dan pelaporan crash ke Chirp saat startup. Kebocoran memori 30GB berhasil dilacak dan diperbaiki. IDE kini lebih memilih <code>tsgo --lsp</code> daripada typescript-language-server jika tersedia.</p>
+                <p style="margin-top: 10px;">Editor memiliki 46 commit pekerjaan lintas platform. iOS mendapat dukungan keyboard penuh — <code>Cmd+C/V/X/Z/A</code>, tombol panah, Enter, Tab, Shift+select, key repeat — plus penekanan smart quote dan perbaikan overlay/scroll. Windows menambahkan seleksi drag mouse dan pilih kata double-click. Linux mendapat rendering mode Perry dengan syntax highlighting. Android mendapat tokenizer, stub platform, penyelarasan halaman 16KB untuk ARM64, dan perbaikan crash. Mesin snippet dengan tab stop, variabel, dan bawaan 4-bahasa telah dikirim. Renderer Rust mendapat ikon gutter breakpoint, indikator fold, dan diagnostik inline Error Lens. Sorotan pencarian persisten dan API dekorasi melengkapi pekerjaan editor.</p>
+                <p style="margin-top: 10px;"><code>hone-core</code> menambahkan formatter dokumen dengan preset bahasa (51 tes), pemeriksa ejaan dengan pemisahan camelCase dan saran, serta detektor indentasi. <code>hone-themes</code> bertambah 4 — high-contrast dark/light, Tokyo Night, dan Gruvbox Dark — menjadikan total 15. Dua paket baru diluncurkan: <code>hone-marketplace</code> (server Fastify dikompilasi Perry untuk marketplace.hone.codes dengan auto-deploy) dan <code>hone-build</code> (koordinator build plugin untuk kompilasi lintas platform via perry-hub). Plugin SDK, host crate Rust, CLI, dan klien marketplace dikirim dalam <code>hone-extension</code>, bersama 9 plugin siap pakai.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/marketplace</span>
+                <span class="update-chip">@honeide/build</span>
+                <span class="update-chip">Plugin</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">Error Lens</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">16 Mar 2026</span>
+                <span class="update-tag">Lintas Platform</span>
+            </div>
+            <div class="update-title">Editor iOS berfungsi, sinkronisasi lintas perangkat end-to-end, GUI Claude Code, target web</div>
+            <div class="update-body">
+                <p>Editor di iOS berubah dari layar kosong menjadi fungsional sepenuhnya. Diperlukan sekitar 20 commit untuk mencapainya — mengganti <code>setNeedsDisplay</code> dengan render loop <code>CADisplayLink</code>, memperbaiki pengiriman sentuhan dan sinkronisasi kursor, membuat scroll 1-jari berfungsi dengan offset yang tepat, dan menghubungkan FFI warna agar tema diterapkan dengan benar. Android mendapat perbaikan OOM (pelacakan dirty alih-alih redraw penuh), koreksi calling convention ARM64, dan pemasangan pipeline warna nyata. Rendering seleksi multi-baris dan undo/redo berbasis snapshot tercatat di semua platform. Aplikasi tes editor mandiri dengan toggle tema memudahkan iterasi tanpa memulai IDE lengkap.</p>
+                <p style="margin-top: 10px;">Sinkronisasi lintas perangkat kini end-to-end di iOS. Pairing WebSocket native, penjelajahan pohon file, dan pemuatan konten file semuanya berfungsi melalui relay. Sinkronisasi Android mendapat perbaikan throttling pesan. Lapisan sinkronisasi IDE menambahkan dukungan token/lastSeq dan delta catch-up sehingga perangkat yang terhubung kembali melanjutkan dari titik terakhir. Di sisi relay, penyimpanan delta ditulis ulang dengan persistensi berbasis SQLite dan kompatibilitas Perry AOT. Paket relay mendapat README dan pembersihan rilis publik.</p>
+                <p style="margin-top: 10px;">Panel chat AI mendapat GUI Claude Code lengkap — parsing multi-blok yang menangani code fence, indikator rate limit, rendering thinking block, diff inline, dan statistik penggunaan. Selektor model multi-provider dengan dropdown Picker memungkinkan beralih antara provider dan model. Panel ini melewati audit keamanan dan manajemen sumber daya.</p>
+                <p style="margin-top: 10px;">IDE kini berjalan di web — target web baru melewati setup, menyembunyikan terminal dan git (tanpa PTY atau filesystem), dan memuat editor bertema gelap. Mode terang diluncurkan di semua panel — editor, terminal, layar setup, NSView tertanam. macOS mendapat ikon aplikasi, asosiasi tipe file, dan dukungan Open With. Tab gaya VS Code menggantikan tab bar lama. Terminal mendapat FFI warna sadar tema di semua platform termasuk stub web. <code>hone-core</code> menambahkan telemetri anonim opsional.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">iOS</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Claude Code</span>
+                <span class="update-chip">Web</span>
+                <span class="update-chip">Mode Terang</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">6 Mar 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE terwujud — terminal, chat AI, diff git, sinkronisasi, dan audit MVP</div>
+            <div class="update-body">
+                <p>Minggu lalu adalah yang paling produktif sejak proyek dimulai. IDE berubah dari shell workbench yang bisa memuat file menjadi sesuatu yang benar-benar terlihat dan terasa seperti editor kode. Emulator terminal nyata berbasis PTY terintegrasi di panel bawah. Chat AI dengan respons streaming di sisi kanan. Tampilan diff git side-by-side dengan latar belakang baris berwarna. File explorer gaya VS Code dengan penyelarasan piksel sempurna. Persistensi pengaturan dan perpindahan tema langsung di semua 11 tema. Diagnostik tsc latar belakang via bridge LSP. Menu native di macOS dan Windows. Dukungan target Linux.</p>
+                <p style="margin-top: 10px;">Di sisi editor, pengeditan interaktif kini berfungsi di semua enam platform — macOS, iOS, Windows, Android, Linux (GTK4), dan web. Penutupan bracket otomatis dan indentasi cerdas tercatat. Banyak pekerjaan kompatibilitas Perry AOT masuk: memperbaiki range karakter syntax highlighting, bug garis abu-abu dari antrian event Rust FFI, penskalaan DPI di Windows, dan koreksi ABI ARM64 di iOS.</p>
+                <p style="margin-top: 10px;">Penambahan arsitektur terbesar adalah sinkronisasi lintas perangkat. <code>hone-relay</code> adalah paket baru — server relay WebSocket yang dikompilasi native via Perry, dengan auth, rate limiting, dan manajemen room. <code>hone-core</code> mendapat lapisan transport sinkronisasi penuh dengan enkripsi E2E, pairing perangkat, penemuan LAN, dan antrian perubahan dengan deteksi konflik. IDE memiliki modul sinkronisasi host/guest, panel sinkronisasi, panel review, dan UI pengaturan kepercayaan. Tipe <code>@honeide/api</code> diperluas dengan envelope pesan sinkronisasi, payload domain, dan tipe auth.</p>
+                <p style="margin-top: 10px;">Core juga mendapat git (klien, parser status, parser diff, log), pencarian (integrasi ripgrep, model pencarian), modul AI (provider, inline, chat, state/tools agent, review), task runner, dan tipe protokol LSP/DAP. Itu 55 file sumber dan 499 tes yang lolos.</p>
+                <p style="margin-top: 10px;">Minggu ini ditutup dengan audit MVP — memangkas UI ke fitur yang benar-benar berfungsi dan menghubungkan stub menu untuk yang lainnya. Binary-nya 3,6 MB di macOS.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">Chat AI</span>
+                <span class="update-chip">Diff Git</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">28 Feb 2026</span>
+                <span class="update-tag">Editor</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — demo berjalan di enam platform</div>
+            <div class="update-body">
+                <p>Komponen editor kini memiliki demo interaktif yang berfungsi di macOS, iOS, Windows, Android, dan Web. Text buffer piece-table dengan B-tree rope memberikan edit O(log n) dan virtual scroll renderer hanya menyentuh baris yang terlihat, sehingga file besar tetap responsif.</p>
+                <p style="margin-top: 10px;">Tantangan platform utama sprint ini adalah mendapatkan ABI ARM64 yang tepat untuk lapisan FFI Perry di iOS. Rasterizer glyph Core Text kini memanggil dengan benar dari TypeScript yang dikompilasi Perry, yang membuka jalan demo iOS. Rendering Linux via Pango sudah dirangkai; belum ada dalam demo.</p>
+                <p style="margin-top: 10px;">Syntax highlighting mencakup 10 bahasa (<code>ts</code>, <code>js</code>, <code>html</code>, <code>css</code>, <code>json</code>, <code>py</code>, <code>rs</code>, <code>cpp</code>, <code>md</code>) via grammar Lezer. Klien LSP dan DAP sudah terhubung — completion, hover, go-to-definition, breakpoint, dan inspeksi variabel semua berfungsi di tingkat komponen. Rendering ghost text untuk pelengkapan inline AI juga sudah aktif.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">14 Feb 2026</span>
+                <span class="update-tag">Terminal</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — kompatibilitas VT100 penuh, 163 tes</div>
+            <div class="update-body">
+                <p>Komponen emulator terminal merilis versi pertamanya. Parser adalah mesin state 14-state yang menangani escape sequence CSI, OSC, dan DCS. Truecolor (RGB 24-bit via SGR), pelacakan mouse dalam mode X10 dan SGR extended, alternate screen buffer (<code>DECSET 1049</code> — yang membuat vim, htop, dan less berfungsi dengan benar), serta bracketed paste semuanya didukung.</p>
+                <p style="margin-top: 10px;">Hyperlink OSC 8, karakter double-width CJK, dan penanda integrasi shell OSC 133 (untuk deteksi prompt) melengkapi set fitur. Path rendering macOS menggunakan Core Text; arsitektur yang sama dengan hone-editor, sehingga kedua komponen berbagi konvensi rendering native.</p>
+                <p style="margin-top: 10px;">163 kasus tes mencakup transisi state parser, rendering atribut, encoding event mouse, dan perilaku scrollback. Komponen ini digunakan secara mandiri hari ini dan akan dihubungkan ke workbench IDE di Slice 11.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 Jan 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">Shell IDE selesai hingga Slice 2 — workbench, tema, file explorer, pengaturan</div>
+            <div class="update-body">
+                <p>Tiga slice pertama workbench IDE telah selesai. Shell merender grid panel yang dapat diubah ukurannya, pengelola tab, activity bar, dan status bar — dengan mesin layout adaptif platform yang memilih antara mode full-workbench (desktop/iPad landscape), split (tablet portrait), dan compact (phone) berdasarkan ukuran layar.</p>
+                <p style="margin-top: 10px;">Mesin tema memuat tema JSON kompatibel VSCode dan menyelesaikan scope TextMate ke warna untuk editor. Semua 11 tema dari <code>@honeide/themes</code> berfungsi. File explorer menampilkan pohon langsung yang didukung file watcher di <code>@honeide/core</code>, dan Ctrl+P melakukan pencarian fuzzy menggunakan indeks trie.</p>
+                <p style="margin-top: 10px;">Pengaturan menggunakan penyimpanan empat lapisan (default → pengguna → workspace → override spesifik bahasa). Wizard setup provider AI di layar selamat datang memandu entri API key, pengujian koneksi, dan routing model per-fitur. Slice 3 — menghubungkan tab editor aktual ke instance <code>@honeide/editor</code> — adalah berikutnya.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Workbench</span>
+                <span class="update-chip">Tema</span>
+                <span class="update-chip">Pengaturan</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <div class="glow-orb green"></div>
+    <h2>Dibangun secara terbuka.</h2>
+    <p>Hone dalam tahap pengembangan awal. Ikuti perkembangan, berkontribusi, atau cukup saksikan.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Beri Bintang di GitHub
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-left">
+        © 2026 Hone · Dibuat oleh <a href="https://skelpo.com" target="_blank">Skelpo GmbH</a>
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/HoneIDE" target="_blank">GitHub</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

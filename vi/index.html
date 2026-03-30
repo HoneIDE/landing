@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hone — Mài sắc code của bạn, một cách gốc.</title>
+    <meta name="description" content="Trình soạn thảo code gốc, tích hợp AI cho mọi nền tảng. Viết bằng TypeScript, biên dịch sang native qua Perry. Không Electron. Không thỏa hiệp.">
+    <link rel="canonical" href="https://hone.codes/vi/">
+    <meta name="theme-color" content="#0D1117">
+    <meta name="author" content="Skelpo GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://hone.codes/">
+    <link rel="alternate" hreflang="de" href="https://hone.codes/de/">
+    <link rel="alternate" hreflang="ja" href="https://hone.codes/ja/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://hone.codes/zh-Hans/">
+    <link rel="alternate" hreflang="es" href="https://hone.codes/es/">
+    <link rel="alternate" hreflang="fr" href="https://hone.codes/fr/">
+    <link rel="alternate" hreflang="pt" href="https://hone.codes/pt/">
+    <link rel="alternate" hreflang="ko" href="https://hone.codes/ko/">
+    <link rel="alternate" hreflang="it" href="https://hone.codes/it/">
+    <link rel="alternate" hreflang="tr" href="https://hone.codes/tr/">
+    <link rel="alternate" hreflang="th" href="https://hone.codes/th/">
+    <link rel="alternate" hreflang="id" href="https://hone.codes/id/">
+    <link rel="alternate" hreflang="vi" href="https://hone.codes/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://hone.codes/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqH7hmIamIGvTvpbULuEpEOEWgSxzXiyDp07xdEU2IWvfHwtQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/vi/">
+    <meta property="og:title" content="Hone — Mài sắc code của bạn, một cách gốc.">
+    <meta property="og:description" content="Trình soạn thảo code gốc, tích hợp AI cho mọi nền tảng. Viết bằng TypeScript, biên dịch sang native qua Perry. Không Electron. Không thỏa hiệp.">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — Trình soạn thảo code gốc">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — Mài sắc code của bạn, một cách gốc.">
+    <meta name="twitter:description" content="Trình soạn thảo code gốc, tích hợp AI cho mọi nền tảng. Viết bằng TypeScript, biên dịch sang native qua Perry. Không Electron. Không thỏa hiệp.">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hone",
+        "description": "Trình soạn thảo code gốc, tích hợp AI cho mọi nền tảng. Viết bằng TypeScript, biên dịch sang native qua Perry.",
+        "url": "https://hone.codes/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Miễn phí — 1 dự án đồng bộ, 2 thiết bị"
+            },
+            {
+                "@type": "Offer",
+                "price": "36",
+                "priceCurrency": "USD",
+                "description": "Pro — Không giới hạn dự án, không giới hạn thiết bị",
+                "billingIncrement": "P1Y"
+            }
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Skelpo GmbH",
+            "url": "https://skelpo.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="/vi/" class="nav-logo">
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
+        <span class="nav-logo-text">Hone</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">Tính năng</a>
+        <a href="#ai">AI</a>
+        <a href="#status">Trạng thái</a>
+        <a href="#roadmap">Lộ trình</a>
+        <a href="#pricing">Bảng giá</a>
+        <a href="#updates">Cập nhật</a>
+        <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+        </a>
+        <div class="lang-picker">
+            <button class="lang-picker-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                VI
+            </button>
+            <div class="lang-dropdown">
+                <a href="/">English</a>
+                <a href="/de/">Deutsch</a>
+                <a href="/ja/">日本語</a>
+                <a href="/zh-Hans/">中文</a>
+                <a href="/es/">Español</a>
+                <a href="/fr/">Français</a>
+                <a href="/pt/">Português</a>
+                <a href="/ko/">한국어</a>
+                <a href="/it/">Italiano</a>
+                <a href="/tr/">Türkçe</a>
+                <a href="/th/">ไทย</a>
+                <a href="/id/">Indonesia</a>
+                <a href="/vi/" class="active">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="glow-orb green"></div>
+    <div class="glow-orb blue"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        Phát triển công khai — giai đoạn đầu
+    </div>
+
+    <h1>Mài sắc code của bạn,<br><span class="highlight">một cách gốc.</span></h1>
+
+    <p class="hero-sub">
+        Trình soạn thảo code gốc, tích hợp AI cho mọi nền tảng. Viết bằng TypeScript, biên dịch sang native qua Perry. Không Electron. Không thỏa hiệp.
+    </p>
+
+    <div class="hero-cta">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Theo dõi trên GitHub
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            Tìm hiểu thêm ↓
+        </a>
+    </div>
+
+    <!-- Real screenshot -->
+    <div class="screenshot-wrapper">
+        <img src="/screenshot.png" alt="Hone IDE chạy trên macOS — trình duyệt file, trình soạn thảo với tô sáng cú pháp, terminal và tab" class="hero-screenshot">
+        <p class="screenshot-caption">Ảnh chụp màn hình thực tế. Vâng, có vài điểm chưa hoàn hảo — chúng tôi đang phát triển công khai mà, nhớ chứ?</p>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section fade-in" id="features">
+    <div class="section-label">Tại sao chọn Hone</div>
+    <h2 class="section-title">Mọi thứ một trình soạn thảo nên có.<br>Không gì thừa thãi.</h2>
+    <p class="section-desc">
+        Xây dựng từ đầu bằng TypeScript, biên dịch sang binary gốc qua Perry. Mọi thành phần đều được thiết kế cho hiệu năng, tính module và niềm vui lập trình.
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Gốc thực sự</h3>
+            <p>Không Electron, không Chromium, không V8 runtime. Perry biên dịch TypeScript trực tiếp sang binary gốc. Dưới 50MB, dưới 100MB RAM, khởi động dưới một giây.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Kiến trúc AI-First</h3>
+            <p>AI không phải gắn thêm — nó được đan xen vào lõi của trình soạn thảo. AI nhìn thấy cây cú pháp, lỗi, git diff, terminal của bạn. Ngữ cảnh sâu, không chỉ là văn bản.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔑</div>
+            <h3>Tự mang AI của bạn</h3>
+            <p>Claude, GPT, Gemini, Ollama, hoặc model riêng của công ty bạn. API key của bạn, lựa chọn của bạn. Kết hợp nhiều nhà cung cấp cho các tính năng khác nhau. Không bị khóa nhà cung cấp.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Chế độ Agent</h3>
+            <p>Mô tả điều bạn muốn. Agent đọc code, lên kế hoạch thay đổi, chỉnh sửa file, chạy test và lặp lại — với phê duyệt từng hunk trước khi commit.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Review PR gốc</h3>
+            <p>Review pull request ngay trong trình soạn thảo với tô sáng cú pháp đầy đủ, trí tuệ LSP trong diff, và chú thích AI phát hiện lỗi trước con người.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>Module hóa &amp; Kết hợp được</h3>
+            <p>hone-editor, hone-terminal và hone-core là các gói độc lập. Dùng thành phần editor trong ứng dụng của bạn. Xây dựng IDE riêng trên nền tảng Hone.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE ===== -->
+<section class="section fade-in" id="performance">
+    <div class="section-label">Hiệu năng</div>
+    <h2 class="section-title">Những con số Electron<br>không thể đạt được.</h2>
+    <p class="section-desc">
+        Khi bạn loại bỏ trình duyệt, mọi thứ nhanh hơn. Đây là mục tiêu của chúng tôi — và chúng tôi quyết tâm đạt từng mục tiêu.
+    </p>
+
+    <div class="perf-grid">
+        <div class="perf-card">
+            <div class="perf-value">&lt;1s</div>
+            <div class="perf-label">Khởi động nguội</div>
+            <div class="perf-compare">so với 3-5s (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;100</div>
+            <div class="perf-label">MB RAM khi chờ</div>
+            <div class="perf-compare">so với 300-500MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;50</div>
+            <div class="perf-label">MB binary</div>
+            <div class="perf-compare">so với ~300MB (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;10</div>
+            <div class="perf-label">ms độ trễ phím</div>
+            <div class="perf-compare">so với 30-50ms (VSCode)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AI ===== -->
+<section class="section fade-in" id="ai">
+    <div class="section-label">Tích hợp AI</div>
+    <h2 class="section-title">AI của bạn. Key của bạn.<br>Lựa chọn của bạn.</h2>
+    <p class="section-desc">
+        Hone không bao giờ bán lại quyền truy cập API. Bạn tự mang key của mình và chuyển hướng các nhà cung cấp khác nhau cho các tính năng khác nhau. Khi model mới ra mắt, nó hoạt động ngay lập tức.
+    </p>
+
+    <div class="ai-features">
+        <div class="ai-feature-card">
+            <span class="tag tag-green">Inline</span>
+            <h3>Gợi ý Ghost Text</h3>
+            <p>Gợi ý nhận biết ngữ cảnh được cung cấp bởi bất kỳ nhà cung cấp nào. Nhìn thấy cây cú pháp, không chỉ văn bản thô. Hiển thị ở tốc độ gốc, không có overhead Electron.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-blue">Chat</span>
+            <h3>Chat nhận biết ngữ cảnh</h3>
+            <p>AI tự động nhìn thấy file đang mở, lỗi, output terminal và trạng thái git của bạn. Không cần gắn thẻ @file thủ công. Chuyển model giữa cuộc trò chuyện.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-purple">Agent</span>
+            <h3>Agent lập trình tự động</h3>
+            <p>Chỉnh sửa nhiều file, lệnh terminal, chạy test, khôi phục lỗi. Minh bạch hoàn toàn với nhật ký hoạt động trực tiếp và phê duyệt diff trước khi thay đổi.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-yellow">Review</span>
+            <h3>Review PR bằng AI</h3>
+            <p>AI phân tích trước mọi diff để tìm lỗi, vấn đề bảo mật và vấn đề style. Chú thích review hiển thị inline. Sửa lỗi một cú click. Gửi review về GitHub/GitLab.</p>
+        </div>
+    </div>
+
+    <div class="byok-block">
+        <h3>Tự mang Key. Kết hợp tùy ý.</h3>
+        <p>Chuyển hướng mỗi tính năng AI đến một nhà cung cấp khác. Dùng model local nhanh cho autocomplete, model cloud mạnh cho tác vụ agent, và cái gì đó ở giữa cho chat. Hạ tầng của bạn, ngân sách của bạn, luật của bạn.</p>
+        <div class="provider-logos">
+            <div class="provider-pill"><span class="provider-dot" style="background:#d4a574"></span> Anthropic (Claude)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#74b9ff"></span> OpenAI (GPT)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#55efc4"></span> Google (Gemini)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#a29bfe"></span> Ollama (Local)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#fd79a8"></span> AWS Bedrock</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#ffeaa7"></span> Tương thích OpenAI</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLATFORMS ===== -->
+<section class="section fade-in" id="platforms">
+    <div class="section-label">Nền tảng</div>
+    <h2 class="section-title" style="text-align:center;">Một codebase.<br>Mọi nền tảng.</h2>
+    <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">
+        Viết một lần bằng TypeScript. Biên dịch sang native trên mỗi nền tảng bởi Perry. Giao diện gốc, tốc độ gốc, ở mọi nơi.
+    </p>
+
+    <div class="platforms-row">
+        <div class="platform-item">
+            <div class="platform-icon">🍎</div>
+            <span class="platform-label">macOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🪟</div>
+            <span class="platform-label">Windows</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🐧</div>
+            <span class="platform-label">Linux</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">📱</div>
+            <span class="platform-label">iOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🤖</div>
+            <span class="platform-label">Android</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🌐</div>
+            <span class="platform-label">Web</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">Trạng thái hiện tại</div>
+    <h2 class="section-title">Những gì đã xây dựng hôm nay.</h2>
+    <p class="section-desc">
+        Hone là một hệ thống các gói có thể kết hợp. Đây là tiến độ hiện tại của từng gói.
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Đã phát hành</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Piece-table buffer, multi-cursor, hoàn tác/làm lại</li>
+                <li>iOS: bàn phím đầy đủ, Cmd+C/V/X/Z/A, cuộn</li>
+                <li>Windows: kéo chuột chọn vùng, chọn từ</li>
+                <li>Snippet engine, gutter breakpoint, Error Lens</li>
+                <li>Tìm kiếm highlight liên tục, chỉ báo gấp code</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Đã phát hành</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm, 256 màu, truecolor</li>
+                <li>Backend PTY thực (LiveTerminal)</li>
+                <li>FFI màu theo theme: tất cả nền tảng</li>
+                <li>Tích hợp shell (OSC 133)</li>
+                <li>163 test case đã pass</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Đã phát hành</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript, Python, Rust, Go</li>
+                <li>C/C++, HTML/CSS, JSON, Markdown</li>
+                <li>Git, Docker, TOML/YAML</li>
+                <li>Kích hoạt lười, Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Đã phát hành</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>15 theme chọn lọc (+4 tuần này)</li>
+                <li>High-contrast, Tokyo Night, Gruvbox Dark</li>
+                <li>Tương thích định dạng theme VSCode</li>
+                <li>Kiểm tra tương phản WCAG</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Đã phát hành</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Zero-runtime, chỉ kiểu dữ liệu</li>
+                <li>commands, editor, workspace, ui</li>
+                <li>Sync API: envelopes, payloads, auth</li>
+                <li>452+ test kiểu dữ liệu đã pass</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Đang phát triển</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Workspace, cài đặt, phím tắt</li>
+                <li>✓ Git client, phân tích diff, trạng thái</li>
+                <li>✓ Định dạng tài liệu + preset ngôn ngữ</li>
+                <li>✓ Kiểm tra chính tả, phát hiện thụt dòng</li>
+                <li>✓ AI provider, inline, chat, telemetry</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Đang phát triển</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Tích hợp đầy đủ: LSP, git, tìm kiếm, debug</li>
+                <li>✓ Error Lens, AI ghost text, breakpoints</li>
+                <li>✓ Hệ thống plugin, tải end-to-end</li>
+                <li>✓ Tìm & Thay thế, Định dạng tài liệu, Cmd+S</li>
+                <li>✓ 50+ biểu tượng file, menu ngữ cảnh, báo cáo lỗi</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Mới</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>WebSocket relay đồng bộ đa thiết bị</li>
+                <li>Kho delta bền vững trên SQLite</li>
+                <li>Tương thích Perry AOT, binary gốc</li>
+                <li>Phát hành công khai với README</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>marketplace</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Mới</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Server Fastify biên dịch bởi Perry</li>
+                <li>marketplace.hone.codes với thương hiệu Hone</li>
+                <li>Triển khai tự động qua GitHub Actions</li>
+                <li>Tìm kiếm, tải về, xuất bản plugin</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>build</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Mới</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Điều phối xây dựng plugin</li>
+                <li>Biên dịch đa nền tảng qua perry-hub</li>
+                <li>Triển khai tự động qua GitHub Actions</li>
+                <li>Binary gốc Perry AOT</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">Lộ trình</div>
+    <h2 class="section-title">15 lát cắt để hoàn thiện IDE.</h2>
+    <p class="section-desc">
+        Mỗi lát cắt cung cấp một tính năng hoàn chỉnh, có thể kiểm thử trên cả bảy nền tảng cùng lúc — desktop, di động và web.
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Giai đoạn 1</span>
+                <span class="phase-title">Nền tảng</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Hoàn thành</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Lát 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Khung Workbench &amp; Theme Engine</span>
+                    <span class="slice-detail">Panel có thể thay đổi kích thước, tab, thanh hoạt động, tải theme</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Workspace &amp; Trình duyệt File</span>
+                    <span class="slice-detail">Multi-root, theo dõi file, tìm kiếm mờ</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Cài đặt, Phím tắt &amp; Giới thiệu</span>
+                    <span class="slice-detail">Cài đặt phân tầng, trình soạn thảo trực quan, trình hướng dẫn cài đặt AI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Giai đoạn 2</span>
+                <span class="phase-title">IDE Cốt lõi</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Hoàn thành</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Lát 3</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Tích hợp Editor</span>
+                    <span class="slice-detail">Tab, tải file, chỉnh sửa tương tác trên mọi nền tảng</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 4</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Git &amp; Quản lý mã nguồn</span>
+                    <span class="slice-detail">Push/pull/stash, blame inline, nhật ký commit, xem diff</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 5</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Tìm kiếm</span>
+                    <span class="slice-detail">Tích hợp ripgrep, panel tìm kiếm kiểu VS Code</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 6</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">LSP &amp; Trí tuệ ngôn ngữ</span>
+                    <span class="slice-detail">Hover, đi đến định nghĩa, trợ giúp chữ ký, Error Lens</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 7</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Debug</span>
+                    <span class="slice-detail">Panel debug, breakpoints, gấp code, kết nối DAP</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Giai đoạn 3</span>
+                <span class="phase-title">AI &amp; Terminal</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Đang phát triển</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Lát 8</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Hệ thống AI Provider</span>
+                    <span class="slice-detail">Module core provider + inline + chat, đã kết nối IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 9</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI Inline Completion</span>
+                    <span class="slice-detail">Hiển thị ghost text đã kết nối trong IDE qua FFI</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 10</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">AI Chat</span>
+                    <span class="slice-detail">Panel chat với streaming, context chips, markdown</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 11</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Tích hợp Terminal</span>
+                    <span class="slice-detail">Terminal PTY thực tích hợp trong workbench IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 12</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Chế độ AI Agent</span>
+                    <span class="slice-detail">Trạng thái agent + công cụ trong core — nhật ký hoạt động IDE tiếp theo</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 13</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">AI PR Review</span>
+                    <span class="slice-detail">View review PR đã có — chú thích AI tiếp theo</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Giai đoạn 4</span>
+                <span class="phase-title">Extension &amp; Phát hành</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Đang phát triển</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Lát 14</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Hệ thống Extension</span>
+                    <span class="slice-detail">Plugin SDK, host crate, marketplace + build server đã hoạt động</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Lát 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Hoàn thiện &amp; Đóng gói</span>
+                    <span class="slice-detail">DMG, MSI, AppImage, .ipa, .apk — tất cả nền tảng</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section fade-in" id="pricing">
+    <div class="section-label">Bảng giá</div>
+    <h2 class="section-title">Đồng bộ quy trình làm việc.</h2>
+    <p class="section-desc">
+        Trình soạn thảo miễn phí và mã nguồn mở. Bạn chỉ trả cho dịch vụ đồng bộ hosted.
+    </p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="tier-name">Miễn phí</div>
+            <div class="price">$0</div>
+            <div class="price-period">mãi mãi</div>
+            <ul>
+                <li>1 dự án đồng bộ</li>
+                <li>2 thiết bị</li>
+                <li>50 MB lưu trữ delta</li>
+                <li>Mã hóa đầu cuối</li>
+                <li>Không cần tài khoản</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="tier-name">Pro</div>
+            <div class="price">$36</div>
+            <div class="price-period">mỗi năm &middot; ~$3/tháng</div>
+            <ul>
+                <li>Không giới hạn dự án</li>
+                <li>Không giới hạn thiết bị</li>
+                <li>5 GB lưu trữ delta</li>
+                <li>Mã hóa đầu cuối</li>
+                <li>Hỗ trợ ưu tiên</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="pricing-note">
+        <strong>Mã hóa đầu cuối.</strong> Relay không bao giờ nhìn thấy code của bạn.<br>
+        <strong>Mã nguồn mở.</strong> Tự host relay miễn phí, không giới hạn.
+    </p>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">Cập nhật</div>
+    <h2 class="section-title">Những gì đang diễn ra.</h2>
+    <p class="section-desc">
+        Ghi chú tiến độ từ quá trình xây dựng — không marketing, chỉ những gì đã ship.
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 Tháng 3, 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">Sprint tích hợp IDE toàn diện — LSP, git, debug, tìm kiếm, plugin và 46 commit editor</div>
+            <div class="update-body">
+                <p>IDE đã trải qua một sprint tích hợp lớn trong tuần này. Bảy giai đoạn kết nối tính năng đã hoàn thành trong 26 commit: LSP hover/go-to-definition/signature help (Giai đoạn 3), tìm kiếm ripgrep với panel kiểu VS Code, git push/pull/stash/inline blame/nhật ký commit (Giai đoạn 4), chẩn đoán Error Lens với go-to-next-error (Giai đoạn 5), panel debug với breakpoints và gấp code (Giai đoạn 6), và mở rộng biểu tượng file cho 50+ loại, kiểm tra chính tả, snippet và kết nối theme (Giai đoạn 7). Hệ thống plugin đã được kết nối end-to-end — extension tải, kích hoạt và chạy trong IDE.</p>
+                <p style="margin-top: 10px;">Ngoài các giai đoạn tích hợp: Tìm & Thay thế với highlight chính xác từng ký tự qua FFI <code>setFindHighlights</code>, Định dạng Tài liệu với pipeline 3 tầng và format-on-save, menu ngữ cảnh chuột phải trong explorer, lưu <code>Cmd+S</code>, submenu Mở Gần đây, tự động hiển thị file đang hoạt động, tab kiểu VS Code với chỉ báo chưa lưu, và báo cáo lỗi lên Chirp khi khởi động. Lỗi rò rỉ bộ nhớ 30GB đã được truy tìm và sửa. IDE giờ ưu tiên <code>tsgo --lsp</code> hơn typescript-language-server khi có sẵn.</p>
+                <p style="margin-top: 10px;">Editor có 46 commit làm việc đa nền tảng. iOS có hỗ trợ bàn phím đầy đủ — <code>Cmd+C/V/X/Z/A</code>, phím mũi tên, Enter, Tab, Shift+chọn, lặp phím — cộng thêm chặn dấu ngoặc kép thông minh và sửa lỗi overlay/cuộn. Windows thêm kéo chuột chọn vùng và nhấp đúp chọn từ. Linux có render chế độ Perry với tô sáng cú pháp. Android có tokenizer, platform stubs, căn chỉnh trang 16KB cho ARM64, và sửa lỗi crash. Snippet engine với tab stop, biến và builtin 4 ngôn ngữ đã ship. Renderer Rust có biểu tượng breakpoint gutter, chỉ báo gấp code và chẩn đoán Error Lens inline. Highlight tìm kiếm liên tục và API decorations hoàn thiện công việc editor.</p>
+                <p style="margin-top: 10px;"><code>hone-core</code> thêm trình định dạng tài liệu với preset ngôn ngữ (51 test), trình kiểm tra chính tả với tách camelCase và gợi ý, và bộ phát hiện thụt dòng. <code>hone-themes</code> tăng thêm 4 — high-contrast dark/light, Tokyo Night và Gruvbox Dark — nâng tổng lên 15. Hai gói mới ra mắt: <code>hone-marketplace</code> (server Fastify biên dịch Perry cho marketplace.hone.codes với triển khai tự động) và <code>hone-build</code> (điều phối xây dựng plugin cho biên dịch đa nền tảng qua perry-hub). Plugin SDK, host crate Rust, CLI và marketplace client đã ship trong <code>hone-extension</code>, cùng 9 plugin sẵn sàng.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/marketplace</span>
+                <span class="update-chip">@honeide/build</span>
+                <span class="update-chip">Plugins</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">Error Lens</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">16 Tháng 3, 2026</span>
+                <span class="update-tag">Đa nền tảng</span>
+            </div>
+            <div class="update-title">Editor iOS hoạt động, đồng bộ đa thiết bị end-to-end, GUI Claude Code, target web</div>
+            <div class="update-body">
+                <p>Editor trên iOS đi từ màn hình trắng đến hoạt động đầy đủ. Mất khoảng 20 commit để hoàn thành — thay thế <code>setNeedsDisplay</code> bằng vòng lặp render <code>CADisplayLink</code>, sửa giao phát touch và đồng bộ con trỏ, cuộn 1 ngón tay hoạt động với offset đúng, và kết nối FFI màu để theme áp dụng chính xác. Android sửa lỗi OOM (theo dõi dirty thay vì vẽ lại toàn bộ), sửa quy ước gọi ARM64, và kết nối pipeline màu thực. Render chọn vùng nhiều dòng và hoàn tác/làm lại dựa trên snapshot hoạt động trên mọi nền tảng. Ứng dụng test editor độc lập với chuyển đổi theme giúp lặp lại dễ hơn mà không cần boot toàn bộ IDE.</p>
+                <p style="margin-top: 10px;">Đồng bộ đa thiết bị giờ hoạt động end-to-end trên iOS. WebSocket pairing gốc, duyệt cây file và tải nội dung file đều hoạt động qua relay. Android sửa throttling tin nhắn đồng bộ. Tầng đồng bộ IDE thêm hỗ trợ token/lastSeq và bắt kịp delta để thiết bị kết nối lại tiếp tục từ nơi dừng. Phía relay, kho delta được viết lại với bền vững SQLite và tương thích Perry AOT. Gói relay có README và dọn dẹp phát hành công khai.</p>
+                <p style="margin-top: 10px;">Panel AI chat có GUI Claude Code đầy đủ — phân tích đa khối xử lý code fence, chỉ báo giới hạn tốc độ, render khối suy nghĩ, diff inline và thống kê sử dụng. Bộ chọn model đa provider với dropdown Picker cho phép chuyển giữa provider và model. Panel đã qua kiểm tra bảo mật và quản lý tài nguyên.</p>
+                <p style="margin-top: 10px;">IDE giờ chạy trên web — target web mới bỏ qua setup, ẩn terminal và git (không PTY hay filesystem), và tải editor theme tối. Chế độ sáng hoạt động trên tất cả panel — editor, terminal, màn hình setup, NSView nhúng. macOS có biểu tượng app, liên kết loại file và hỗ trợ Open With. Tab kiểu VS Code thay thế thanh tab cũ. Terminal có FFI màu theo theme trên mọi nền tảng kể cả web stubs. <code>hone-core</code> thêm telemetry ẩn danh tùy chọn.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">iOS</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Claude Code</span>
+                <span class="update-chip">Web</span>
+                <span class="update-chip">Chế độ sáng</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">6 Tháng 3, 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">IDE đã thành hình — terminal, AI chat, git diff, đồng bộ và kiểm tra MVP</div>
+            <div class="update-body">
+                <p>Tuần qua là tuần năng suất nhất kể từ khi dự án bắt đầu. IDE đi từ khung workbench có thể tải file đến thứ thực sự trông và cảm giác như trình soạn thảo code. Trình giả lập terminal PTY thực tích hợp trong panel dưới. AI chat với phản hồi streaming bên phải. View diff git song song với nền dòng có màu. File explorer kiểu VS Code căn chỉnh pixel-perfect. Lưu cài đặt và chuyển theme trực tiếp trên cả 11 theme. Chẩn đoán tsc nền qua cầu LSP. Menu gốc trên macOS và Windows. Hỗ trợ target Linux.</p>
+                <p style="margin-top: 10px;">Về phía editor, chỉnh sửa tương tác giờ hoạt động trên cả sáu nền tảng — macOS, iOS, Windows, Android, Linux (GTK4) và web. Tự động đóng ngoặc và thụt dòng thông minh đã hoàn thành. Nhiều công việc tương thích Perry AOT: sửa tô sáng cú pháp khoảng ký tự, lỗi dòng xám từ hàng đợi sự kiện Rust FFI, tỷ lệ DPI trên Windows, và sửa ABI ARM64 trên iOS.</p>
+                <p style="margin-top: 10px;">Bổ sung kiến trúc lớn nhất là đồng bộ đa thiết bị. <code>hone-relay</code> là gói mới — server relay WebSocket biên dịch gốc qua Perry, với xác thực, giới hạn tốc độ và quản lý phòng. <code>hone-core</code> có tầng truyền tải đồng bộ đầy đủ với mã hóa E2E, ghép nối thiết bị, khám phá LAN, và hàng đợi thay đổi với phát hiện xung đột. IDE có module đồng bộ host/guest, panel đồng bộ, panel review, và UI cài đặt tin cậy. Kiểu <code>@honeide/api</code> được mở rộng với envelope tin nhắn đồng bộ, payload domain và kiểu xác thực.</p>
+                <p style="margin-top: 10px;">Core cũng thêm git (client, phân tích trạng thái, phân tích diff, log), tìm kiếm (tích hợp ripgrep, model tìm kiếm), module AI (provider, inline, chat, trạng thái/công cụ agent, review), task runner, và kiểu giao thức LSP/DAP. Đó là 55 file source và 499 test pass.</p>
+                <p style="margin-top: 10px;">Kết thúc tuần với kiểm tra MVP — tinh gọn UI về các tính năng thực sự hoạt động và tạo stub menu cho mọi thứ khác. Binary là 3.6 MB trên macOS.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">AI Chat</span>
+                <span class="update-chip">Git Diff</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">28 Tháng 2, 2026</span>
+                <span class="update-tag">Editor</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — demo chạy trên sáu nền tảng</div>
+            <div class="update-body">
+                <p>Thành phần editor giờ có demo tương tác hoạt động trên macOS, iOS, Windows, Android và Web. Text buffer piece-table với B-tree rope cho O(log n) chỉnh sửa và virtual scroll renderer chỉ xử lý dòng hiển thị, nên ngay cả file lớn vẫn nhanh mượt.</p>
+                <p style="margin-top: 10px;">Thách thức nền tảng chính sprint này là đúng ABI ARM64 cho tầng FFI Perry trên iOS. Core Text glyph rasterizer giờ gọi đúng từ TypeScript biên dịch Perry, mở khóa demo iOS. Render Linux qua Pango đã dựng khung; chưa có trong demo.</p>
+                <p style="margin-top: 10px;">Tô sáng cú pháp hỗ trợ 10 ngôn ngữ (<code>ts</code>, <code>js</code>, <code>html</code>, <code>css</code>, <code>json</code>, <code>py</code>, <code>rs</code>, <code>cpp</code>, <code>md</code>) qua Lezer grammar. LSP và DAP client đã kết nối — completions, hover, go-to-definition, breakpoints và kiểm tra biến đều hoạt động ở cấp component. Render ghost text cho AI inline completions cũng đã hoạt động.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">14 Tháng 2, 2026</span>
+                <span class="update-tag">Terminal</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — tương thích VT100 đầy đủ, 163 test</div>
+            <div class="update-body">
+                <p>Thành phần terminal emulator đã phát hành phiên bản đầu tiên. Parser là máy trạng thái 14 trạng thái xử lý chuỗi thoát CSI, OSC và DCS. Truecolor (24-bit RGB qua SGR), theo dõi chuột trong chế độ X10 và SGR mở rộng, bộ đệm màn hình thay thế (<code>DECSET 1049</code> — cái làm vim, htop, và less hoạt động đúng), và paste trong ngoặc đều được hỗ trợ.</p>
+                <p style="margin-top: 10px;">OSC 8 hyperlinks, ký tự CJK chiều rộng đôi, và OSC 133 shell integration markers (để phát hiện prompt) hoàn thiện bộ tính năng. Đường dẫn render macOS dùng Core Text; cùng kiến trúc với hone-editor, nên hai thành phần chia sẻ quy ước render gốc.</p>
+                <p style="margin-top: 10px;">163 test case bao phủ chuyển trạng thái parser, render thuộc tính, mã hóa sự kiện chuột, và hành vi scrollback. Thành phần được dùng độc lập hiện tại và sẽ được tích hợp vào workbench IDE trong Lát 11.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 Tháng 1, 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">Khung IDE hoàn thành qua Lát 2 — workbench, theme, file explorer, cài đặt</div>
+            <div class="update-body">
+                <p>Ba lát cắt đầu tiên của workbench IDE đã xong. Khung render lưới panel có thể thay đổi kích thước, trình quản lý tab, thanh hoạt động và thanh trạng thái — với engine bố cục thích ứng nền tảng chọn giữa chế độ full-workbench (desktop/iPad ngang), split (tablet dọc) và compact (điện thoại) dựa trên kích thước màn hình.</p>
+                <p style="margin-top: 10px;">Theme engine tải theme JSON tương thích VSCode và phân giải TextMate scope thành màu cho editor. Tất cả 11 theme từ <code>@honeide/themes</code> hoạt động. File explorer hiển thị cây trực tiếp được hỗ trợ bởi file watcher trong <code>@honeide/core</code>, và Ctrl+P tìm kiếm mờ qua trie index.</p>
+                <p style="margin-top: 10px;">Cài đặt dùng store bốn tầng (mặc định → người dùng → workspace → ghi đè theo ngôn ngữ). Trình hướng dẫn cài đặt AI provider trong màn hình chào mừng hướng dẫn nhập API key, kiểm tra kết nối và chuyển hướng model theo tính năng. Lát 3 — kết nối tab editor thực với instance <code>@honeide/editor</code> — là bước tiếp theo.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Workbench</span>
+                <span class="update-chip">Themes</span>
+                <span class="update-chip">Cài đặt</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <div class="glow-orb green"></div>
+    <h2>Xây dựng công khai.</h2>
+    <p>Hone đang trong giai đoạn phát triển sớm. Theo dõi, đóng góp, hoặc đơn giản là quan sát.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Star trên GitHub
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-left">
+        © 2026 Hone · Xây dựng bởi <a href="https://skelpo.com" target="_blank">Skelpo GmbH</a>
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/HoneIDE" target="_blank">GitHub</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

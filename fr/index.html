@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hone — Affinez votre code, nativement.</title>
+    <meta name="description" content="Un editeur de code natif et propulse par l'IA pour chaque plateforme. Ecrit en TypeScript, compile en natif via Perry. Pas d'Electron. Pas de compromis.">
+    <link rel="canonical" href="https://hone.codes/fr/">
+    <meta name="theme-color" content="#0D1117">
+    <meta name="author" content="Skelpo GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://hone.codes/">
+    <link rel="alternate" hreflang="de" href="https://hone.codes/de/">
+    <link rel="alternate" hreflang="ja" href="https://hone.codes/ja/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://hone.codes/zh-Hans/">
+    <link rel="alternate" hreflang="es" href="https://hone.codes/es/">
+    <link rel="alternate" hreflang="fr" href="https://hone.codes/fr/">
+    <link rel="alternate" hreflang="pt" href="https://hone.codes/pt/">
+    <link rel="alternate" hreflang="ko" href="https://hone.codes/ko/">
+    <link rel="alternate" hreflang="it" href="https://hone.codes/it/">
+    <link rel="alternate" hreflang="tr" href="https://hone.codes/tr/">
+    <link rel="alternate" hreflang="th" href="https://hone.codes/th/">
+    <link rel="alternate" hreflang="id" href="https://hone.codes/id/">
+    <link rel="alternate" hreflang="vi" href="https://hone.codes/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://hone.codes/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACuklEQVR4nMWXvW7aYBiFT3+GDll6AZF6CVxGt6zdegWZmpgsFWPnqHuktmnIR6AQsA3EBMfh12D+DVSq1I3eQLZK6FRAoCSAU4ihr/SuPud8fp/vB1i1+jUVv6u/wLqC/1Jn+nv0Mm38VE82L74nv4aknEALC9QjROV8d5PiHkjxLxMDtXPCkvsoyzvrF/fGX8GrHg3FB52MCFSjhKUQZvwGZtKzPvED+SX21Y8T8YmBGGGpRClJFFM9lIxt98V9+gt4lQ93xIcGogIVmSjHCfOCKFwSWb0KXd9yT5x8gn3l3Yz4oBMxMUqfIIoakU8TWYMwsip0/bk7BiT17VzxsYHp9DmdyFwTRo7Qi4fu4SYtaFURM+mvM8RVnkibhFbedQc3ycGAmSQKqfvpicsSkbL60Ko7j8dNWtCKKmBqt8t/RWQyhJEndJO4tAitSiTqN5Btz+NwkxYZSAgUU0Rev13+LHFVINKD9BXiok4kmoRi9xD+sb06bpKDgTvpx8tfHqVPNoi4TShd4rxTRcDeWg03aUHHkuLv8E2nt4iL2ii92ibk70S4TYimA56SA24LDWhidvjG6etEvEUoHSLaJYI24W8QnyqF7BqKamEFvPHytQi1Q8S6RMgmThvE54oKn9MO6VtyCIcG5qA3PXyD9GetQfoHhnAVDCNpsRC98fB9axOnzR78pW33N6KILh5Ajwg2b3Bc86xnKw7rwhk9uw9/Y2d9h1HYEI7ohWwX7oqSA54hQyxEL9xx4Th+CM/QtZiPXsfFC4kTnqGsmEFP7v4jbsvWwRw8g1mx2qm3annv4RnMiUl6tbXkub9q7U3hGciJ0fA1+pDbG3iY3MczUBBD9NTmBp9muK0BnqdFgUTDJdyWLZ/vKb4W3iAQePaY7/wBHLHoO/byFsYAAAAASUVORK5CYII=">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hone.codes/fr/">
+    <meta property="og:title" content="Hone — Affinez votre code, nativement.">
+    <meta property="og:description" content="Un editeur de code natif et propulse par l'IA pour chaque plateforme. Ecrit en TypeScript, compile en natif via Perry. Pas d'Electron. Pas de compromis.">
+    <meta property="og:image" content="https://hone.codes/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hone — Editeur de code natif">
+    <meta property="og:site_name" content="Hone">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hone — Affinez votre code, nativement.">
+    <meta name="twitter:description" content="Un editeur de code natif et propulse par l'IA pour chaque plateforme. Ecrit en TypeScript, compile en natif via Perry. Pas d'Electron. Pas de compromis.">
+    <meta name="twitter:image" content="https://hone.codes/og-image.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hone",
+        "description": "Un editeur de code natif et propulse par l'IA pour chaque plateforme. Ecrit en TypeScript, compile en natif via Perry.",
+        "url": "https://hone.codes/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Gratuit — 1 projet synchronise, 2 appareils"
+            },
+            {
+                "@type": "Offer",
+                "price": "36",
+                "priceCurrency": "USD",
+                "description": "Pro — Projets illimites, appareils illimites",
+                "billingIncrement": "P1Y"
+            }
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Skelpo GmbH",
+            "url": "https://skelpo.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="/fr/" class="nav-logo">
+        <div class="nav-logo-icon">
+            <svg width="22" height="28" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="nav-mark-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00D4AA"/>
+                        <stop offset="60%" stop-color="#00B4D8"/>
+                        <stop offset="100%" stop-color="#0077B6"/>
+                    </linearGradient>
+                    <linearGradient id="nav-edge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FFD0"/>
+                        <stop offset="100%" stop-color="#00D4AA"/>
+                    </linearGradient>
+                    <filter id="nav-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <polygon points="24,0 0,28 24,56" fill="#0077B6" opacity="0.65"/>
+                <polygon points="24,0 48,28 24,56" fill="url(#nav-mark-grad)"/>
+                <line x1="24" y1="0" x2="24" y2="56" stroke="url(#nav-edge-grad)" stroke-width="1.5" filter="url(#nav-glow)" opacity="0.9"/>
+                <circle cx="24" cy="0" r="2.5" fill="#00FFD0" opacity="0.85"/>
+            </svg>
+        </div>
+        <span class="nav-logo-text">Hone</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">Fonctionnalités</a>
+        <a href="#ai">IA</a>
+        <a href="#status">Statut</a>
+        <a href="#roadmap">Feuille de route</a>
+        <a href="#pricing">Tarifs</a>
+        <a href="#updates">Actualités</a>
+        <a href="https://github.com/HoneIDE" target="_blank" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+        </a>
+        <div class="lang-picker">
+            <button class="lang-picker-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                FR
+            </button>
+            <div class="lang-dropdown">
+                <a href="/">English</a>
+                <a href="/de/">Deutsch</a>
+                <a href="/ja/">日本語</a>
+                <a href="/zh-Hans/">中文</a>
+                <a href="/es/">Español</a>
+                <a href="/fr/" class="active">Français</a>
+                <a href="/pt/">Português</a>
+                <a href="/ko/">한국어</a>
+                <a href="/it/">Italiano</a>
+                <a href="/tr/">Türkçe</a>
+                <a href="/th/">ไทย</a>
+                <a href="/id/">Indonesia</a>
+                <a href="/vi/">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="glow-orb green"></div>
+    <div class="glow-orb blue"></div>
+
+    <div class="hero-badge">
+        <span class="dot"></span>
+        Développement ouvert — phase initiale
+    </div>
+
+    <h1>Affinez votre code,<br><span class="highlight">nativement.</span></h1>
+
+    <p class="hero-sub">
+        Un éditeur de code natif et propulsé par l'IA pour chaque plateforme. Écrit en TypeScript, compilé en natif via Perry. Pas d'Electron. Pas de compromis.
+    </p>
+
+    <div class="hero-cta">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Suivre sur GitHub
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            En savoir plus ↓
+        </a>
+    </div>
+
+    <!-- Real screenshot -->
+    <div class="screenshot-wrapper">
+        <img src="/screenshot.png" alt="Hone IDE sur macOS — explorateur de fichiers, éditeur avec coloration syntaxique, terminal et onglets" class="hero-screenshot">
+        <p class="screenshot-caption">Capture d'écran réelle. Oui, il y a de petites imperfections — on développe en toute transparence, vous vous souvenez ?</p>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section fade-in" id="features">
+    <div class="section-label">Pourquoi Hone</div>
+    <h2 class="section-title">Tout ce qu'un éditeur devrait être.<br>Rien de superflu.</h2>
+    <p class="section-desc">
+        Conçu de zéro en TypeScript, compilé en binaires natifs via Perry. Chaque composant est pensé pour la performance, la modularité et le plaisir de développer.
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Véritablement natif</h3>
+            <p>Pas d'Electron, pas de Chromium, pas de runtime V8. Perry compile TypeScript directement en binaires natifs. Moins de 50 Mo, moins de 100 Mo de RAM, démarrage en moins d'une seconde.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Architecture IA native</h3>
+            <p>L'IA n'est pas greffée après coup — elle est tissée au coeur de l'éditeur. L'IA voit votre arbre syntaxique, vos erreurs, votre diff git, votre terminal. Un contexte profond, pas juste du texte.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔑</div>
+            <h3>Apportez votre propre IA</h3>
+            <p>Claude, GPT, Gemini, Ollama ou le modèle privé de votre entreprise. Votre clé API, votre choix. Combinez différents fournisseurs pour différentes fonctions. Aucun verrouillage fournisseur.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Mode Agent</h3>
+            <p>Décrivez ce que vous voulez. L'agent lit votre code, planifie les modifications, édite les fichiers, lance les tests et itère — avec une approbation par bloc avant tout commit.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Revue de PR native</h3>
+            <p>Revoyez les pull requests dans l'éditeur avec coloration syntaxique complète, intelligence LSP dans les diffs, et annotations IA qui détectent les bugs avant les humains.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>Modulaire et composable</h3>
+            <p>hone-editor, hone-terminal et hone-core sont des packages indépendants. Utilisez le composant éditeur dans votre propre application. Construisez votre propre IDE sur les fondations de Hone.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERFORMANCE ===== -->
+<section class="section fade-in" id="performance">
+    <div class="section-label">Performance</div>
+    <h2 class="section-title">Les chiffres qu'Electron<br>ne peut pas atteindre.</h2>
+    <p class="section-desc">
+        Quand on élimine le navigateur, tout devient plus rapide. Ce sont nos objectifs — et nous comptons bien tous les atteindre.
+    </p>
+
+    <div class="perf-grid">
+        <div class="perf-card">
+            <div class="perf-value">&lt;1s</div>
+            <div class="perf-label">Démarrage à froid</div>
+            <div class="perf-compare">vs 3-5s (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;100</div>
+            <div class="perf-label">Mo de RAM au repos</div>
+            <div class="perf-compare">vs 300-500 Mo (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;50</div>
+            <div class="perf-label">Mo le binaire</div>
+            <div class="perf-compare">vs ~300 Mo (VSCode)</div>
+        </div>
+        <div class="perf-card">
+            <div class="perf-value">&lt;10</div>
+            <div class="perf-label">ms de latence par frappe</div>
+            <div class="perf-compare">vs 30-50ms (VSCode)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AI ===== -->
+<section class="section fade-in" id="ai">
+    <div class="section-label">Intégration IA</div>
+    <h2 class="section-title">Votre IA. Vos clés.<br>Votre choix.</h2>
+    <p class="section-desc">
+        Hone ne revend jamais l'accès aux API. Vous apportez vos propres clés et routez différents fournisseurs vers différentes fonctions. Quand le prochain modèle sort, il fonctionne immédiatement.
+    </p>
+
+    <div class="ai-features">
+        <div class="ai-feature-card">
+            <span class="tag tag-green">En ligne</span>
+            <h3>Complétion Ghost Text</h3>
+            <p>Suggestions contextuelles alimentées par n'importe quel fournisseur. Voit votre arbre syntaxique, pas juste du texte brut. Rendu à vitesse native sans surcoût Electron.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-blue">Chat</span>
+            <h3>Chat contextuel</h3>
+            <p>L'IA voit automatiquement vos fichiers ouverts, vos erreurs, la sortie du terminal et l'état git. Pas besoin de tagger manuellement avec @file. Changez de modèle en pleine conversation.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-purple">Agent</span>
+            <h3>Agent de codage autonome</h3>
+            <p>Éditions multi-fichiers, commandes terminal, exécution de tests, récupération d'erreurs. Transparence totale avec un journal d'activité en direct et approbation des diffs avant toute modification.</p>
+        </div>
+        <div class="ai-feature-card">
+            <span class="tag tag-yellow">Revue</span>
+            <h3>Revue de PR par IA</h3>
+            <p>L'IA pré-analyse chaque diff pour détecter bugs, failles de sécurité et problèmes de style. Les annotations de revue apparaissent en ligne. Corrections en un clic. Soumettez les revues sur GitHub/GitLab.</p>
+        </div>
+    </div>
+
+    <div class="byok-block">
+        <h3>Apportez votre clé. Combinez à volonté.</h3>
+        <p>Routez chaque fonction IA vers un fournisseur différent. Utilisez un modèle local rapide pour l'autocomplétion, un modèle cloud puissant pour les tâches d'agent, et quelque chose entre les deux pour le chat. Votre infrastructure, votre budget, vos règles.</p>
+        <div class="provider-logos">
+            <div class="provider-pill"><span class="provider-dot" style="background:#d4a574"></span> Anthropic (Claude)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#74b9ff"></span> OpenAI (GPT)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#55efc4"></span> Google (Gemini)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#a29bfe"></span> Ollama (Local)</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#fd79a8"></span> AWS Bedrock</div>
+            <div class="provider-pill"><span class="provider-dot" style="background:#ffeaa7"></span> Tout compatible OpenAI</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PLATFORMS ===== -->
+<section class="section fade-in" id="platforms">
+    <div class="section-label">Plateformes</div>
+    <h2 class="section-title" style="text-align:center;">Un seul code source.<br>Toutes les plateformes.</h2>
+    <p class="section-desc" style="text-align:center; margin-left:auto; margin-right:auto;">
+        Écrit une seule fois en TypeScript. Compilé en natif sur chaque plateforme par Perry. Apparence native, vitesse native, partout.
+    </p>
+
+    <div class="platforms-row">
+        <div class="platform-item">
+            <div class="platform-icon">🍎</div>
+            <span class="platform-label">macOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🪟</div>
+            <span class="platform-label">Windows</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🐧</div>
+            <span class="platform-label">Linux</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">📱</div>
+            <span class="platform-label">iOS</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🤖</div>
+            <span class="platform-label">Android</span>
+        </div>
+        <div class="platform-item">
+            <div class="platform-icon">🌐</div>
+            <span class="platform-label">Web</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATUS ===== -->
+<section class="section fade-in" id="status">
+    <div class="section-label">État actuel</div>
+    <h2 class="section-title">Ce qui est construit aujourd'hui.</h2>
+    <p class="section-desc">
+        Hone est une famille de packages composables. Voici où en est chacun d'entre eux.
+    </p>
+
+    <div class="status-grid">
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>editor</div>
+                    <div class="version-tag">v0.2.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Publié</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Buffer piece-table, multi-curseur, annuler/rétablir</li>
+                <li>iOS : clavier complet, Cmd+C/V/X/Z/A, défilement</li>
+                <li>Windows : sélection par glisser-souris, sélection de mot</li>
+                <li>Moteur de snippets, gouttière de breakpoints, Error Lens</li>
+                <li>Surlignages de recherche persistants, indicateurs de pliage</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>terminal</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Publié</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>VT100/xterm, 256 couleurs, truecolor</li>
+                <li>Vrai backend PTY (LiveTerminal)</li>
+                <li>FFI couleurs adapté au thème : toutes plateformes</li>
+                <li>Intégration shell (OSC 133)</li>
+                <li>163 cas de tests réussis</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>extensions</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Publié</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>TypeScript, Python, Rust, Go</li>
+                <li>C/C++, HTML/CSS, JSON, Markdown</li>
+                <li>Git, Docker, TOML/YAML</li>
+                <li>Activation paresseuse, Perry AOT</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>themes</div>
+                    <div class="version-tag">v1.0.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Publié</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>15 thèmes sélectionnés (+4 cette semaine)</li>
+                <li>High-contrast, Tokyo Night, Gruvbox Dark</li>
+                <li>Compatible avec le format de thèmes VSCode</li>
+                <li>Validation de contraste WCAG</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>api</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Publié</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Zéro runtime, types purs</li>
+                <li>commands, editor, workspace, ui</li>
+                <li>API Sync : enveloppes, payloads, auth</li>
+                <li>452+ tests au niveau des types réussis</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>core</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>En cours</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Workspace, paramètres, raccourcis clavier</li>
+                <li>✓ Client git, parseur de diff, statut</li>
+                <li>✓ Formateur de documents + presets par langage</li>
+                <li>✓ Correcteur orthographique, détection d'indentation</li>
+                <li>✓ Fournisseur IA, inline, chat, télémétrie</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>ide</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>En cours</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>✓ Intégration complète : LSP, git, recherche, débogage</li>
+                <li>✓ Error Lens, ghost text IA, breakpoints</li>
+                <li>✓ Système de plugins, chargement de bout en bout</li>
+                <li>✓ Rechercher & Remplacer, Formater le document, Cmd+S</li>
+                <li>✓ 50+ icônes de fichiers, menus contextuels, rapports de crash</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>relay</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Nouveau</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Relais WebSocket pour synchronisation multi-appareils</li>
+                <li>Stockage de deltas persistant sur SQLite</li>
+                <li>Compatible Perry AOT, binaire natif</li>
+                <li>Publication publique avec README</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>marketplace</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Nouveau</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Serveur Fastify compilé par Perry</li>
+                <li>marketplace.hone.codes avec le branding Hone</li>
+                <li>Déploiement automatique via GitHub Actions</li>
+                <li>Recherche, téléchargement et publication de plugins</li>
+            </ul>
+        </div>
+
+        <div class="status-card">
+            <div class="status-card-header">
+                <div>
+                    <div class="pkg-name"><span class="pkg-scope">@honeide/</span>build</div>
+                    <div class="version-tag">v0.1.0</div>
+                </div>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>Nouveau</span>
+            </div>
+            <ul class="status-card-bullets">
+                <li>Coordinateur de build de plugins</li>
+                <li>Compilation multiplateforme via perry-hub</li>
+                <li>Déploiement automatique via GitHub Actions</li>
+                <li>Binaire natif Perry AOT</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section class="section fade-in" id="roadmap">
+    <div class="section-label">Feuille de route</div>
+    <h2 class="section-title">15 tranches vers un IDE complet.</h2>
+    <p class="section-desc">
+        Chaque tranche livre une fonctionnalité complète et testable sur les sept plateformes simultanément — bureau, mobile et web.
+    </p>
+
+    <div class="roadmap-phases">
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Phase 1</span>
+                <span class="phase-title">Fondations</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Terminée</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 0</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Shell du workbench &amp; moteur de thèmes</span>
+                    <span class="slice-detail">Panneaux redimensionnables, onglets, barre d'activité, chargement de thèmes</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 1</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Workspace &amp; explorateur de fichiers</span>
+                    <span class="slice-detail">Multi-racine, surveillance de fichiers, recherche floue</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 2</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Paramètres, raccourcis clavier &amp; accueil</span>
+                    <span class="slice-detail">Paramètres en couches, éditeur visuel, assistant de configuration IA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block done">
+            <div class="phase-header">
+                <span class="phase-number">Phase 2</span>
+                <span class="phase-title">IDE principal</span>
+                <span class="status-badge badge-done"><span class="badge-dot"></span>Terminée</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 3</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Intégration de l'éditeur</span>
+                    <span class="slice-detail">Onglets, chargement de fichiers, édition interactive sur toutes les plateformes</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 4</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Git &amp; contrôle de source</span>
+                    <span class="slice-detail">Push/pull/stash, blame en ligne, historique de commits, vue diff</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 5</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Recherche</span>
+                    <span class="slice-detail">Intégration ripgrep, panneau de recherche style VS Code</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 6</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">LSP &amp; intelligence du langage</span>
+                    <span class="slice-detail">Survol, aller à la définition, aide à la signature, Error Lens</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 7</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Débogage</span>
+                    <span class="slice-detail">Panneau de débogage, breakpoints, pliage, câblage DAP</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Phase 3</span>
+                <span class="phase-title">IA &amp; Terminal</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>En cours</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 8</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Système de fournisseurs IA</span>
+                    <span class="slice-detail">Module fournisseur + inline + chat dans le core, câblé à l'IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 9</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Complétion IA en ligne</span>
+                    <span class="slice-detail">Rendu ghost text câblé dans l'IDE via FFI</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 10</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Chat IA</span>
+                    <span class="slice-detail">Panneau de chat avec streaming, puces de contexte, markdown</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 11</span>
+                    <span class="slice-check done">✓</span>
+                    <span class="slice-name">Intégration du terminal</span>
+                    <span class="slice-detail">Terminal PTY réel intégré dans le workbench de l'IDE</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 12</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Mode Agent IA</span>
+                    <span class="slice-detail">État agent + outils dans le core — journal d'activité IDE à suivre</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 13</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Revue de PR par IA</span>
+                    <span class="slice-detail">Vue de revue de PR existante — annotations IA à suivre</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <span class="phase-number">Phase 4</span>
+                <span class="phase-title">Extensions &amp; livraison</span>
+                <span class="status-badge badge-active"><span class="badge-dot"></span>En cours</span>
+            </div>
+            <div class="phase-slices">
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 14</span>
+                    <span class="slice-check active">●</span>
+                    <span class="slice-name">Système d'extensions</span>
+                    <span class="slice-detail">SDK de plugins, crate hôte, serveurs marketplace + build en ligne</span>
+                </div>
+                <div class="slice-row">
+                    <span class="slice-num">Tranche 15</span>
+                    <span class="slice-check planned">○</span>
+                    <span class="slice-name planned">Finitions &amp; packaging</span>
+                    <span class="slice-detail">DMG, MSI, AppImage, .ipa, .apk — toutes les plateformes</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section fade-in" id="pricing">
+    <div class="section-label">Tarifs</div>
+    <h2 class="section-title">Synchronisez votre workflow.</h2>
+    <p class="section-desc">
+        L'éditeur est gratuit et open source. Vous ne payez que pour la synchronisation hébergée.
+    </p>
+
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="tier-name">Gratuit</div>
+            <div class="price">0 $</div>
+            <div class="price-period">pour toujours</div>
+            <ul>
+                <li>1 projet synchronisé</li>
+                <li>2 appareils</li>
+                <li>50 Mo de stockage delta</li>
+                <li>Chiffrement de bout en bout</li>
+                <li>Aucun compte requis</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="tier-name">Pro</div>
+            <div class="price">36 $</div>
+            <div class="price-period">par an &middot; ~3 $/mois</div>
+            <ul>
+                <li>Projets illimités</li>
+                <li>Appareils illimités</li>
+                <li>5 Go de stockage delta</li>
+                <li>Chiffrement de bout en bout</li>
+                <li>Support prioritaire</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="pricing-note">
+        <strong>Chiffrement de bout en bout.</strong> Le relais ne voit jamais votre code.<br>
+        <strong>Open source.</strong> Hébergez vous-même le relais gratuitement, sans limites.
+    </p>
+</section>
+
+<!-- ===== UPDATES ===== -->
+<section class="section fade-in" id="updates">
+    <div class="section-label">Actualités</div>
+    <h2 class="section-title">Ce qui s'est passé.</h2>
+    <p class="section-desc">
+        Notes de progression du développement — pas de marketing, juste ce qui a été livré.
+    </p>
+
+    <div class="updates-feed">
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 mars 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">Sprint d'intégration complète de l'IDE — LSP, git, débogage, recherche, plugins, et 46 commits éditeur</div>
+            <div class="update-body">
+                <p>L'IDE a traversé un sprint d'intégration massif cette semaine. Sept phases de câblage de fonctionnalités ont atterri en 26 commits : survol/aller-à-la-définition/aide à la signature LSP (Phase 3), recherche ripgrep avec panneau style VS Code, git push/pull/stash/blame en ligne/historique de commits (Phase 4), diagnostics Error Lens avec aller-à-l'erreur-suivante (Phase 5), panneau de débogage avec breakpoints et pliage (Phase 6), et icônes de fichiers étendues pour 50+ types, correcteur orthographique, snippets, et câblage de thèmes (Phase 7). Le système de plugins est maintenant câblé de bout en bout — les extensions se chargent, s'activent et s'exécutent dans l'IDE.</p>
+                <p style="margin-top: 10px;">En plus des phases d'intégration : Rechercher & Remplacer avec surlignages au caractère près via <code>setFindHighlights</code> FFI, Formater le document avec un pipeline à 3 niveaux et formatage à la sauvegarde, menus contextuels au clic droit dans l'explorateur, sauvegarde <code>Cmd+S</code>, sous-menu Ouvrir récent, révélation automatique du fichier actif, onglets style VS Code avec indicateurs de modification, et rapports de crash vers Chirp au démarrage. Une fuite mémoire de 30 Go a été traquée et corrigée. L'IDE préfère maintenant <code>tsgo --lsp</code> à typescript-language-server quand disponible.</p>
+                <p style="margin-top: 10px;">L'éditeur a eu 46 commits de travail multiplateforme. iOS a obtenu le support clavier complet — <code>Cmd+C/V/X/Z/A</code>, touches fléchées, Entrée, Tab, Shift+sélection, répétition de touches — plus la suppression des guillemets intelligents et corrections d'overlay/défilement. Windows a ajouté la sélection par glisser-souris et la sélection de mot par double-clic. Linux a obtenu le rendu en mode Perry avec coloration syntaxique. Android a obtenu un tokenizer, des stubs de plateforme, l'alignement de page 16 Ko pour ARM64, et une correction de crash. Un moteur de snippets avec tab stops, variables et builtins pour 4 langages a été livré. Le moteur de rendu Rust a gagné les icônes de gouttière de breakpoints, les indicateurs de pliage et les diagnostics inline Error Lens. Les surlignages de recherche persistants et une API de décorations complètent le travail sur l'éditeur.</p>
+                <p style="margin-top: 10px;"><code>hone-core</code> a ajouté un formateur de documents avec presets par langage (51 tests), un correcteur orthographique avec découpage camelCase et suggestions, et un détecteur d'indentation. <code>hone-themes</code> a gagné 4 thèmes — high-contrast dark/light, Tokyo Night, et Gruvbox Dark — portant le total à 15. Deux nouveaux packages sont en ligne : <code>hone-marketplace</code> (serveur Fastify compilé par Perry pour marketplace.hone.codes avec déploiement automatique) et <code>hone-build</code> (coordinateur de build de plugins pour compilation multiplateforme via perry-hub). Le SDK de plugins, le crate hôte Rust, le CLI et le client marketplace ont été livrés dans <code>hone-extension</code>, ainsi que 9 plugins prêts à l'emploi.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/marketplace</span>
+                <span class="update-chip">@honeide/build</span>
+                <span class="update-chip">Plugins</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">Error Lens</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">16 mars 2026</span>
+                <span class="update-tag">Multiplateforme</span>
+            </div>
+            <div class="update-title">Éditeur iOS fonctionnel, synchronisation multi-appareils de bout en bout, GUI Claude Code, cible web</div>
+            <div class="update-body">
+                <p>L'éditeur sur iOS est passé d'un écran vide à entièrement fonctionnel. Il a fallu environ 20 commits pour y arriver — remplacement de <code>setNeedsDisplay</code> par une boucle de rendu <code>CADisplayLink</code>, correction de la livraison tactile et de la synchronisation du curseur, fonctionnement du défilement à 1 doigt avec le bon offset, et câblage du FFI couleur pour que les thèmes s'appliquent correctement. Android a eu des corrections OOM (suivi des zones modifiées au lieu de redessin complet), corrections de convention d'appel ARM64, et câblage réel du pipeline de couleurs. Le rendu de sélection multi-lignes et l'annuler/rétablir basé sur les snapshots ont atterri sur toutes les plateformes. Une application de test éditeur autonome avec bascule de thème facilite l'itération sans démarrer l'IDE complet.</p>
+                <p style="margin-top: 10px;">La synchronisation multi-appareils fonctionne maintenant de bout en bout sur iOS. L'appairage WebSocket natif, la navigation dans l'arbre de fichiers et le chargement du contenu des fichiers fonctionnent tous via le relais. La synchronisation Android a eu des corrections de throttling de messages. La couche de synchronisation de l'IDE a ajouté le support token/lastSeq et le rattrapage de deltas pour que les appareils qui se reconnectent reprennent là où ils s'étaient arrêtés. Côté relais, le stockage de deltas a été réécrit avec persistance SQLite et compatibilité Perry AOT. Le package relais a obtenu un README et un nettoyage pour publication.</p>
+                <p style="margin-top: 10px;">Le panneau de chat IA a gagné une GUI Claude Code complète — parsing multi-blocs gérant les blocs de code, indicateurs de rate limit, rendu des blocs de réflexion, diffs en ligne et statistiques d'utilisation. Un sélecteur de modèle multi-fournisseur avec dropdown Picker permet de basculer entre fournisseurs et modèles. Le panneau a subi un audit de sécurité et de gestion des ressources.</p>
+                <p style="margin-top: 10px;">L'IDE tourne maintenant sur le web — une nouvelle cible web saute la configuration, masque le terminal et git (pas de PTY ni de système de fichiers), et charge un éditeur en thème sombre. Le mode clair a été livré sur tous les panneaux — éditeur, terminal, écran de configuration, NSViews embarquées. macOS a obtenu une icône d'application, des associations de types de fichiers et le support Ouvrir avec. Les onglets style VS Code ont remplacé l'ancienne barre d'onglets. Le terminal a obtenu le FFI couleur adapté au thème sur toutes les plateformes, y compris les stubs web. <code>hone-core</code> a ajouté la télémétrie anonyme optionnelle.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">iOS</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Claude Code</span>
+                <span class="update-chip">Web</span>
+                <span class="update-chip">Mode clair</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">6 mars 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">L'IDE a pris forme — terminal, chat IA, diff git, synchronisation et audit MVP</div>
+            <div class="update-body">
+                <p>La semaine passée a été la plus productive depuis le début du projet. L'IDE est passé d'un shell de workbench capable de charger des fichiers à quelque chose qui ressemble et se comporte vraiment comme un éditeur de code. Un vrai émulateur de terminal avec PTY intégré dans le panneau du bas. Un chat IA avec réponses en streaming sur le côté droit. Une vue diff git côte à côte avec fonds de lignes colorés. Un explorateur de fichiers style VS Code avec alignement au pixel près. Persistance des paramètres et changement de thème en direct sur les 11 thèmes. Diagnostics tsc en arrière-plan via un pont LSP. Menus natifs sur macOS et Windows. Support de la cible Linux.</p>
+                <p style="margin-top: 10px;">Côté éditeur, l'édition interactive fonctionne maintenant sur les six plateformes — macOS, iOS, Windows, Android, Linux (GTK4) et web. La fermeture automatique des crochets et l'indentation intelligente ont atterri. Beaucoup de travail de compatibilité Perry AOT a été effectué : correction des plages de caractères pour la coloration syntaxique, le bug des lignes grises dû à la file d'attente d'événements FFI Rust, la mise à l'échelle DPI sur Windows et les corrections ABI ARM64 sur iOS.</p>
+                <p style="margin-top: 10px;">Le plus gros ajout architectural est la synchronisation multi-appareils. <code>hone-relay</code> est un nouveau package — un serveur relais WebSocket compilé nativement via Perry, avec authentification, limitation de débit et gestion de salles. <code>hone-core</code> a développé une couche de transport de synchronisation complète avec chiffrement E2E, appairage d'appareils, découverte LAN et une file d'attente de modifications avec détection de conflits. L'IDE dispose de modules sync hôte/invité, d'un panneau de synchronisation, d'un panneau de revue et d'une UI de paramètres de confiance. Les types <code>@honeide/api</code> ont été étendus avec les enveloppes de messages sync, les payloads de domaine et les types d'authentification.</p>
+                <p style="margin-top: 10px;">Le core a aussi obtenu git (client, parseur de statut, parseur de diff, historique), recherche (intégration ripgrep, modèle de recherche), modules IA (fournisseur, inline, chat, état/outils d'agent, revue), lanceur de tâches et types de protocole LSP/DAP. C'est 55 fichiers sources et 499 tests réussis.</p>
+                <p style="margin-top: 10px;">La semaine s'est terminée par un audit MVP — l'UI a été réduite aux fonctionnalités réellement opérationnelles et des stubs de menu ont été câblés pour tout le reste. Le binaire fait 3,6 Mo sur macOS.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">@honeide/relay</span>
+                <span class="update-chip">Terminal</span>
+                <span class="update-chip">Chat IA</span>
+                <span class="update-chip">Diff Git</span>
+                <span class="update-chip">Sync</span>
+                <span class="update-chip">Perry</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">28 fév. 2026</span>
+                <span class="update-tag">Éditeur</span>
+            </div>
+            <div class="update-title">hone-editor v0.2.0 — démos fonctionnelles sur six plateformes</div>
+            <div class="update-body">
+                <p>Le composant éditeur dispose maintenant de démos interactives fonctionnelles sur macOS, iOS, Windows, Android et Web. Le buffer de texte piece-table avec rope B-tree offre des éditions en O(log n) et le moteur de rendu avec défilement virtuel ne touche que les lignes visibles, garantissant la fluidité même pour les gros fichiers.</p>
+                <p style="margin-top: 10px;">Le principal défi multiplateforme de ce sprint a été de faire fonctionner correctement l'ABI ARM64 pour la couche FFI de Perry sur iOS. Le rasteriseur de glyphes Core Text appelle maintenant correctement depuis du TypeScript compilé par Perry, ce qui a débloqué la démo iOS. Le rendu Linux via Pango est échafaudé mais pas encore en démo.</p>
+                <p style="margin-top: 10px;">La coloration syntaxique couvre 10 langages (<code>ts</code>, <code>js</code>, <code>html</code>, <code>css</code>, <code>json</code>, <code>py</code>, <code>rs</code>, <code>cpp</code>, <code>md</code>) via les grammaires Lezer. Les clients LSP et DAP sont câblés — complétions, survol, aller-à-la-définition, breakpoints et inspection de variables fonctionnent au niveau du composant. Le rendu ghost text pour les complétions IA en ligne est aussi opérationnel.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/editor</span>
+                <span class="update-chip">Perry FFI</span>
+                <span class="update-chip">iOS ARM64</span>
+                <span class="update-chip">Lezer</span>
+                <span class="update-chip">LSP</span>
+                <span class="update-chip">DAP</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">14 fév. 2026</span>
+                <span class="update-tag">Terminal</span>
+            </div>
+            <div class="update-title">hone-terminal v0.1.0 — compatibilité VT100 complète, 163 tests</div>
+            <div class="update-body">
+                <p>Le composant émulateur de terminal a livré sa première version. Le parseur est une machine à 14 états qui gère les séquences d'échappement CSI, OSC et DCS. Le truecolor (RGB 24 bits via SGR), le suivi de souris en modes X10 et SGR étendu, le buffer d'écran alternatif (<code>DECSET 1049</code> — celui qui fait fonctionner correctement vim, htop et less), et le collage entre crochets sont tous supportés.</p>
+                <p style="margin-top: 10px;">Les hyperliens OSC 8, les caractères CJK double largeur et les marqueurs d'intégration shell OSC 133 (pour la détection de prompt) complètent le jeu de fonctionnalités. Le chemin de rendu macOS utilise Core Text ; la même architecture que hone-editor, les deux composants partagent donc les conventions de rendu natif.</p>
+                <p style="margin-top: 10px;">163 cas de tests couvrent les transitions d'état du parseur, le rendu des attributs, l'encodage des événements souris et le comportement du scrollback. Le composant est utilisé de manière autonome aujourd'hui et sera intégré au workbench de l'IDE dans la Tranche 11.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/terminal</span>
+                <span class="update-chip">VT100</span>
+                <span class="update-chip">xterm</span>
+                <span class="update-chip">OSC 133</span>
+                <span class="update-chip">Core Text</span>
+            </div>
+        </div>
+
+        <div class="update-post">
+            <div class="update-meta">
+                <span class="update-date">20 janv. 2026</span>
+                <span class="update-tag">IDE</span>
+            </div>
+            <div class="update-title">Shell IDE complet jusqu'à la Tranche 2 — workbench, thèmes, explorateur de fichiers, paramètres</div>
+            <div class="update-body">
+                <p>Les trois premières tranches du workbench IDE sont terminées. Le shell affiche une grille de panneaux redimensionnables, un gestionnaire d'onglets, une barre d'activité et une barre d'état — avec le moteur de mise en page adaptatif qui sélectionne entre les modes workbench complet (bureau/iPad paysage), divisé (tablette portrait) et compact (téléphone) selon la taille de l'écran.</p>
+                <p style="margin-top: 10px;">Le moteur de thèmes charge les thèmes JSON compatibles VSCode et résout les scopes TextMate en couleurs pour l'éditeur. Les 11 thèmes de <code>@honeide/themes</code> fonctionnent. L'explorateur de fichiers affiche un arbre en direct alimenté par le surveillant de fichiers de <code>@honeide/core</code>, et Ctrl+P effectue une recherche floue par index trie.</p>
+                <p style="margin-top: 10px;">Les paramètres utilisent un store à quatre couches (défaut → utilisateur → workspace → surcharges spécifiques au langage). L'assistant de configuration du fournisseur IA dans l'écran d'accueil guide à travers la saisie de la clé API, le test de connexion et le routage de modèle par fonctionnalité. La Tranche 3 — câbler les onglets éditeur réels aux instances <code>@honeide/editor</code> — est la prochaine étape.</p>
+            </div>
+            <div class="update-chips">
+                <span class="update-chip">@honeide/ide</span>
+                <span class="update-chip">@honeide/core</span>
+                <span class="update-chip">Perry</span>
+                <span class="update-chip">Workbench</span>
+                <span class="update-chip">Thèmes</span>
+                <span class="update-chip">Paramètres</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <div class="glow-orb green"></div>
+    <h2>Développé en toute transparence.</h2>
+    <p>Hone est en phase initiale de développement. Suivez le projet, contribuez, ou observez simplement.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/HoneIDE" target="_blank" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Mettre une étoile sur GitHub
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-left">
+        © 2026 Hone · Développé par <a href="https://skelpo.com" target="_blank">Skelpo GmbH</a>
+    </div>
+    <div class="footer-links">
+        <a href="https://github.com/HoneIDE" target="_blank">GitHub</a>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
